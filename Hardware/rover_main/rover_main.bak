@@ -26,6 +26,8 @@ Text Label 8730 2220 2    50   ~ 0
 GPIO13
 Text Label 8730 2320 2    50   ~ 0
 GPIO12
+Text Label 8730 2420 2    50   ~ 0
+GND
 Text Label 8730 2520 2    50   ~ 0
 5V
 $Comp
@@ -58,10 +60,14 @@ Text Label 9400 2020 0    50   ~ 0
 RX
 Text Label 9400 2120 0    50   ~ 0
 3.3V-5V
+Text Label 9400 2220 0    50   ~ 0
+GND
 Text Label 9400 2320 0    50   ~ 0
 GPIO0
 Text Label 9400 2420 0    50   ~ 0
 GPIO16
+Text Label 9400 2520 0    50   ~ 0
+3.3V
 $Comp
 L Device:D_Schottky D?
 U 1 1 5D1FB64C
@@ -260,6 +266,17 @@ F 1 "GND" H 7980 4170 50  0000 C CNN
 F 2 "" H 7980 4310 50  0001 C CNN
 F 3 "" H 7980 4310 50  0001 C CNN
 	1    7980 4310
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5D23A188
+P 7980 4020
+F 0 "#PWR?" H 7980 3870 50  0001 C CNN
+F 1 "+5V" H 7995 4193 50  0000 C CNN
+F 2 "" H 7980 4020 50  0001 C CNN
+F 3 "" H 7980 4020 50  0001 C CNN
+	1    7980 4020
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -576,60 +593,4 @@ Text Label 4780 3620 0    50   ~ 0
 BATT
 Connection ~ 3580 3690
 Connection ~ 3580 3890
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5D26003E
-P 7980 4020
-F 0 "#PWR?" H 7980 3870 50  0001 C CNN
-F 1 "+3.3V" H 7995 4193 50  0000 C CNN
-F 2 "" H 7980 4020 50  0001 C CNN
-F 3 "" H 7980 4020 50  0001 C CNN
-	1    7980 4020
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5D2614CB
-P 9760 2470
-F 0 "#PWR?" H 9760 2320 50  0001 C CNN
-F 1 "+3.3V" H 9775 2643 50  0000 C CNN
-F 2 "" H 9760 2470 50  0001 C CNN
-F 3 "" H 9760 2470 50  0001 C CNN
-	1    9760 2470
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9400 2520 9760 2520
-Wire Wire Line
-	9760 2520 9760 2470
-$Comp
-L power:GND #PWR?
-U 1 1 5D262BFD
-P 10000 2400
-F 0 "#PWR?" H 10000 2150 50  0001 C CNN
-F 1 "GND" H 10000 2260 50  0000 C CNN
-F 2 "" H 10000 2400 50  0001 C CNN
-F 3 "" H 10000 2400 50  0001 C CNN
-	1    10000 2400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5D2637CD
-P 8500 2500
-F 0 "#PWR?" H 8500 2250 50  0001 C CNN
-F 1 "GND" H 8500 2360 50  0000 C CNN
-F 2 "" H 8500 2500 50  0001 C CNN
-F 3 "" H 8500 2500 50  0001 C CNN
-	1    8500 2500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8500 2500 8500 2420
-Wire Wire Line
-	8500 2420 8730 2420
-Wire Wire Line
-	10000 2400 10000 2220
-Wire Wire Line
-	10000 2220 9400 2220
 $EndSCHEMATC
