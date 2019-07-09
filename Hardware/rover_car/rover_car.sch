@@ -5,11 +5,11 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
+Title "DRIVER DE ROVER"
+Date "2019-07-09"
+Rev "0.1"
+Comp "ELECTRONIC CATS"
+Comment1 "EDGAR EMMANUEL CAPUCHINO ESCOBEDO"
 Comment2 ""
 Comment3 ""
 Comment4 ""
@@ -73,7 +73,7 @@ U 1 1 5D1D49D6
 P 4050 1550
 F 0 "M1" H 4208 1546 50  0000 L CNN
 F 1 "Motor_DC" H 4208 1455 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 4050 1460 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 4050 1460 50  0001 C CNN
 F 3 "~" H 4050 1460 50  0001 C CNN
 	1    4050 1550
 	1    0    0    -1  
@@ -84,14 +84,14 @@ U 1 1 5D1D5151
 P 4050 2300
 F 0 "M2" H 4208 2296 50  0000 L CNN
 F 1 "Motor_DC" H 4208 2205 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 4050 2210 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 4050 2210 50  0001 C CNN
 F 3 "~" H 4050 2210 50  0001 C CNN
 	1    4050 2300
 	1    0    0    -1  
 $EndComp
-Text Label 4050 1350 0    50   ~ 0
-AOUT1
 Text Label 4050 1850 0    50   ~ 0
+AOUT1
+Text Label 4050 1350 0    50   ~ 0
 AOUT2
 Text Label 4100 2100 0    50   ~ 0
 BOUT1
@@ -155,7 +155,7 @@ L Device:R_Small R1
 U 1 1 5D1E7C75
 P 1650 2100
 F 0 "R1" V 1450 2100 50  0000 L CNN
-F 1 "200mOhms" V 1550 1950 50  0000 L CNN
+F 1 "200mOhms" H 1550 1950 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1650 2100 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 1650 2100 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 1650 2100 50  0001 C CNN "manf#"
@@ -164,9 +164,6 @@ F 4 "667-ERJ-U6SFR20V" H 1650 2100 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	1650 1900 1650 2000
-Wire Wire Line
-	1650 1800 1650 1900
-Connection ~ 1650 1900
 $Comp
 L power:GND #PWR01
 U 1 1 5D1EBA36
@@ -179,33 +176,9 @@ F 3 "" H 1650 2300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1650 2200 1650 2300
-Wire Wire Line
-	1650 1800 2050 1800
+	1650 2200 1650 2250
 Wire Wire Line
 	1850 1700 2050 1700
-$Comp
-L Connector:Conn_01x08_Female J1
-U 1 1 5D1EFE14
-P 9550 4500
-F 0 "J1" H 9442 3875 50  0000 C CNN
-F 1 "Conn_01x08_Female" H 9442 3966 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 9550 4500 50  0001 C CNN
-F 3 "~" H 9550 4500 50  0001 C CNN
-	1    9550 4500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x08_Female J2
-U 1 1 5D1F15F8
-P 9600 5650
-F 0 "J2" H 9492 5025 50  0000 C CNN
-F 1 "Conn_01x08_Female" H 9492 5116 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 9600 5650 50  0001 C CNN
-F 3 "~" H 9600 5650 50  0001 C CNN
-	1    9600 5650
-	-1   0    0    -1  
-$EndComp
 Text Label 2050 2100 2    50   ~ 0
 GPIO4
 Text Label 2050 2200 2    50   ~ 0
@@ -228,9 +201,9 @@ Text Label 2050 2300 2    50   ~ 0
 GPIO4
 Text Label 2050 2400 2    50   ~ 0
 GPIO2
-Text Label 9750 4200 0    50   ~ 0
+Text Label 8300 5100 0    50   ~ 0
 GPIO4
-Text Label 9750 4300 0    50   ~ 0
+Text Label 8300 5000 0    50   ~ 0
 GPIO2
 $Comp
 L Device:C_Small C7
@@ -291,7 +264,7 @@ U 1 1 5D1F7E59
 P 8700 1650
 F 0 "M5" H 8858 1646 50  0000 L CNN
 F 1 "Motor_DC" H 8858 1555 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 8700 1560 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 8700 1560 50  0001 C CNN
 F 3 "~" H 8700 1560 50  0001 C CNN
 	1    8700 1650
 	1    0    0    -1  
@@ -302,14 +275,14 @@ U 1 1 5D1F7E63
 P 8700 2400
 F 0 "M6" H 8858 2396 50  0000 L CNN
 F 1 "Motor_DC" H 8858 2305 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 8700 2310 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 8700 2310 50  0001 C CNN
 F 3 "~" H 8700 2310 50  0001 C CNN
 	1    8700 2400
 	1    0    0    -1  
 $EndComp
-Text Label 8700 1450 0    50   ~ 0
-ADER1
 Text Label 8700 1950 0    50   ~ 0
+ADER1
+Text Label 8700 1450 0    50   ~ 0
 ADER2
 Text Label 8750 2200 0    50   ~ 0
 BDER1
@@ -373,7 +346,7 @@ L Device:R_Small R5
 U 1 1 5D1F7E9A
 P 6300 2200
 F 0 "R5" V 6100 2150 50  0000 L CNN
-F 1 "200mOhm" V 6200 2000 50  0000 L CNN
+F 1 "200mOhm" H 6200 2000 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6300 2200 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 6300 2200 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 6300 2200 50  0001 C CNN "manf#"
@@ -382,9 +355,6 @@ F 4 "667-ERJ-U6SFR20V" H 6300 2200 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	6300 2000 6300 2100
-Wire Wire Line
-	6300 1900 6300 2000
-Connection ~ 6300 2000
 $Comp
 L power:GND #PWR013
 U 1 1 5D1F7EA7
@@ -397,9 +367,7 @@ F 3 "" H 6300 2400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6300 2300 6300 2400
-Wire Wire Line
-	6300 1900 6700 1900
+	6300 2300 6300 2350
 Wire Wire Line
 	6500 1800 6700 1800
 Wire Wire Line
@@ -444,9 +412,9 @@ Text Label 3250 2300 0    50   ~ 0
 BOUT1
 Text Label 3250 2400 0    50   ~ 0
 BOUT2
-Text Label 9750 4400 0    50   ~ 0
+Text Label 8300 5300 0    50   ~ 0
 GPIO14
-Text Label 9750 4500 0    50   ~ 0
+Text Label 8300 5200 0    50   ~ 0
 GPIO15
 $Comp
 L Device:C_Small C4
@@ -507,7 +475,7 @@ U 1 1 5D2161AE
 P 5800 4950
 F 0 "M3" H 5958 4946 50  0000 L CNN
 F 1 "Motor_DC" H 5958 4855 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 5800 4860 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 5800 4860 50  0001 C CNN
 F 3 "~" H 5800 4860 50  0001 C CNN
 	1    5800 4950
 	1    0    0    -1  
@@ -518,14 +486,14 @@ U 1 1 5D2161B8
 P 5800 5700
 F 0 "M4" H 5958 5696 50  0000 L CNN
 F 1 "Motor_DC" H 5958 5605 50  0000 L CNN
-F 2 "TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm" H 5800 5610 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 5800 5610 50  0001 C CNN
 F 3 "~" H 5800 5610 50  0001 C CNN
 	1    5800 5700
 	1    0    0    -1  
 $EndComp
-Text Label 5800 4750 0    50   ~ 0
-AFDER1
 Text Label 5800 5250 0    50   ~ 0
+AFDER1
+Text Label 5800 4750 0    50   ~ 0
 AFDER2
 Text Label 5850 5500 0    50   ~ 0
 BFDER1
@@ -598,9 +566,6 @@ F 4 "667-ERJ-U6SFR20V" H 3400 5500 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	3400 5300 3400 5400
-Wire Wire Line
-	3400 5200 3400 5300
-Connection ~ 3400 5300
 $Comp
 L power:GND #PWR06
 U 1 1 5D2161FC
@@ -613,9 +578,7 @@ F 3 "" H 3400 5700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3400 5600 3400 5700
-Wire Wire Line
-	3400 5200 3800 5200
+	3400 5600 3400 5650
 Wire Wire Line
 	3600 5100 3800 5100
 Wire Wire Line
@@ -635,13 +598,13 @@ $EndComp
 Text Notes 3850 6750 0    50   ~ 0
 MOTORES LLANTAS FRONTALES\n\n
 Text Label 3800 5500 2    50   ~ 0
-GPIO12
+GPIO4
 Text Label 3800 5600 2    50   ~ 0
-GPIO13
+GPIO2
 Text Label 3800 5800 2    50   ~ 0
-GPIO3
+GPIO15
 Text Label 3800 5700 2    50   ~ 0
-GPIO1
+GPIO14
 Text Label 5000 5500 0    50   ~ 0
 AFDER1
 Text Label 5000 5600 0    50   ~ 0
@@ -650,30 +613,8 @@ Text Label 5000 5700 0    50   ~ 0
 BFDER1
 Text Label 5000 5800 0    50   ~ 0
 BFDER2
-Text Label 9750 4700 0    50   ~ 0
-GPIO12
-Text Label 9750 4600 0    50   ~ 0
-GPIO13
-Text Label 9800 5450 0    50   ~ 0
-GPIO1
-Text Label 9800 5550 0    50   ~ 0
-GPIO3
-Text Label 9800 5350 0    50   ~ 0
+Text Label 8300 5400 0    50   ~ 0
 GND
-Text Label 9800 5750 0    50   ~ 0
-GND
-Text Label 9800 5650 0    50   ~ 0
-3.3V\5V
-Text Label 9800 6050 0    50   ~ 0
-3.3V
-Text Label 9800 5850 0    50   ~ 0
-GPIO0
-Text Label 9800 5950 0    50   ~ 0
-GPIO16
-Text Label 9750 4800 0    50   ~ 0
-GND
-Text Label 9750 4900 0    50   ~ 0
-5V
 $Comp
 L Device:R_Small R3
 U 1 1 5D23B9EF
@@ -688,17 +629,6 @@ F 4 "660-RN73H2ATD1001B25" H 3550 1800 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	3250 1900 3550 1900
-$Comp
-L power:+5V #PWR07
-U 1 1 5D23DC80
-P 3550 1150
-F 0 "#PWR07" H 3550 1000 50  0001 C CNN
-F 1 "+5V" H 3565 1323 50  0000 C CNN
-F 2 "" H 3550 1150 50  0001 C CNN
-F 3 "" H 3550 1150 50  0001 C CNN
-	1    3550 1150
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3550 1150 3550 1700
 $Comp
@@ -726,17 +656,6 @@ F 4 "660-RN73H2ATD1001B25" H 8200 1900 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	7900 2000 8200 2000
-$Comp
-L power:+5V #PWR018
-U 1 1 5D24339A
-P 8200 1250
-F 0 "#PWR018" H 8200 1100 50  0001 C CNN
-F 1 "+5V" H 8215 1423 50  0000 C CNN
-F 2 "" H 8200 1250 50  0001 C CNN
-F 3 "" H 8200 1250 50  0001 C CNN
-	1    8200 1250
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8200 1250 8200 1800
 $Comp
@@ -753,17 +672,6 @@ F 4 "660-RN73H2ATD1001B25" H 5300 5200 50  0001 C CNN "manf#"
 $EndComp
 Wire Wire Line
 	5000 5300 5300 5300
-$Comp
-L power:+5V #PWR012
-U 1 1 5D24708C
-P 5300 4550
-F 0 "#PWR012" H 5300 4400 50  0001 C CNN
-F 1 "+5V" H 5315 4723 50  0000 C CNN
-F 2 "" H 5300 4550 50  0001 C CNN
-F 3 "" H 5300 4550 50  0001 C CNN
-	1    5300 4550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5300 4550 5300 5100
 $Comp
@@ -837,4 +745,153 @@ Wire Notes Line
 	7300 3850 7300 6550
 Text Notes 7650 6400 0    50   ~ 0
 PINES\n
+Wire Notes Line
+	2700 7800 2700 3850
+Text Notes 1150 7650 0    50   ~ 0
+ENTRADA DE VOLTAJE
+$Comp
+L Connector:Screw_Terminal_01x02 J3
+U 1 1 5D201608
+P 1050 5750
+F 0 "J3" H 1130 5742 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 1130 5651 50  0000 L CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 1050 5750 50  0001 C CNN
+F 3 "~" H 1050 5750 50  0001 C CNN
+	1    1050 5750
+	1    0    0    -1  
+$EndComp
+Text Label 850  5850 2    50   ~ 0
+GND
+$Comp
+L power:+12V #PWR08
+U 1 1 5D237185
+P 850 5750
+F 0 "#PWR08" H 850 5600 50  0001 C CNN
+F 1 "+12V" V 865 5878 50  0000 L CNN
+F 2 "" H 850 5750 50  0001 C CNN
+F 3 "" H 850 5750 50  0001 C CNN
+	1    850  5750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:Conn_01x06_Female J1
+U 1 1 5D271109
+P 8100 5200
+F 0 "J1" H 8128 5176 50  0000 L CNN
+F 1 "Conn_01x06_Female" H 8128 5085 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 8100 5200 50  0001 C CNN
+F 3 "~" H 8100 5200 50  0001 C CNN
+	1    8100 5200
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VCC #PWR0106
+U 1 1 5D27DD7D
+P 8300 4900
+F 0 "#PWR0106" H 8300 4750 50  0001 C CNN
+F 1 "VCC" V 8300 5050 50  0000 L CNN
+F 2 "" H 8300 4900 50  0001 C CNN
+F 3 "" H 8300 4900 50  0001 C CNN
+	1    8300 4900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR0107
+U 1 1 5D27E53E
+P 8200 1250
+F 0 "#PWR0107" H 8200 1100 50  0001 C CNN
+F 1 "VCC" H 8217 1423 50  0000 C CNN
+F 2 "" H 8200 1250 50  0001 C CNN
+F 3 "" H 8200 1250 50  0001 C CNN
+	1    8200 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0108
+U 1 1 5D27EC09
+P 3550 1150
+F 0 "#PWR0108" H 3550 1000 50  0001 C CNN
+F 1 "VCC" H 3567 1323 50  0000 C CNN
+F 2 "" H 3550 1150 50  0001 C CNN
+F 3 "" H 3550 1150 50  0001 C CNN
+	1    3550 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0109
+U 1 1 5D27F5A5
+P 5300 4550
+F 0 "#PWR0109" H 5300 4400 50  0001 C CNN
+F 1 "VCC" H 5317 4723 50  0000 C CNN
+F 2 "" H 5300 4550 50  0001 C CNN
+F 3 "" H 5300 4550 50  0001 C CNN
+	1    5300 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R7
+U 1 1 5D250BC0
+P 1400 2100
+F 0 "R7" H 1459 2146 50  0000 L CNN
+F 1 "200mOhms" H 1459 2055 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1400 2100 50  0001 C CNN
+F 3 "~" H 1400 2100 50  0001 C CNN
+	1    1400 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R9
+U 1 1 5D251635
+P 6150 2200
+F 0 "R9" H 6209 2246 50  0000 L CNN
+F 1 "200mOhms" H 6209 2155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6150 2200 50  0001 C CNN
+F 3 "~" H 6150 2200 50  0001 C CNN
+	1    6150 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 1800 1400 1800
+Wire Wire Line
+	1400 1800 1400 2000
+Wire Wire Line
+	1400 2200 1400 2250
+Wire Wire Line
+	1400 2250 1650 2250
+Connection ~ 1650 2250
+Wire Wire Line
+	1650 2250 1650 2300
+$Comp
+L Device:R_Small R8
+U 1 1 5D258DA4
+P 3200 5500
+F 0 "R8" H 3259 5546 50  0000 L CNN
+F 1 "200mOhm" H 3259 5455 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3200 5500 50  0001 C CNN
+F 3 "~" H 3200 5500 50  0001 C CNN
+	1    3200 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 1900 6150 2100
+Wire Wire Line
+	6150 1900 6700 1900
+Wire Wire Line
+	6150 2300 6150 2350
+Wire Wire Line
+	6150 2350 6300 2350
+Connection ~ 6300 2350
+Wire Wire Line
+	6300 2350 6300 2400
+Wire Wire Line
+	3400 5650 3200 5650
+Wire Wire Line
+	3200 5650 3200 5600
+Connection ~ 3400 5650
+Wire Wire Line
+	3400 5650 3400 5700
+Wire Wire Line
+	3200 5400 3200 5200
+Wire Wire Line
+	3200 5200 3800 5200
 $EndSCHEMATC
