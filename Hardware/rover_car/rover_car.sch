@@ -40,9 +40,9 @@ U 1 1 5D1D283F
 P 2150 1200
 F 0 "C2" H 2241 1246 50  0000 L CNN
 F 1 "10uF" H 2241 1155 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2150 1200 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/348/tct_p-951873.pdf" H 2150 1200 50  0001 C CNN
-F 4 "755-TCTP1C106M8R" H 2150 1200 50  0001 C CNN "manf#"
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 2150 1200 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/865090440003.pdf" H 2150 1200 50  0001 C CNN
+F 4 "865090440003	" H 2150 1200 50  0001 C CNN "manf#"
 	1    2150 1200
 	1    0    0    -1  
 $EndComp
@@ -231,9 +231,9 @@ U 1 1 5D1F7E35
 P 6800 1300
 F 0 "C8" H 6891 1346 50  0000 L CNN
 F 1 "10uF" H 6891 1255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6800 1300 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/348/tct_p-951873.pdf" H 6800 1300 50  0001 C CNN
-F 4 "755-TCTP1C106M8R" H 6800 1300 50  0001 C CNN "manf#"
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 6800 1300 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/865090440003.pdf" H 6800 1300 50  0001 C CNN
+F 4 "865090440003	" H 6800 1300 50  0001 C CNN "manf#"
 	1    6800 1300
 	1    0    0    -1  
 $EndComp
@@ -442,9 +442,9 @@ U 1 1 5D21618A
 P 3900 4600
 F 0 "C5" H 3991 4646 50  0000 L CNN
 F 1 "10uF" H 3991 4555 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3900 4600 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/348/tct_p-951873.pdf" H 3900 4600 50  0001 C CNN
-F 4 "755-TCTP1C106M8R" H 3900 4600 50  0001 C CNN "manf#"
+F 2 "Capacitor_SMD:C_Elec_4x5.4" H 3900 4600 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/865090440003.pdf" H 3900 4600 50  0001 C CNN
+F 4 "865090440003	" H 3900 4600 50  0001 C CNN "manf#"
 	1    3900 4600
 	1    0    0    -1  
 $EndComp
