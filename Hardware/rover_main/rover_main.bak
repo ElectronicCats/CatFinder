@@ -149,11 +149,11 @@ F 3 "~" H 10020 3680 50  0001 C CNN
 	1    10020 3680
 	1    0    0    -1  
 $EndComp
-Text Label 8040 3800 2    50   ~ 0
-GPIO4
-Text Label 8040 3600 2    50   ~ 0
-GPIO14
 Text Label 8040 3700 2    50   ~ 0
+GPIO4
+Text Label 8040 3900 2    50   ~ 0
+GPIO14
+Text Label 8040 3800 2    50   ~ 0
 GPIO15
 Text Label 9820 3880 2    50   ~ 0
 CTS
@@ -506,13 +506,13 @@ $EndComp
 $Comp
 L Connector:Conn_01x06_Female J4
 U 1 1 5D28DF12
-P 8240 3700
-F 0 "J4" H 8268 3676 50  0000 L CNN
-F 1 "DRIVERS" H 8268 3585 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 8240 3700 50  0001 C CNN
-F 3 "~" H 8240 3700 50  0001 C CNN
-	1    8240 3700
-	1    0    0    -1  
+P 8240 3800
+F 0 "J4" H 8268 3776 50  0000 L CNN
+F 1 "DRIVERS" H 8268 3685 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 8240 3800 50  0001 C CNN
+F 3 "~" H 8240 3800 50  0001 C CNN
+	1    8240 3800
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	8040 3500 7960 3500
@@ -522,7 +522,7 @@ Text Label 8920 2010 0    50   ~ 0
 SDA
 Text Label 8020 2510 2    50   ~ 0
 SCL
-Text Label 8040 3900 2    50   ~ 0
+Text Label 8040 3600 2    50   ~ 0
 GPIO12
 $Comp
 L Connector_Generic:Conn_01x02 J8
@@ -530,7 +530,7 @@ U 1 1 5D31473C
 P 10100 2100
 F 0 "J8" H 10180 2092 50  0000 L CNN
 F 1 "PROG" H 10180 2001 50  0000 L CNN
-F 2 "" H 10100 2100 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 10100 2100 50  0001 C CNN
 F 3 "~" H 10100 2100 50  0001 C CNN
 	1    10100 2100
 	1    0    0    -1  

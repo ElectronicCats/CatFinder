@@ -42,7 +42,7 @@ U 1 1 5D1FB64C
 P 2800 1150
 F 0 "D1" V 2846 1071 50  0000 R CNN
 F 1 "D_Schottky" V 2755 1071 50  0000 R CNN
-F 2 "Diode_THT:D_DO-15_P12.70mm_Horizontal" H 2800 1150 50  0001 C CNN
+F 2 "Diode_THT:D_A-405_P10.16mm_Horizontal" H 2800 1150 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/427/sb220-104141.pdf" H 2800 1150 50  0001 C CNN
 F 4 "SB260-E3/54" V 2800 1150 50  0001 C CNN "manf#"
 	1    2800 1150
@@ -149,11 +149,9 @@ F 3 "~" H 10020 3680 50  0001 C CNN
 	1    10020 3680
 	1    0    0    -1  
 $EndComp
-Text Label 8040 3800 2    50   ~ 0
-GPIO4
-Text Label 8040 3600 2    50   ~ 0
+Text Label 8040 3900 2    50   ~ 0
 GPIO14
-Text Label 8040 3700 2    50   ~ 0
+Text Label 8040 3800 2    50   ~ 0
 GPIO15
 Text Label 9820 3880 2    50   ~ 0
 CTS
@@ -506,13 +504,13 @@ $EndComp
 $Comp
 L Connector:Conn_01x06_Female J4
 U 1 1 5D28DF12
-P 8240 3700
-F 0 "J4" H 8268 3676 50  0000 L CNN
-F 1 "DRIVERS" H 8268 3585 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 8240 3700 50  0001 C CNN
-F 3 "~" H 8240 3700 50  0001 C CNN
-	1    8240 3700
-	1    0    0    -1  
+P 8240 3800
+F 0 "J4" H 8268 3776 50  0000 L CNN
+F 1 "DRIVERS" H 8268 3685 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 8240 3800 50  0001 C CNN
+F 3 "~" H 8240 3800 50  0001 C CNN
+	1    8240 3800
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	8040 3500 7960 3500
@@ -522,7 +520,7 @@ Text Label 8920 2010 0    50   ~ 0
 SDA
 Text Label 8020 2510 2    50   ~ 0
 SCL
-Text Label 8040 3900 2    50   ~ 0
+Text Label 8040 3600 2    50   ~ 0
 GPIO12
 $Comp
 L Connector_Generic:Conn_01x02 J8
@@ -599,4 +597,6 @@ Wire Wire Line
 	8020 2310 7500 2310
 Wire Wire Line
 	7500 2310 7500 2590
+Text Label 8040 3700 2    50   ~ 0
+GPIO13
 $EndSCHEMATC
