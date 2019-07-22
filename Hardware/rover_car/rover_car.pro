@@ -1,4 +1,4 @@
-update=22/07/2019 13:22:02
+update=22/07/2019 18:20:07
 version=1
 last_client=pcbnew
 [general]
@@ -25,7 +25,7 @@ ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=../../../../../../Desktop/rover_car.net
+LastNetListRead=rover_car.net
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0

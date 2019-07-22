@@ -182,17 +182,17 @@ Wire Wire Line
 Text Label 2050 2100 2    50   ~ 0
 GPIO4
 Text Label 2050 2200 2    50   ~ 0
-GPIO2
+GPIO12
 Wire Wire Line
 	1650 1900 2050 1900
 Text Label 2050 2300 2    50   ~ 0
 GPIO4
 Text Label 2050 2400 2    50   ~ 0
-GPIO2
+GPIO12
 Text Label 8300 5100 0    50   ~ 0
 GPIO4
 Text Label 8300 5000 0    50   ~ 0
-GPIO2
+GPIO12
 $Comp
 L Device:C_Small C7
 U 1 1 5D1F7E27
@@ -550,7 +550,7 @@ MOTORES LLANTAS FRONTALES\n\n
 Text Label 3800 5500 2    50   ~ 0
 GPIO4
 Text Label 3800 5600 2    50   ~ 0
-GPIO2
+GPIO12
 Text Label 3800 5800 2    50   ~ 0
 GPIO15
 Text Label 3800 5700 2    50   ~ 0
