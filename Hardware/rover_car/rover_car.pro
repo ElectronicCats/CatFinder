@@ -1,6 +1,6 @@
-update=23/07/2019 06:50:12 p. m.
+update=24/07/2019 13:17:22
 version=1
-last_client=kicad
+last_client=pcbnew
 [general]
 version=1
 RootSch=
@@ -249,7 +249,7 @@ dPairViaGap=0.25
 [pcbnew/Netclasses/1]
 Name=VCC+
 Clearance=0.5
-TrackWidth=0.7
+TrackWidth=1.2
 ViaDiameter=0.8
 ViaDrill=0.4
 uViaDiameter=0.3
