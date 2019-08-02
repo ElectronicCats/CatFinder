@@ -4,7 +4,15 @@
 
 const int ledPin = 12; // Pin controlado por PWM 
 const int ledPin1 = 13; // Pin controlado por PWM 
+const int ledPin2 = 14; // Pin controlado por PWM 
+const int ledPin3 = 15; // Pin controlado por PWM 
 
+extern int go_front;
+extern int go_back;
+extern int flash;
+extern int go_rigth;
+extern int go_left;
+extern int datain;
 //
 // WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
 //            or another board which has PSRAM enabled
@@ -22,8 +30,10 @@ void startCameraServer();
 void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
-  pinMode(ledPin, OUTPUT);
   pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+  pinMode(ledPin, OUTPUT);
 
    /*WiFi Access point*/
   WiFi.mode(WIFI_AP);
@@ -78,13 +88,22 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (activation!=0)
+    if (go_front!=0)
   {
-    //digitalWrite(ledPin, HIGH);
+  digitalWrite(ledPin, HIGH);
   }
   else
-  {
-    //digitalWrite(ledPin, LOW);
+    {
+  digitalWrite(ledPin, LOW);
   }
+      if (go_back!=0)
+  {
+  digitalWrite(ledPin1, HIGH);
+  }
+  else
+    {
+  digitalWrite(ledPin1, LOW);
+  }
+  
   delay(1000);
 }
