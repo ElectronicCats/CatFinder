@@ -37,7 +37,7 @@
 
 int go_front=0;
 int go_back=0;
-int go_rigth=0;
+int go_right=0;
 int go_left=0;
 int datain=0;
 
@@ -356,10 +356,10 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     size_t buf_len;
     char variable[32] = {0,};
     char value[32] = {0,};
+    datain=1;
 
     buf_len = httpd_req_get_url_query_len(req) + 1;
     if (buf_len > 1) {
-      datain=1;
         buf = (char*)malloc(buf_len);
         if(!buf){
             httpd_resp_send_500(req);
@@ -383,15 +383,13 @@ static esp_err_t cmd_handler(httpd_req_t *req){
         httpd_resp_send_404(req);
         return ESP_FAIL;
     }
-    datain=0;
     int val = atoi(value);
-   /*sensor_t * s = esp_camera_sensor_get();*/
-   int res = 0;
+    int res = 0;
 
-    if(!strcmp(variable, "btnFront"))
-    {go_front=val;}
-    else if(!strcmp(variable, "btnBack"))
-    {go_back=val;}
+    if(!strcmp(variable, "btnFront")){go_front=val;}
+    else if(!strcmp(variable, "btnLeft")){go_left=val;}
+    else if(!strcmp(variable, "btnRight")){go_right=val;}
+    else if(!strcmp(variable, "btnBack")){go_back=val;}
     else {
         res = -1;
     }
@@ -570,7 +568,6 @@ void startCameraServer(){
         httpd_register_uri_handler(camera_httpd, &test_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
     }
-
     config.server_port += 1;
     config.ctrl_port += 1;
     Serial.printf("Starting stream server on port: '%d'\n", config.server_port);

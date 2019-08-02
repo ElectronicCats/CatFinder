@@ -9,8 +9,7 @@ const int ledPin3 = 15; // Pin controlado por PWM
 
 extern int go_front;
 extern int go_back;
-extern int flash;
-extern int go_rigth;
+extern int go_right;
 extern int go_left;
 extern int datain;
 //
@@ -88,22 +87,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-    if (go_front!=0)
-  {
-  digitalWrite(ledPin, HIGH);
-  }
-  else
-    {
-  digitalWrite(ledPin, LOW);
-  }
-      if (go_back!=0)
-  {
-  digitalWrite(ledPin1, HIGH);
-  }
-  else
-    {
-  digitalWrite(ledPin1, LOW);
-  }
-  
+  if(datain){activationoutput();}
+  datain=0;
   delay(1000);
 }
+
+void activationoutput()
+{
+  if (go_front){digitalWrite(ledPin, HIGH);}
+     else{digitalWrite(ledPin, LOW);}
+  if (go_back!=0){digitalWrite(ledPin1, HIGH);}
+  else{digitalWrite(ledPin1, LOW);}
+     if (go_left){digitalWrite(ledPin2, HIGH); }
+     else{digitalWrite(ledPin2, LOW);}
+  if (go_right){digitalWrite(ledPin3, HIGH);}
+  else{digitalWrite(ledPin3, LOW);}
+  }
