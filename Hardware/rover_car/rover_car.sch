@@ -5,12 +5,12 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "DRIVER DE ROVER"
-Date "2019-07-09"
+Title "Rover Motor Driver"
+Date "2019-08-02"
 Rev "0.1"
-Comp "ELECTRONIC CATS"
+Comp "Electronic Cats"
 Comment1 "EDGAR EMMANUEL CAPUCHINO ESCOBEDO"
-Comment2 ""
+Comment2 "Eduardo Contreras"
 Comment3 ""
 Comment4 ""
 $EndDescr
@@ -157,7 +157,7 @@ P 1650 2100
 F 0 "R1" H 1540 2215 50  0000 L CNN
 F 1 "200mOhms" V 1750 1850 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1650 2100 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 1650 2100 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 1650 2100 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 1650 2100 50  0001 C CNN "manf#"
 	1    1650 2100
 	1    0    0    -1  
@@ -336,7 +336,7 @@ P 6300 2200
 F 0 "R5" H 6315 2305 50  0000 L CNN
 F 1 "200mOhm" V 6380 1895 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6300 2200 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 6300 2200 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 6300 2200 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 6300 2200 50  0001 C CNN "manf#"
 	1    6300 2200
 	1    0    0    -1  
@@ -509,7 +509,7 @@ P 3400 5500
 F 0 "R3" H 3415 5600 50  0000 L CNN
 F 1 "200mOhm" V 3480 5190 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3400 5500 50  0001 C CNN
-F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 3400 5500 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 3400 5500 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 3400 5500 50  0001 C CNN "manf#"
 	1    3400 5500
 	1    0    0    -1  
@@ -665,7 +665,8 @@ P 1400 2100
 F 0 "R2" H 1295 2215 50  0000 L CNN
 F 1 "200mOhms" V 1250 1900 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1400 2100 50  0001 C CNN
-F 3 "~" H 1400 2100 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 1400 2100 50  0001 C CNN
+F 4 "667-ERJ-U6SFR20V" H 0   0   50  0001 C CNN "manf#"
 	1    1400 2100
 	1    0    0    -1  
 $EndComp
@@ -676,7 +677,8 @@ P 6150 2200
 F 0 "R6" H 6160 2305 50  0000 L CNN
 F 1 "200mOhms" V 6075 1865 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6150 2200 50  0001 C CNN
-F 3 "~" H 6150 2200 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 6150 2200 50  0001 C CNN
+F 4 "667-ERJ-U6SFR20V" H 0   0   50  0001 C CNN "manf#"
 	1    6150 2200
 	1    0    0    -1  
 $EndComp
@@ -698,7 +700,8 @@ P 3200 5500
 F 0 "R4" H 3210 5610 50  0000 L CNN
 F 1 "200mOhm" V 3110 5185 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3200 5500 50  0001 C CNN
-F 3 "~" H 3200 5500 50  0001 C CNN
+F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 3200 5500 50  0001 C CNN
+F 4 "667-ERJ-U6SFR20V" H 0   0   50  0001 C CNN "manf#"
 	1    3200 5500
 	1    0    0    -1  
 $EndComp
