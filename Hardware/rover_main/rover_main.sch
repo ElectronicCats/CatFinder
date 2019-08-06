@@ -590,17 +590,6 @@ F 3 "" H 7390 1750 50  0001 C CNN
 $EndComp
 Text Label 7490 1550 2    50   ~ 0
 GPIO0
-$Comp
-L Connector:Conn_01x03_Female J6
-U 1 1 5D496659
-P 7690 1550
-F 0 "J6" H 7718 1576 50  0000 L CNN
-F 1 "PROG" H 7718 1485 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
-F 3 "~" H 7690 1550 50  0001 C CNN
-	1    7690 1550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7390 1750 7390 1650
 Wire Wire Line
@@ -757,7 +746,7 @@ U 1 1 5D4C2B76
 P 10100 4400
 F 0 "JP5" H 10100 4664 50  0000 C CNN
 F 1 "SDA" H 10100 4573 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 4400 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4400 50  0001 C CNN
 F 3 "~" H 10100 4400 50  0001 C CNN
 	1    10100 4400
 	1    0    0    -1  
@@ -768,7 +757,7 @@ U 1 1 5D4C33A6
 P 10100 4800
 F 0 "JP6" H 10100 5064 50  0000 C CNN
 F 1 "SCL" H 10100 4973 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 4800 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4800 50  0001 C CNN
 F 3 "~" H 10100 4800 50  0001 C CNN
 	1    10100 4800
 	1    0    0    -1  
@@ -791,7 +780,7 @@ U 1 1 5D4C8EC9
 P 10100 6390
 F 0 "JP10" H 10100 6654 50  0000 C CNN
 F 1 "Engine 2B" H 10100 6563 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 6390 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6390 50  0001 C CNN
 F 3 "~" H 10100 6390 50  0001 C CNN
 	1    10100 6390
 	1    0    0    -1  
@@ -802,7 +791,7 @@ U 1 1 5D4C93D4
 P 10100 6000
 F 0 "JP9" H 10100 6264 50  0000 C CNN
 F 1 "Engine 2A" H 10100 6173 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 6000 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6000 50  0001 C CNN
 F 3 "~" H 10100 6000 50  0001 C CNN
 	1    10100 6000
 	1    0    0    -1  
@@ -813,14 +802,14 @@ U 1 1 5D4C97D6
 P 10100 5600
 F 0 "JP8" H 10100 5864 50  0000 C CNN
 F 1 "Engine 1B" H 10100 5773 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 5600 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 5600 50  0001 C CNN
 F 3 "~" H 10100 5600 50  0001 C CNN
 	1    10100 5600
 	1    0    0    -1  
 $EndComp
-Text Label 9800 5200 2    50   ~ 0
+Text Label 9800 6000 2    50   ~ 0
 A3
-Text Label 10400 5200 0    50   ~ 0
+Text Label 10400 5600 0    50   ~ 0
 GPIO12
 $Comp
 L Device:Jumper JP7
@@ -828,12 +817,12 @@ U 1 1 5D4C892D
 P 10100 5200
 F 0 "JP7" H 10100 5464 50  0000 C CNN
 F 1 "Engine 1A" H 10100 5373 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10100 5200 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 5200 50  0001 C CNN
 F 3 "~" H 10100 5200 50  0001 C CNN
 	1    10100 5200
 	1    0    0    -1  
 $EndComp
-Text Label 10400 5600 0    50   ~ 0
+Text Label 10400 5200 0    50   ~ 0
 GPIO13
 Text Label 10400 6000 0    50   ~ 0
 GPIO15
@@ -858,8 +847,6 @@ Wire Wire Line
 	9330 4280 9330 4790
 Wire Wire Line
 	8980 4790 9330 4790
-Text Label 7490 1450 2    50   ~ 0
-GPIO0
 $Comp
 L Device:Jumper JP2
 U 1 1 5D4E3A32
@@ -973,10 +960,21 @@ Wire Wire Line
 	4940 6100 4940 5920
 Text Label 5290 6000 2    50   ~ 0
 VCC-IN
-Text Label 9800 6390 2    50   ~ 0
-11
 Text Label 9800 5600 2    50   ~ 0
-A2
-Text Label 9800 6000 2    50   ~ 0
+11
+Text Label 9800 5200 2    50   ~ 0
 A1
+Text Label 9800 6390 2    50   ~ 0
+9
+$Comp
+L Connector:Conn_01x02_Female J6
+U 1 1 5D5E84D2
+P 7690 1550
+F 0 "J6" H 7718 1526 50  0000 L CNN
+F 1 "PROG" H 7718 1435 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
+F 3 "~" H 7690 1550 50  0001 C CNN
+	1    7690 1550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
