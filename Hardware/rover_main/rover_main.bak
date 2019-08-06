@@ -977,4 +977,6 @@ Text Label 7900 5480 2    50   ~ 0
 8
 Text Label 8980 5190 0    50   ~ 0
 A0
+NoConn ~ 2010 6610
+NoConn ~ 2010 6710
 $EndSCHEMATC

@@ -382,7 +382,7 @@ Wire Wire Line
 Wire Wire Line
 	3280 6160 3570 6160
 $Comp
-L electroniccats:MCP732831CHARGER U2
+L rover_main-rescue:MCP732831CHARGER-electroniccats U2
 U 1 1 5D24ED12
 P 4180 3790
 F 0 "U2" H 4180 4205 50  0000 C CNN
@@ -534,7 +534,7 @@ F 4 "860010372001" H 4400 1600 50  0001 C CNN "manf#"
 	1    0    0    -1  
 $EndComp
 $Comp
-L electroniccats:ESP32-CAM U3
+L rover_main-rescue:ESP32-CAM-electroniccats U3
 U 1 1 5D363E9F
 P 9080 1350
 F 0 "U3" H 9080 1865 50  0000 C CNN
