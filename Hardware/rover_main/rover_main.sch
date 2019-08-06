@@ -978,10 +978,10 @@ A0
 NoConn ~ 2010 6610
 NoConn ~ 2010 6710
 $Comp
-L Device:D_Schottky D?
+L Device:D_Schottky D3
 U 1 1 5D4CB997
 P 9330 4510
-F 0 "D?" V 9376 4431 50  0000 R CNN
+F 0 "D3" V 9376 4431 50  0000 R CNN
 F 1 "D_Schottky" V 9285 4431 50  0000 R CNN
 F 2 "Diode_THT:D_A-405_P10.16mm_Horizontal" H 9330 4510 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/427/sb220-104141.pdf" H 9330 4510 50  0001 C CNN
