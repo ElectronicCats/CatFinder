@@ -83,17 +83,6 @@ F 4 "CFR-25JT-52-330R" H 5200 1710 50  0001 C CNN "manf#"
 	1    5200 1710
 	-1   0    0    1   
 $EndComp
-$Comp
-L Connector:Conn_01x04_Female J2
-U 1 1 5D2155B1
-P 2210 6310
-F 0 "J2" H 2238 6286 50  0000 L CNN
-F 1 "BME280" H 2238 6195 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 2210 6310 50  0001 C CNN
-F 3 "~" H 2210 6310 50  0001 C CNN
-	1    2210 6310
-	1    0    0    -1  
-$EndComp
 Text Label 2010 6410 2    50   ~ 0
 SCL
 Text Label 2010 6510 2    50   ~ 0
@@ -657,12 +646,12 @@ RST
 $Comp
 L power:GND #PWR024
 U 1 1 5D4B3B5B
-P 7720 5730
-F 0 "#PWR024" H 7720 5480 50  0001 C CNN
-F 1 "GND" H 7720 5590 50  0000 C CNN
-F 2 "" H 7720 5730 50  0001 C CNN
-F 3 "" H 7720 5730 50  0001 C CNN
-	1    7720 5730
+P 7400 5600
+F 0 "#PWR024" H 7400 5350 50  0001 C CNN
+F 1 "GND" H 7400 5460 50  0000 C CNN
+F 2 "" H 7400 5600 50  0001 C CNN
+F 3 "" H 7400 5600 50  0001 C CNN
+	1    7400 5600
 	1    0    0    -1  
 $EndComp
 Text Label 7900 4880 2    50   ~ 0
@@ -677,14 +666,8 @@ Text Label 7900 5280 2    50   ~ 0
 6
 Text Label 7900 5380 2    50   ~ 0
 7
-Text Label 7900 5480 2    50   ~ 0
-8
 Text Label 7900 5580 2    50   ~ 0
 9
-Wire Wire Line
-	7900 4780 7720 4780
-Wire Wire Line
-	7720 4780 7720 5730
 Text Label 8980 5590 0    50   ~ 0
 10
 Text Label 8980 5490 0    50   ~ 0
@@ -693,8 +676,6 @@ Text Label 8980 5390 0    50   ~ 0
 12
 Text Label 8980 5290 0    50   ~ 0
 13
-Text Label 8980 5190 0    50   ~ 0
-A0
 Text Label 8980 5090 0    50   ~ 0
 A1
 Text Label 8980 4990 0    50   ~ 0
@@ -977,4 +958,25 @@ F 3 "~" H 7690 1550 50  0001 C CNN
 	1    7690 1550
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:Conn_01x06_Female J2
+U 1 1 5D49D204
+P 2210 6410
+F 0 "J2" H 2238 6386 50  0000 L CNN
+F 1 "BME280" H 2238 6295 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 2210 6410 50  0001 C CNN
+F 3 "~" H 2210 6410 50  0001 C CNN
+	1    2210 6410
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 4780 7400 5600
+Wire Wire Line
+	7400 4780 7900 4780
+Text Label 7900 5480 2    50   ~ 0
+8
+Text Label 8980 5190 0    50   ~ 0
+A0
+NoConn ~ 2010 6610
+NoConn ~ 2010 6710
 $EndSCHEMATC
