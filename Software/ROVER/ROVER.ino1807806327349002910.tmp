@@ -24,8 +24,6 @@ int Humidity=0;
 
 #include "camera_pins.h"
 
-TaskHandle_t Task1;
-
 BME280 mySensorB; //Uses I2C address 0x76 (jumper closed)
 
 const byte DNS_PORT = 53;
@@ -36,16 +34,15 @@ void startCameraServer();
 
 void setup() {
   Serial.begin(115200);
-        xTaskCreatePinnedToCore(
-                    Task1code,   /* Task function. */
-                    "Task1",     /* name of task. */
-                    10000,       /* Stack size of task */
-                    NULL,        /* parameter of the task */
-                    1,           /* priority of the task */
-                    &Task1,      /* Task handle to keep track of created task */
-                    0);          /* pin task to core 0 */                  
-            delay(500); 
+
+  Serial.print("setup() running on core ");
+  Serial.println(xPortGetCoreID());
   
+  //I2C config 
+  Wire.begin(0,16);
+  mySensorB.setI2CAddress(0x76); //Connect to a second sensor
+  if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
+
   //Controlers
   Serial.setDebugOutput(true);
   pinMode(ledPin1, OUTPUT);
@@ -106,25 +103,6 @@ void setup() {
   s->set_framesize(s, FRAMESIZE_QVGA);
 }
 
-//Task1code: blinks an LED every 1000 ms
-void Task1code( void * pvParameters ){
-  Serial.print("Task1 running on core ");
-  Serial.println(xPortGetCoreID());
-
-   //I2C config 
-  Wire.begin(0,16);
-  mySensorB.setI2CAddress(0x76); //Connect to a second sensor
-  if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
-
-
-  for(;;){
-  Humidity= mySensorB.readFloatHumidity(), 0;
-  Serial.print(Humidity);
-  delay(5000);
-  } 
-}
-
-
 void loop() {
   // put your main code here, to run repeatedly:
   if(datain){activationoutput();}
@@ -142,4 +120,6 @@ void activationoutput()
      else{digitalWrite(ledPin2, LOW);}
   if (go_right){digitalWrite(ledPin3, HIGH);}
   else{digitalWrite(ledPin3, LOW);}
+  //Humidity= mySensorB.readFloatHumidity(), 0;
+ // Serial.print(Humidity);
  }

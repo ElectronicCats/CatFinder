@@ -40,7 +40,7 @@ int go_back=0;
 int go_right=0;
 int go_left=0;
 int datain=0;
-extern float Humidity;
+//extern int Humidity;
 
 typedef struct {
         size_t size; //number of values used for filtering
@@ -264,13 +264,15 @@ static esp_err_t stream_handler(httpd_req_t *req){
         last_frame = fr_end;
         frame_time /= 1000;
         uint32_t avg_frame_time = ra_filter_run(&ra_filter, frame_time);
-        Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
+        Serial.print("STREAM running on core ");
+       Serial.println(xPortGetCoreID());
+      /*  Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
             (uint32_t)(_jpg_buf_len),
             (uint32_t)frame_time, 1000.0 / (uint32_t)frame_time,
             avg_frame_time, 1000.0 / avg_frame_time,
             (uint32_t)ready_time, (uint32_t)face_time, (uint32_t)recognize_time, (uint32_t)encode_time, (uint32_t)process_time,
             (detected)?"DETECTED ":"", face_id
-        );
+        );*/
     }
 
     last_frame = 0;
@@ -327,35 +329,6 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     return httpd_resp_send(req, NULL, 0);
 }
 
-static esp_err_t data_handler(httpd_req_t *req){
-     String SendHTML = "<!DOCTYPE html> <html>\n";
-  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
-  SendHTML +="<title>Rover control</title>\n";
-  SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  SendHTML +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  SendHTML +="</style>\n";
-  SendHTML +="</head>\n";
-  SendHTML +="<body>\n";;
-  SendHTML +="</figure>\n";
-  SendHTML +="<h1>Explorador Rover</h1>\n";
-  SendHTML +="<table>\n";
-  SendHTML +="</tr>\n";
-  SendHTML +="<th>Humidity:</th>\n";
-  SendHTML +="<td>%02d%</td>\n";
-  SendHTML +="</tr>\n";
-  SendHTML +=" </table>\n";
-  SendHTML +="</body>\n";
-  SendHTML +="</html>\n";
-  SendHTML +=Humidity;
-  
-    httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    char HTMLCh[SendHTML.length()+1];
-    SendHTML.toCharArray(HTMLCh,SendHTML.length());
-    httpd_resp_send(req,HTMLCh,SendHTML.length());
-    return ESP_OK;
-}
-
 static esp_err_t get_handler(httpd_req_t *req)
 {
   String SendHTML = "<!DOCTYPE html> <html>\n";
@@ -376,12 +349,6 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="</script>\n";
   SendHTML +="</figure>\n";
   SendHTML +="<h1>Explorador Rover</h1>\n";
-  SendHTML +="<table>\n";
-  SendHTML +="</tr>\n";
-  SendHTML +="<th>Humidity:</th>\n";
-  SendHTML +="<td>%02d%</td>\n";
-  SendHTML +="</tr>\n";
-  SendHTML +=" </table>\n";
   SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
   SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
   SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
@@ -432,13 +399,6 @@ void startCameraServer(){
         .user_ctx  = NULL
      };
 
-     httpd_uri_t data_uri = {
-        .uri       = "/data",
-        .method    = HTTP_GET,
-        .handler   = data_handler,
-        .user_ctx  = NULL
-     };
-
     ra_filter_init(&ra_filter, 20);
     
     mtmn_config.min_face = 80;
@@ -458,12 +418,11 @@ void startCameraServer(){
     if (httpd_start(&camera_httpd, &config) == ESP_OK) {
         httpd_register_uri_handler(camera_httpd, &test_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
-        httpd_register_uri_handler(camera_httpd, &data_uri);
     }
     config.server_port += 1;
     config.ctrl_port += 1;
     Serial.printf("Starting stream server on port: '%d'\n", config.server_port);
     if (httpd_start(&stream_httpd, &config) == ESP_OK) {
-        httpd_register_uri_handler(stream_httpd, &stream_uri);
+    httpd_register_uri_handler(stream_httpd, &stream_uri);
     }
 }
