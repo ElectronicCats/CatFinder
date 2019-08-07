@@ -40,6 +40,7 @@ int go_back=0;
 int go_right=0;
 int go_left=0;
 int datain=0;
+extern float Humidity;
 
 typedef struct {
         size_t size; //number of values used for filtering
@@ -130,81 +131,6 @@ static int rgb_printf(dl_matrix3du_t *image_matrix, uint32_t color, const char *
         free(temp);
     }
     return len;
-}
-
-
-static esp_err_t capture_handler(httpd_req_t *req){
-    camera_fb_t * fb = NULL;
-    esp_err_t res = ESP_OK;
-    int64_t fr_start = esp_timer_get_time();
-
-    fb = esp_camera_fb_get();
-    if (!fb) {
-        Serial.println("Camera capture failed");
-        httpd_resp_send_500(req);
-        return ESP_FAIL;
-    }
-
-    httpd_resp_set_type(req, "image/jpeg");
-    httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
-
-    size_t out_len, out_width, out_height;
-    uint8_t * out_buf;
-    bool s;
-    bool detected = false;
-    int face_id = 0;
-    if(!detection_enabled || fb->width > 400){
-        size_t fb_len = 0;
-        if(fb->format == PIXFORMAT_JPEG){
-            fb_len = fb->len;
-            res = httpd_resp_send(req, (const char *)fb->buf, fb->len);
-        } else {
-            jpg_chunking_t jchunk = {req, 0};
-            //res = frame2jpg_cb(fb, 80, jpg_encode_stream, &jchunk)?ESP_OK:ESP_FAIL;
-            httpd_resp_send_chunk(req, NULL, 0);
-            fb_len = jchunk.len;
-        }
-        esp_camera_fb_return(fb);
-        int64_t fr_end = esp_timer_get_time();
-        Serial.printf("JPG: %uB %ums\n", (uint32_t)(fb_len), (uint32_t)((fr_end - fr_start)/1000));
-        return res;
-    }
-
-    dl_matrix3du_t *image_matrix = dl_matrix3du_alloc(1, fb->width, fb->height, 3);
-    if (!image_matrix) {
-        esp_camera_fb_return(fb);
-        Serial.println("dl_matrix3du_alloc failed");
-        httpd_resp_send_500(req);
-        return ESP_FAIL;
-    }
-
-    out_buf = image_matrix->item;
-    out_len = fb->width * fb->height * 3;
-    out_width = fb->width;
-    out_height = fb->height;
-
-    s = fmt2rgb888(fb->buf, fb->len, fb->format, out_buf);
-    esp_camera_fb_return(fb);
-    if(!s){
-        dl_matrix3du_free(image_matrix);
-        Serial.println("to rgb888 failed");
-        httpd_resp_send_500(req);
-        return ESP_FAIL;
-    }
-
-    box_array_t *net_boxes = face_detect(image_matrix, &mtmn_config);
-
-    jpg_chunking_t jchunk = {req, 0};
-//    s = fmt2jpg_cb(out_buf, out_len, out_width, out_height, PIXFORMAT_RGB888, 90, jpg_encode_stream, &jchunk);
-    dl_matrix3du_free(image_matrix);
-    if(!s){
-        Serial.println("JPEG compression failed");
-        return ESP_FAIL;
-    }
-
-    int64_t fr_end = esp_timer_get_time();
-    Serial.printf("FACE: %uB %ums %s%d\n", (uint32_t)(jchunk.len), (uint32_t)((fr_end - fr_start)/1000), detected?"DETECTED ":"", face_id);
-    return res;
 }
 
 static esp_err_t stream_handler(httpd_req_t *req){
@@ -400,25 +326,35 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
     return httpd_resp_send(req, NULL, 0);
 }
-/*
-static esp_err_t status_handler(httpd_req_t *req){
-    static char json_response[1024];
-    
-//    go_front= s->status.btnFront;
-    
-    sensor_t * s = esp_camera_sensor_get();
-    char * p = json_response;
-    *p++ = '{';
-    p+=sprintf(p, "\"btnFront\":%d,", s->status.btnFront);
-    p+=sprintf(p, "\"btnBack\":%d,", s->status.btnBack);
-    p+=sprintf(p, "\"btnLeft\":%d,", s->status.btnLeft);
-    p+=sprintf(p, "\"btnRight\":%d,", s->status.btnRight);
-    *p++ = '}';
-    *p++ = 0;
-    httpd_resp_set_type(req, "application/json");
-    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
-    return httpd_resp_send(req, json_response, strlen(json_response));
-}*/
+
+static esp_err_t data_handler(httpd_req_t *req){
+     String SendHTML = "<!DOCTYPE html> <html>\n";
+  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
+  SendHTML +="<title>Rover control</title>\n";
+  SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
+  SendHTML +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
+  SendHTML +="</style>\n";
+  SendHTML +="</head>\n";
+  SendHTML +="<body>\n";;
+  SendHTML +="</figure>\n";
+  SendHTML +="<h1>Explorador Rover</h1>\n";
+  SendHTML +="<table>\n";
+  SendHTML +="</tr>\n";
+  SendHTML +="<th>Humidity:</th>\n";
+  SendHTML +="<td>%02d%</td>\n";
+  SendHTML +="</tr>\n";
+  SendHTML +=" </table>\n";
+  SendHTML +="</body>\n";
+  SendHTML +="</html>\n";
+  SendHTML +=Humidity;
+  
+    httpd_resp_set_type(req, "text/html");
+    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
+    char HTMLCh[SendHTML.length()+1];
+    SendHTML.toCharArray(HTMLCh,SendHTML.length());
+    httpd_resp_send(req,HTMLCh,SendHTML.length());
+    return ESP_OK;
+}
 
 static esp_err_t get_handler(httpd_req_t *req)
 {
@@ -440,6 +376,12 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="</script>\n";
   SendHTML +="</figure>\n";
   SendHTML +="<h1>Explorador Rover</h1>\n";
+  SendHTML +="<table>\n";
+  SendHTML +="</tr>\n";
+  SendHTML +="<th>Humidity:</th>\n";
+  SendHTML +="<td>%02d%</td>\n";
+  SendHTML +="</tr>\n";
+  SendHTML +=" </table>\n";
   SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
   SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
   SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
@@ -466,16 +408,6 @@ static esp_err_t test_handler(httpd_req_t *req){
     return httpd_resp_send(req, (const char *)test_handler, 2500);
 }
 
-static esp_err_t index_handler(httpd_req_t *req){
-    httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    sensor_t * s = esp_camera_sensor_get();
-    if (s->id.PID == OV3660_PID) {
-        return httpd_resp_send(req, (const char *)index_ov3660_html_gz, index_ov3660_html_gz_len);
-    }
-    return httpd_resp_send(req, (const char *)index_ov2640_html_gz, index_ov2640_html_gz_len);
-}
-
 void startCameraServer(){
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
@@ -485,21 +417,7 @@ void startCameraServer(){
         .handler   = get_handler,
         .user_ctx  = NULL
     };
-
-   /* httpd_uri_t index_uri = {
-        .uri       = "/main",
-        .method    = HTTP_GET,
-        .handler   = index_handler,
-        .user_ctx  = NULL
-    };*/
     
-   /*httpd_uri_t status_uri = {
-        .uri       = "/status",
-        .method    = HTTP_GET,
-        .handler   = status_handler,
-        .user_ctx  = NULL
-    };*/
-
    httpd_uri_t cmd_uri = {
         .uri       = "/control",
         .method    = HTTP_GET,
@@ -507,46 +425,19 @@ void startCameraServer(){
         .user_ctx  = NULL
     };
 
-  /*  httpd_uri_t capture_uri = {
-        .uri       = "/capture",
-        .method    = HTTP_GET,
-        .handler   = capture_handler,
-        .user_ctx  = NULL
-    };*/
-
    httpd_uri_t stream_uri = {
         .uri       = "/stream",
         .method    = HTTP_GET,
         .handler   = stream_handler,
         .user_ctx  = NULL
      };
-   /*       
-   httpd_uri_t front_uri = {
-        .uri       = "/front",
-        .method    = HTTP_GET,
-        .handler   = front_handler,
-        .user_ctx  = NULL
-    };
-   
-   httpd_uri_t back_uri = {
-        .uri       = "/back",
-        .method    = HTTP_GET,
-        .handler   = back_handler,
-        .user_ctx  = NULL
-    };
 
-       httpd_uri_t rigth_uri = {
-        .uri       = "/rigth",
+     httpd_uri_t data_uri = {
+        .uri       = "/data",
         .method    = HTTP_GET,
-        .handler   = rigth_handler,
+        .handler   = data_handler,
         .user_ctx  = NULL
-    };
-       httpd_uri_t left_uri = {
-        .uri       = "/left",
-        .method    = HTTP_GET,
-        .handler   = left_handler,
-        .user_ctx  = NULL
-    };*/
+     };
 
     ra_filter_init(&ra_filter, 20);
     
@@ -567,6 +458,7 @@ void startCameraServer(){
     if (httpd_start(&camera_httpd, &config) == ESP_OK) {
         httpd_register_uri_handler(camera_httpd, &test_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
+        httpd_register_uri_handler(camera_httpd, &data_uri);
     }
     config.server_port += 1;
     config.ctrl_port += 1;
