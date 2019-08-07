@@ -1,3 +1,5 @@
+#include <Wire.h>
+
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <DNSServer.h>
@@ -12,10 +14,10 @@ extern int go_back;
 extern int go_right;
 extern int go_left;
 extern int datain;
-//
+
 // WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
 //            or another board which has PSRAM enabled
-//
+
 #define CAMERA_MODEL_AI_THINKER
 
 #include "camera_pins.h"
@@ -28,6 +30,7 @@ void startCameraServer();
 
 void setup() {
   Serial.begin(115200);
+  Wire.begin(2,16);
   Serial.setDebugOutput(true);
   pinMode(ledPin1, OUTPUT);
   pinMode(ledPin2, OUTPUT);

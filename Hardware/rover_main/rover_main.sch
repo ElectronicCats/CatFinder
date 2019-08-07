@@ -596,7 +596,7 @@ F 3 "~" H 10610 1280 50  0001 C CNN
 $EndComp
 Text Label 10310 1280 2    50   ~ 0
 SDAE
-Text Label 9530 1300 0    50   ~ 0
+Text Label 7490 1450 2    50   ~ 0
 SDAE
 $Comp
 L Device:Jumper JP12
@@ -946,17 +946,6 @@ A1
 Text Label 9800 6390 2    50   ~ 0
 9
 $Comp
-L Connector:Conn_01x02_Female J6
-U 1 1 5D5E84D2
-P 7690 1550
-F 0 "J6" H 7718 1526 50  0000 L CNN
-F 1 "PROG" H 7718 1435 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
-F 3 "~" H 7690 1550 50  0001 C CNN
-	1    7690 1550
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:Conn_01x06_Female J2
 U 1 1 5D49D204
 P 2210 6410
@@ -993,4 +982,19 @@ Wire Wire Line
 	9330 4360 9330 4280
 Wire Wire Line
 	9330 4660 9330 4790
+$Comp
+L Connector:Conn_01x03_Female J6
+U 1 1 5D4B08DF
+P 7690 1550
+F 0 "J6" H 7718 1576 50  0000 L CNN
+F 1 "Prog" H 7718 1485 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
+F 3 "~" H 7690 1550 50  0001 C CNN
+	1    7690 1550
+	1    0    0    -1  
+$EndComp
+Text Label 9530 1300 0    50   ~ 0
+GPIO2
+Text Notes 7370 4060 0    50   ~ 0
+BAST PRO-MINI\n
 $EndSCHEMATC
