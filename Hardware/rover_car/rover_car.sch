@@ -22,7 +22,7 @@ F 0 "C1" H 1942 1396 50  0000 L CNN
 F 1 ".01uF" H 1942 1305 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1850 1350 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/445/885012207039-554525.pdf" H 1850 1350 50  0001 C CNN
-F 4 "710-885012207039" H 1850 1350 50  0001 C CNN "manf#"
+F 4 "885012207039" H 1850 1350 50  0001 C CNN "manf#"
 	1    1850 1350
 	1    0    0    -1  
 $EndComp
@@ -75,6 +75,7 @@ F 0 "M1" H 4208 1546 50  0000 L CNN
 F 1 "Motor_DC" H 4208 1455 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 4050 1460 50  0001 C CNN
 F 3 "~" H 4050 1460 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    4050 1550
 	1    0    0    -1  
 $EndComp
@@ -86,6 +87,7 @@ F 0 "M2" H 4208 2296 50  0000 L CNN
 F 1 "Motor_DC" H 4208 2205 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 4050 2210 50  0001 C CNN
 F 3 "~" H 4050 2210 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    4050 2300
 	1    0    0    -1  
 $EndComp
@@ -254,6 +256,7 @@ F 0 "M5" H 8858 1646 50  0000 L CNN
 F 1 "Motor_DC" H 8858 1555 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 8700 1560 50  0001 C CNN
 F 3 "~" H 8700 1560 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    8700 1650
 	1    0    0    -1  
 $EndComp
@@ -265,6 +268,7 @@ F 0 "M6" H 8858 2396 50  0000 L CNN
 F 1 "Motor_DC" H 8858 2305 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 8700 2310 50  0001 C CNN
 F 3 "~" H 8700 2310 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    8700 2400
 	1    0    0    -1  
 $EndComp
@@ -334,7 +338,7 @@ L Device:R_Small R5
 U 1 1 5D1F7E9A
 P 6300 2200
 F 0 "R5" H 6315 2305 50  0000 L CNN
-F 1 "200mOhm" V 6380 1895 50  0000 L CNN
+F 1 "200mOhms" V 6380 1895 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6300 2200 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 6300 2200 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 6300 2200 50  0001 C CNN "manf#"
@@ -412,7 +416,7 @@ F 0 "C4" H 3450 4850 50  0000 L CNN
 F 1 ".01uF" H 3350 4650 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3600 4750 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/445/885012207039-554525.pdf" H 3600 4750 50  0001 C CNN
-F 4 "710-885012207039" H 3600 4750 50  0001 C CNN "manf#"
+F 4 "885012207039" H 3600 4750 50  0001 C CNN "manf#"
 	1    3600 4750
 	1    0    0    -1  
 $EndComp
@@ -465,6 +469,7 @@ F 0 "M4" H 5958 5696 50  0000 L CNN
 F 1 "Motor_DC" H 5958 5605 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 5800 5610 50  0001 C CNN
 F 3 "~" H 5800 5610 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    5800 5700
 	1    0    0    -1  
 $EndComp
@@ -507,7 +512,7 @@ L Device:R_Small R3
 U 1 1 5D2161EF
 P 3400 5500
 F 0 "R3" H 3415 5600 50  0000 L CNN
-F 1 "200mOhm" V 3480 5190 50  0000 L CNN
+F 1 "200mOhms" V 3480 5190 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3400 5500 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf<...>" H 3400 5500 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 3400 5500 50  0001 C CNN "manf#"
@@ -622,6 +627,7 @@ F 0 "J3" H 1130 5742 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" H 1130 5651 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 1050 5750 50  0001 C CNN
 F 3 "~" H 1050 5750 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    1050 5750
 	1    0    0    -1  
 $EndComp
@@ -698,7 +704,7 @@ L Device:R_Small R4
 U 1 1 5D258DA4
 P 3200 5500
 F 0 "R4" H 3210 5610 50  0000 L CNN
-F 1 "200mOhm" V 3110 5185 50  0000 L CNN
+F 1 "200mOhms" V 3110 5185 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3200 5500 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/315/AOA0000C334-1314047.pdf" H 3200 5500 50  0001 C CNN
 F 4 "667-ERJ-U6SFR20V" H 0   0   50  0001 C CNN "manf#"
@@ -809,6 +815,7 @@ F 0 "M3" H 5958 4946 50  0000 L CNN
 F 1 "Motor_DC" H 5958 4855 50  0000 L CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 5800 4860 50  0001 C CNN
 F 3 "~" H 5800 4860 50  0001 C CNN
+F 4 "39594-3002" H 0   0   50  0001 C CNN "manf#"
 	1    5800 4950
 	1    0    0    -1  
 $EndComp
