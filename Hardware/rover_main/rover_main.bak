@@ -721,28 +721,6 @@ F 3 "~" H 8450 5850 50  0001 C CNN
 	1    8450 5850
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Device:Jumper JP5
-U 1 1 5D4C2B76
-P 10100 4400
-F 0 "JP5" H 10100 4664 50  0000 C CNN
-F 1 "SDA" H 10100 4573 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4400 50  0001 C CNN
-F 3 "~" H 10100 4400 50  0001 C CNN
-	1    10100 4400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Jumper JP6
-U 1 1 5D4C33A6
-P 10100 4800
-F 0 "JP6" H 10100 5064 50  0000 C CNN
-F 1 "SCL" H 10100 4973 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4800 50  0001 C CNN
-F 3 "~" H 10100 4800 50  0001 C CNN
-	1    10100 4800
-	1    0    0    -1  
-$EndComp
 Text Label 10400 4800 0    50   ~ 0
 SCL
 Text Label 10400 4400 0    50   ~ 0
@@ -755,59 +733,15 @@ Text Label 9800 4800 2    50   ~ 0
 SCLB
 Text Label 8550 6050 3    50   ~ 0
 SCLB
-$Comp
-L Device:Jumper JP10
-U 1 1 5D4C8EC9
-P 10100 6390
-F 0 "JP10" H 10100 6654 50  0000 C CNN
-F 1 "Engine 2B" H 10100 6563 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6390 50  0001 C CNN
-F 3 "~" H 10100 6390 50  0001 C CNN
-	1    10100 6390
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Jumper JP9
-U 1 1 5D4C93D4
-P 10100 6000
-F 0 "JP9" H 10100 6264 50  0000 C CNN
-F 1 "Engine 2A" H 10100 6173 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6000 50  0001 C CNN
-F 3 "~" H 10100 6000 50  0001 C CNN
-	1    10100 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Jumper JP8
-U 1 1 5D4C97D6
-P 10100 5600
-F 0 "JP8" H 10100 5864 50  0000 C CNN
-F 1 "Engine 1B" H 10100 5773 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 5600 50  0001 C CNN
-F 3 "~" H 10100 5600 50  0001 C CNN
-	1    10100 5600
-	1    0    0    -1  
-$EndComp
 Text Label 9800 6000 2    50   ~ 0
 A3
 Text Label 10400 5600 0    50   ~ 0
 GPIO12
-$Comp
-L Device:Jumper JP7
-U 1 1 5D4C892D
-P 10100 5200
-F 0 "JP7" H 10100 5464 50  0000 C CNN
-F 1 "Engine 1A" H 10100 5373 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 5200 50  0001 C CNN
-F 3 "~" H 10100 5200 50  0001 C CNN
-	1    10100 5200
-	1    0    0    -1  
-$EndComp
 Text Label 10400 5200 0    50   ~ 0
 GPIO13
 Text Label 10400 6000 0    50   ~ 0
 GPIO15
-Text Label 10400 6390 0    50   ~ 0
+Text Label 10380 6400 0    50   ~ 0
 GPIO14
 $Comp
 L power:VCC #PWR025
@@ -943,7 +877,7 @@ Text Label 9800 5600 2    50   ~ 0
 11
 Text Label 9800 5200 2    50   ~ 0
 A1
-Text Label 9800 6390 2    50   ~ 0
+Text Label 9820 6400 2    50   ~ 0
 9
 $Comp
 L Connector:Conn_01x06_Female J2
@@ -988,11 +922,103 @@ U 1 1 5D4B08DF
 P 7690 1550
 F 0 "J6" H 7718 1576 50  0000 L CNN
 F 1 "Prog" H 7718 1485 50  0000 L CNN
-F 2 "" H 7690 1550 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
 F 3 "~" H 7690 1550 50  0001 C CNN
 	1    7690 1550
 	1    0    0    -1  
 $EndComp
 Text Label 9530 1300 0    50   ~ 0
 GPIO2
+Text Notes 7370 4060 0    50   ~ 0
+BAST PRO-MINI\n
+$Comp
+L Device:Jumper_NO_Small JP5
+U 1 1 5D4C5CB0
+P 10080 4400
+F 0 "JP5" H 10080 4585 50  0000 C CNN
+F 1 "SDA" H 10080 4494 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10080 4400 50  0001 C CNN
+F 3 "~" H 10080 4400 50  0001 C CNN
+	1    10080 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Jumper_NO_Small JP6
+U 1 1 5D4C667E
+P 10100 4800
+F 0 "JP6" H 10100 4985 50  0000 C CNN
+F 1 "SCL" H 10100 4894 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4800 50  0001 C CNN
+F 3 "~" H 10100 4800 50  0001 C CNN
+	1    10100 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10180 4400 10400 4400
+Wire Wire Line
+	9980 4400 9800 4400
+Wire Wire Line
+	10400 4800 10200 4800
+Wire Wire Line
+	9800 4800 10000 4800
+$Comp
+L Device:Jumper_NO_Small JP7
+U 1 1 5D4CD611
+P 10120 5200
+F 0 "JP7" H 10120 5385 50  0000 C CNN
+F 1 "Engine 1 A" H 10120 5294 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10120 5200 50  0001 C CNN
+F 3 "~" H 10120 5200 50  0001 C CNN
+	1    10120 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10220 5200 10400 5200
+Wire Wire Line
+	10020 5200 9800 5200
+$Comp
+L Device:Jumper_NO_Small JP8
+U 1 1 5D4D2033
+P 10130 5600
+F 0 "JP8" H 10130 5785 50  0000 C CNN
+F 1 "Engine 1B" H 10130 5694 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10130 5600 50  0001 C CNN
+F 3 "~" H 10130 5600 50  0001 C CNN
+	1    10130 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10230 5600 10400 5600
+Wire Wire Line
+	10030 5600 9800 5600
+$Comp
+L Device:Jumper_NO_Small JP9
+U 1 1 5D4D5761
+P 10100 6000
+F 0 "JP9" H 10100 6185 50  0000 C CNN
+F 1 "Engine 2A" H 10100 6094 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6000 50  0001 C CNN
+F 3 "~" H 10100 6000 50  0001 C CNN
+	1    10100 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10200 6000 10400 6000
+Wire Wire Line
+	9800 6000 10000 6000
+$Comp
+L Device:Jumper_NO_Small JP10
+U 1 1 5D4DA54D
+P 10100 6400
+F 0 "JP10" H 10100 6585 50  0000 C CNN
+F 1 "Engine 2B" H 10100 6494 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6400 50  0001 C CNN
+F 3 "~" H 10100 6400 50  0001 C CNN
+	1    10100 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10200 6400 10380 6400
+Wire Wire Line
+	10000 6400 9820 6400
 $EndSCHEMATC
