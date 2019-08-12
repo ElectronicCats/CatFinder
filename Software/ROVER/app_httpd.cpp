@@ -40,7 +40,7 @@ int go_back=0;
 int go_right=0;
 int go_left=0;
 int datain=0;
-//extern int Humidity;
+extern String Serialdata;
 
 typedef struct {
         size_t size; //number of values used for filtering
@@ -63,6 +63,7 @@ static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %
 static ra_filter_t ra_filter;
 httpd_handle_t stream_httpd = NULL;
 httpd_handle_t camera_httpd = NULL;
+httpd_handle_t data_httpd = NULL;
 
 static mtmn_config_t mtmn_config = {0};
 static int8_t detection_enabled = 0;
@@ -264,8 +265,6 @@ static esp_err_t stream_handler(httpd_req_t *req){
         last_frame = fr_end;
         frame_time /= 1000;
         uint32_t avg_frame_time = ra_filter_run(&ra_filter, frame_time);
-        Serial.print("STREAM running on core ");
-       Serial.println(xPortGetCoreID());
       /*  Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
             (uint32_t)(_jpg_buf_len),
             (uint32_t)frame_time, 1000.0 / (uint32_t)frame_time,
@@ -329,6 +328,7 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     return httpd_resp_send(req, NULL, 0);
 }
 
+
 static esp_err_t get_handler(httpd_req_t *req)
 {
   String SendHTML = "<!DOCTYPE html> <html>\n";
@@ -353,6 +353,28 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
   SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
   SendHTML +="</div>\n";
+  SendHTML +="</figure>\n";
+  SendHTML +="</body>\n";
+  SendHTML +="</html>\n";
+  
+    httpd_resp_set_type(req, "text/html");
+    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
+    char HTMLCh[SendHTML.length()+1];
+    SendHTML.toCharArray(HTMLCh,SendHTML.length());
+    httpd_resp_send(req,HTMLCh,SendHTML.length());
+    return ESP_OK;
+}
+
+static esp_err_t data_handler(httpd_req_t *req)
+{
+  String SendHTML = "<!DOCTYPE html> <html>\n";
+  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
+  SendHTML +="<title>Rover control</title>\n";
+  SendHTML +="</head>\n";
+  SendHTML +="<body>\n";
+  SendHTML +="</figure>\n";
+  SendHTML +="<h1>Explorador Rover</h1>\n";
+  SendHTML +="<h1>Serial  Data</h1>\n";
   SendHTML +="</figure>\n";
   SendHTML +="</body>\n";
   SendHTML +="</html>\n";
