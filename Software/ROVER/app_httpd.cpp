@@ -17,6 +17,7 @@
 #include "img_converters.h"
 #include "camera_index.h"
 #include "Arduino.h"
+#include <HTTPClient.h>
 
 #include "fb_gfx.h"
 #include "fd_forward.h"
@@ -40,7 +41,7 @@ int go_back=0;
 int go_right=0;
 int go_left=0;
 int datain=0;
-//extern int Humidity;
+extern String Serialdata;
 
 typedef struct {
         size_t size; //number of values used for filtering
@@ -63,6 +64,7 @@ static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %
 static ra_filter_t ra_filter;
 httpd_handle_t stream_httpd = NULL;
 httpd_handle_t camera_httpd = NULL;
+httpd_handle_t data_httpd = NULL;
 
 static mtmn_config_t mtmn_config = {0};
 static int8_t detection_enabled = 0;
@@ -264,8 +266,6 @@ static esp_err_t stream_handler(httpd_req_t *req){
         last_frame = fr_end;
         frame_time /= 1000;
         uint32_t avg_frame_time = ra_filter_run(&ra_filter, frame_time);
-        Serial.print("STREAM running on core ");
-       Serial.println(xPortGetCoreID());
       /*  Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
             (uint32_t)(_jpg_buf_len),
             (uint32_t)frame_time, 1000.0 / (uint32_t)frame_time,
@@ -375,6 +375,17 @@ static esp_err_t test_handler(httpd_req_t *req){
     return httpd_resp_send(req, (const char *)test_handler, 2500);
 }
 
+static esp_err_t post_handler(httpd_req_t *req){
+
+    httpd_resp_set_type(req, "text/html");
+    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
+    char HTMLCh[Serialdata.length()+1];
+    Serialdata.toCharArray(HTMLCh,Serialdata.length());
+    httpd_resp_send(req,HTMLCh,Serialdata.length());
+    return ESP_OK;      
+}
+
+
 void startCameraServer(){
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
@@ -399,6 +410,13 @@ void startCameraServer(){
         .user_ctx  = NULL
      };
 
+     httpd_uri_t data_uri = {
+        .uri       = "/data",
+        .method    = HTTP_POST,
+        .handler   = post_handler,
+        .user_ctx  = NULL
+     };
+
     ra_filter_init(&ra_filter, 20);
     
     mtmn_config.min_face = 80;
@@ -418,6 +436,7 @@ void startCameraServer(){
     if (httpd_start(&camera_httpd, &config) == ESP_OK) {
         httpd_register_uri_handler(camera_httpd, &test_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
+        httpd_register_uri_handler(camera_httpd, &data_uri);
     }
     config.server_port += 1;
     config.ctrl_port += 1;
@@ -426,3 +445,4 @@ void startCameraServer(){
     httpd_register_uri_handler(stream_httpd, &stream_uri);
     }
 }
+  
