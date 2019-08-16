@@ -3,10 +3,10 @@
 #include <DNSServer.h>
 
 
-const int ledPin = 12; // Pin controlado por PWM 
-const int ledPin1 = 13; // Pin controlado por PWM 
-const int ledPin2 = 14; // Pin controlado por PWM 
-const int ledPin3 = 15; // Pin controlado por PWM 
+const int ledPin = 15; // Pin controlado por PWM 
+const int ledPin1 = 14; // Pin controlado por PWM 
+const int ledPin2 = 12; // Pin controlado por PWM 
+const int ledPin3 = 13; // Pin controlado por PWM 
 
 extern int go_front;
 extern int go_back;
@@ -92,7 +92,6 @@ void setup() {
   s->set_framesize(s, FRAMESIZE_QVGA);
 }
 
-
 void loop() {
   // put your main code here, to run repeatedly:
   if(datain){activationoutput();}
@@ -108,16 +107,44 @@ void loop() {
   delay(1000);
 }
 
-void activationoutput()
+void activationoutput()  
 {
-  if (go_front){digitalWrite(ledPin, HIGH);}
-     else{digitalWrite(ledPin, LOW);}
-  if (go_back!=0){digitalWrite(ledPin1, HIGH);}
-  else{digitalWrite(ledPin1, LOW);}
-     if (go_left){digitalWrite(ledPin2, HIGH); }
-     else{digitalWrite(ledPin2, LOW);}
-  if (go_right){digitalWrite(ledPin3, HIGH);}
-  else{digitalWrite(ledPin3, LOW);}
+  if (go_front)
+  {digitalWrite(ledPin, HIGH);
+   digitalWrite(ledPin1, LOW);
+   digitalWrite(ledPin2, HIGH);
+   digitalWrite(ledPin3, LOW);
+   //Serial.println("front");
+  }
+  
+  if (go_back)
+  {
+   //Serial.println("back");
+   digitalWrite(ledPin, LOW);
+   digitalWrite(ledPin1, HIGH);
+   digitalWrite(ledPin2, LOW);
+   digitalWrite(ledPin3, HIGH);}
+  
+  if (go_left)
+  {//Serial.println("left");
+   digitalWrite(ledPin, HIGH);
+   digitalWrite(ledPin1, LOW);
+   digitalWrite(ledPin2, LOW);
+   digitalWrite(ledPin3, HIGH);}
+     
+  if (go_right)
+  {//Serial.println("rigth");
+   digitalWrite(ledPin, LOW);
+   digitalWrite(ledPin1, HIGH);
+   digitalWrite(ledPin2, HIGH);
+   digitalWrite(ledPin3, LOW);}
+
+  if (!go_right&!go_left&!go_back&!go_front)
+    { //Serial.println("nothing");
+      digitalWrite(ledPin, LOW);
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, LOW);
+      digitalWrite(ledPin3, LOW);}
  }
 
   
