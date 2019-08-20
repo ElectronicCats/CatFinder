@@ -17,6 +17,10 @@ float temp=0;
 float co2=0;
 float tvoc=0;
 
+//Variables CCS811
+float magX=0;
+float magY=0;
+float magZ=0;
 
 BME280 mySensorB;//Object BME280
 Adafruit_CCS811 ccs; //Object CCS811
@@ -29,24 +33,22 @@ int16_t gx, gy, gz;
 
 Adafruit_HMC5883_Unified mag = Adafruit_HMC5883_Unified(1);//Magnetometro
 
+String Todo;
+
 void setup()
 {
   Serial.begin(115200);
   while(!Serial);
 
   //BME280 CONFIG
-  mySensorB.setI2CAddress(0x76); //Connect to a second sensor
-  if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
+   mySensorB.setI2CAddress(0x76); //Connect to a second sensor
+   if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
 
   //CCS811 config
   if(!ccs.begin()){
     Serial.println("Failed to start sensor! Please check your wiring.");
     while(1);
-  }
-   //calibrate temperature sensor CCS811
-  while(!ccs.available());
-  float temp = ccs.calculateTemperature();
-  ccs.setTempOffset(temp - 25.0);
+     }
 
   //Inicializar acelerometro y gyroscopio
   accelgyro.initialize();  /// Initialize MPU
@@ -63,30 +65,20 @@ void setup()
     while (1);
   }
 }
+
 void loop()
 {
   //Variables BME280
   humidity=mySensorB.readFloatHumidity();
   pressure=mySensorB.readFloatPressure();
   temp=mySensorB.readTempC();
-  Serial.print("humidity:");
-  Serial.println(humidity);
-  Serial.print("pressure:");
-  Serial.println(pressure);
-  Serial.print("temp:");
-  Serial.println(temp);
 
-    if(ccs.available()){
-    float tempCCS = ccs.calculateTemperature();
+
+ //data CCS811
+   if(ccs.available()){
     if(!ccs.readData()){
-      Serial.print("CO2: ");
       co2=ccs.geteCO2();
-      Serial.print(co2);
-      Serial.print("ppm, TVOC: ");
       tvoc=ccs.getTVOC();
-      Serial.print(tvoc);
-      Serial.print("ppb   Temp:");
-      Serial.println(tempCCS);
     }
     else{
       Serial.println("ERROR!");
@@ -94,22 +86,41 @@ void loop()
     }
   }
 
-   sensors_event_t event;
-  // Display the results (magnetic vector values are in micro-Tesla (uT))
-  Serial.print(F("Magnetometro:  "));
-  Serial.print(F("X: ")); Serial.print(event.magnetic.x); Serial.print(F("  "));
-  Serial.print(F("Y: ")); Serial.print(event.magnetic.y); Serial.print(F("  "));
-  Serial.print(F("Z: ")); Serial.print(event.magnetic.z); Serial.print(F("  ")); Serial.println(F("uT"));
-
+  //get value gy-87
+  sensors_event_t event;
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-  Serial.print(F("Acelerometro "));
-  Serial.print(F("X:")); Serial.print(ax); Serial.print("\t");
-  Serial.print(F("Y:")); Serial.print(ay); Serial.print("\t");
-  Serial.print(F("Z:")); Serial.print(az); Serial.print("\n");
-  Serial.print(F("Giroscopio "));
-  Serial.print(F("X:")); Serial.print(gx); Serial.print("\t");
-  Serial.print(F("X:")); Serial.print(gy); Serial.print("\t");
-  Serial.print(F("X:")); Serial.println(gz); Serial.print("\n");
-  
+
+  //send all data
+    Todo+=humidity;
+    Todo+=",";
+    Todo+=pressure;
+    Todo+=",";
+    Todo+=temp;//°C
+    Todo+=",";
+    Todo+=co2;//ppm
+    Todo+=",";
+    Todo+=tvoc;//ppb
+    Todo+=",";
+    Todo+=event.magnetic.x;//magnetic vector values are in micro-Tesla (uT)
+    Todo+=",";
+    Todo+=event.magnetic.y;//magnetic vector values are in micro-Tesla (uT)
+    Todo+=",";
+    Todo+=event.magnetic.z;//magnetic vector values are in micro-Tesla (uT)
+    Todo+=",";
+    Todo+=ax;
+    Todo+=",";
+    Todo+=ay;
+    Todo+=",";
+    Todo+=az;
+    Todo+=",";
+    Todo+=gx;
+    Todo+=",";
+    Todo+=gy;
+    Todo+=",";
+    Todo+=gz;
+    Todo+=",";
+    Serial.println(Todo);
+    Todo = "";
+    
   delay(1000);
 }
