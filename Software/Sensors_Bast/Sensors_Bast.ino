@@ -1,10 +1,11 @@
-/*program Bast Read I2C sensors*/
+ /*program Bast Read I2C sensors*/
 #include <Wire.h>
 #include "SparkFunBME280.h"
 #include "Adafruit_CCS811.h"
 #include <MPU6050.h>//acelerometro y gyroscopio
 #include <Adafruit_Sensor.h>
 #include <Adafruit_HMC5883_U.h>//Magnetometro
+
 
 #define Serial SerialUSB
 
@@ -38,6 +39,8 @@ String Todo;
 void setup()
 {
   Serial.begin(115200);
+  Serial1.begin(115200);
+  
   while(!Serial);
 
   //BME280 CONFIG
@@ -101,12 +104,6 @@ void loop()
     Todo+=",";
     Todo+=tvoc;//ppb
     Todo+=",";
-    Todo+=event.magnetic.x;//magnetic vector values are in micro-Tesla (uT)
-    Todo+=",";
-    Todo+=event.magnetic.y;//magnetic vector values are in micro-Tesla (uT)
-    Todo+=",";
-    Todo+=event.magnetic.z;//magnetic vector values are in micro-Tesla (uT)
-    Todo+=",";
     Todo+=ax;
     Todo+=",";
     Todo+=ay;
@@ -119,8 +116,9 @@ void loop()
     Todo+=",";
     Todo+=gz;
     Todo+=",";
-    Serial.println(Todo);
+    //Serial.println(Todo);
+    Serial1.println(Todo);
     Todo = "";
-    
+
   delay(1000);
 }
