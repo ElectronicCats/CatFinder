@@ -412,7 +412,7 @@ void startCameraServer(){
 
      httpd_uri_t data_uri = {
         .uri       = "/data",
-        .method    = HTTP_POST,
+        .method    = HTTP_GET,
         .handler   = post_handler,
         .user_ctx  = NULL
      };
