@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ROVER</title>
+    <!--BOOTSTRAP CDN-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <button id="btnFront">FRONT</button>
+    <button id="btnLeft">LEFT</button>
+    <button id="btnRight">RIGHT</button>
+    <button id="btnBack">BACK</button>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">DATA</th>
+          <th scope="col">VALUE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Humedad</td>
+          <td><p id="humedad">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>presión atmosférica</td>
+          <td><p id="press">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>temperatura Cº</td>
+          <td><p id="tempC"></p></td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>CO2 ppm</td>
+          <td><p id="co2">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>
+            TVOC ppb
+          </td>
+          <td><p id="tvoc">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>
+            acelerómetro X
+          </td>
+          <td><p id="acX">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>
+            acelerómetro Y
+          </td>
+          <td><p id="acY">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>
+            acelerómetro Z
+          </td>
+          <td><p id="acZ">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>
+            giroscopio X
+          </td>
+          <td><p id="grX">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>
+            giroscopio Y
+          </td>
+          <td><p id="grY">0</p></td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>
+            giroscopio Z
+          </td>
+          <td><p id="grZ">0</p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const buttonLeft = document.getElementById("btnLeft");
+      const buttonRight = document.getElementById("btnRight");
+      const buttonFront = document.getElementById("btnFront");
+      const buttonBack = document.getElementById("btnBack");
+
+      /*
+          Eventos de Touch
+        */
+      buttonLeft.addEventListener("touchstart", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonLeft.addEventListener("touchend", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonRight.addEventListener("touchstart", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonRight.addEventListener("touchend", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonFront.addEventListener("touchstart", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonFront.addEventListener("touchend", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonBack.addEventListener("touchstart", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonBack.addEventListener("touchend", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+
+      /*
+          eventos en pc
+        */
+      buttonLeft.addEventListener("mousedown", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonLeft.addEventListener("mouseup", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonRight.addEventListener("mousedown", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonRight.addEventListener("mouseup", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonFront.addEventListener("mousedown", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonFront.addEventListener("mouseup", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonBack.addEventListener("mousedown", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+      buttonBack.addEventListener("mouseup", e => {
+        console.log(e);
+        updateConfigController(e);
+      });
+
+      function updateConfigController(el) {
+        let value;
+        switch (el.srcElement.id) {
+          case "btnLeft":
+            value = el.buttons == 1 ? 1 : 0;
+            break;
+          case "btnRight":
+            value = el.buttons == 1 ? 1 : 0;
+            break;
+          case "btnFront":
+            value = el.buttons == 1 ? 1 : 0;
+            break;
+          case "btnBack":
+            value = el.buttons == 1 ? 1 : 0;
+            break;
+          default:
+            return;
+        }
+        const query = `http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;
+        console.log("query =>" + query);
+        fetch(query).then(response => {
+          console.log(
+            `request to ${query} finished, status: ${response.status}`
+          );
+        });
+      }
+
+      /*
+       * Update Data
+       */
+
+      function JsonOnSring(dataJson) {
+        var objJson = '{ "Sensores" : [ {';
+        let pivote = 0,
+          i = -1;
+        let value;
+        let props = 1;
+        let flag = false;
+        while (pivote >= 0) {
+          pivote = dataJson.indexOf(",", i + 1);
+          if (pivote == -1) {
+            flag = true;
+            value = dataJson.substring(i + 1, dataJson.length);
+          }
+
+          if (!flag) value = dataJson.substring(i + 1, pivote);
+
+          objJson += `
+         "${props}": "${value}",
+      `;
+
+          i = pivote;
+          props++;
+
+          if (flag) break;
+        }
+
+        objJson += '"TEST": "ON" } ]}';
+        return objJson;
+      }
+      let query = fetch("http://localhost:3000/init")
+        .then(function(res) {
+          return res.json();
+        })
+        .catch(err => console.log(err));
+      function responseData() {
+        fetch("http://localhost:3000/init")
+          .then(function(res) {
+            return res.json();
+          })
+          .then(function(json) {
+            return (values.query = json.json);
+          })
+          .catch(err => console.log(err));
+
+        return JsonOnSring(values.query);
+      }
+
+      /*Data*/
+      let values = {
+        humedad: document.getElementById("humedad"),
+        press: document.getElementById("press"),
+        tempC: document.getElementById("tempC"),
+        co2: document.getElementById("co2"),
+        tvoc: document.getElementById("tvoc"),
+        acX: document.getElementById("acX"),
+        acY: document.getElementById("acY"),
+        acZ: document.getElementById("acZ"),
+        grX: document.getElementById("grX"),
+        grY: document.getElementById("grY"),
+        grZ: document.getElementById("grZ"),
+        query: ""
+      };
+
+      function setData() {
+        console.log(objData);
+        values.humedad.innerHTML = objData.Sensores[0][1];
+        values.press.innerHTML = objData.Sensores[0][2];
+        values.tempC.innerHTML = objData.Sensores[0][3];
+        values.acX.innerHTML = objData.Sensores[0][4];
+        values.acY.innerHTML = objData.Sensores[0][5];
+        values.acZ.innerHTML = objData.Sensores[0][6];
+        values.grX.innerHTML = objData.Sensores[0][7];
+        values.grY.innerHTML = objData.Sensores[0][8];
+        values.grZ.innerHTML = objData.Sensores[0][9];
+      }
+      window.setInterval(
+        "responseData(); var objData = JSON.parse(responseData()); setData();",
+        3000
+      );
+    </script>
+  </body>
+</html>
