@@ -332,7 +332,7 @@ static esp_err_t cmd_handler(httpd_req_t *req){
 static esp_err_t get_handler(httpd_req_t *req)
 {
   String SendHTML = "<!DOCTYPE html> <html>\n";
-  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
+  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no http-equiv='refresh' content='1'\">\n";
   SendHTML +="<title>Rover control</title>\n";
   SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
   SendHTML +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
@@ -342,7 +342,8 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="<button id=\"btnFront\">FRONT</button> \n";
   SendHTML +="<button id=\"btnLeft\">LEFT</button>  \n";
   SendHTML +="<button id=\"btnRight\" >RIGHT</button> \n";
-  SendHTML +="<button id=\"btnBack\">BACK</button> \n";
+  SendHTML +="<button id=\"btnBack\">BACK</button> \n";  
+  SendHTML +="</thead>\n";
   SendHTML +="</section>\n";
   SendHTML +="<script>\n";
   SendHTML +="const buttonLeft = document.getElementById(\"btnLeft\");    const buttonRight = document.getElementById(\"btnRight\");    const buttonFront = document.getElementById(\"btnFront\");    const buttonBack = document.getElementById(\"btnBack\");    buttonLeft.addEventListener(\"mousedown\", (e) =>{  console.log(e); updateConfigController(e); });    buttonLeft.addEventListener(\"mouseup\", (e) =>{  console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    function updateConfigController(el) {        let value;        switch (el.srcElement.id) {            case \"btnLeft\":                value = el.buttons == 1 ? 1 : 0;                break;            case \"btnRight\":                value = el.buttons == 1 ? 1 : 0;                break;             case \"btnFront\":                 value = el.buttons == 1 ? 1 : 0;                break;             case \"btnBack\":                 value = el.buttons == 1 ? 1 : 0;                break;             default: return        }    const query = `http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;    console.log(\"query =>\" + query);    fetch(query)        .then(response =>{             console.log(`request to ${query} finished, status: ${response.status}`);         });    }\n";
@@ -352,8 +353,8 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
   SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
   SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
-  SendHTML +="</div>\n";
   SendHTML +="</figure>\n";
+  SendHTML +="<iframe src=\"http://192.168.4.1:80/data\"</iframe>\n";
   SendHTML +="</body>\n";
   SendHTML +="</html>\n";
   
@@ -377,11 +378,27 @@ static esp_err_t test_handler(httpd_req_t *req){
 
 static esp_err_t post_handler(httpd_req_t *req){
 
+  String Senddatos = "<!DOCTYPE html> <html>\n";
+  Senddatos +="<head> <meta http-equiv='refresh' content='3'/>\n";
+  Senddatos +="<title>Rover control</title>\n";
+  Senddatos +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
+  Senddatos +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
+  Senddatos +="</style>\n";
+  Senddatos +="</head>\n";
+  Senddatos +="<body>\n";
+  Senddatos +="</thead>\n";
+  Senddatos +="</section>\n";
+  Senddatos +="</figure>\n";
+  Senddatos +="<h2>Datos de Sensores</h2>\n";
+  Senddatos +=Serialdata;
+  Senddatos +="</body>\n";
+  Senddatos +="</html>\n";
+        
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    char HTMLCh[Serialdata.length()+1];
-    Serialdata.toCharArray(HTMLCh,Serialdata.length());
-    httpd_resp_send(req,HTMLCh,Serialdata.length());
+    char HTMLCh[Senddatos.length()+1];
+    Senddatos.toCharArray(HTMLCh,Senddatos.length());
+    httpd_resp_send(req,HTMLCh,Senddatos.length());
     return ESP_OK;      
 }
 
