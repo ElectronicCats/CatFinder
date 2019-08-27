@@ -94,26 +94,27 @@ void loop()
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
   //send all data
+    Todo+="Humidity : ";
     Todo+=humidity;
-    Todo+=",";
+    Todo+="Pressure : ";
     Todo+=pressure;
-    Todo+=",";
+    Todo+="Temperature : ";
     Todo+=temp;//°C
-    Todo+=",";
+    Todo+="CO2 Level ppm : ";
     Todo+=co2;//ppm
-    Todo+=",";
+    Todo+="Tvoc level ppb: ";
     Todo+=tvoc;//ppb
-    Todo+=",";
+    Todo+="Acelerometer x: ";
     Todo+=ax;
-    Todo+=",";
+    Todo+="Acelerometer y: ";
     Todo+=ay;
-    Todo+=",";
+    Todo+="Acelerometer z: ";
     Todo+=az;
-    Todo+=",";
+    Todo+="Gyroscope x: ";
     Todo+=gx;
-    Todo+=",";
+    Todo+="Gyroscope y: ";
     Todo+=gy;
-    Todo+=",";
+    Todo+="Gyroscope x: ";
     Todo+=gz;
     Serial.println(Todo);
     Serial1.println(Todo);
