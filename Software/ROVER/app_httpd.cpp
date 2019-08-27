@@ -388,8 +388,7 @@ static esp_err_t post_handler(httpd_req_t *req){
   Senddatos +="<body>\n";
   Senddatos +="</thead>\n";
   Senddatos +="</section>\n";
-  Senddatos +="</figure>\n";
-  Senddatos +="<h2>Datos de Sensores</h2>\n";
+  Senddatos +="<h2>Datos Sensores</h2>\n";
   Senddatos +=Serialdata;
   Senddatos +="</body>\n";
   Senddatos +="</html>\n";
