@@ -1,0 +1,778 @@
+EESchema Schematic File Version 4
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:C_Small C?
+U 1 1 5D1CFEEA
+P 1850 1350
+F 0 "C?" H 1942 1396 50  0000 L CNN
+F 1 "C_Small" H 1942 1305 50  0000 L CNN
+F 2 "" H 1850 1350 50  0001 C CNN
+F 3 "~" H 1850 1350 50  0001 C CNN
+	1    1850 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 1450 1850 1700
+Wire Wire Line
+	1850 1250 1850 1050
+Wire Wire Line
+	1850 1050 2150 1050
+Wire Wire Line
+	2950 1050 2950 1300
+$Comp
+L Device:CP1_Small C?
+U 1 1 5D1D283F
+P 2150 1200
+F 0 "C?" H 2241 1246 50  0000 L CNN
+F 1 "CP1_Small" H 2241 1155 50  0000 L CNN
+F 2 "" H 2150 1200 50  0001 C CNN
+F 3 "~" H 2150 1200 50  0001 C CNN
+	1    2150 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 1100 2150 1050
+Connection ~ 2150 1050
+Wire Wire Line
+	2150 1050 2950 1050
+$Comp
+L power:GND #PWR?
+U 1 1 5D1D3A43
+P 2150 1350
+F 0 "#PWR?" H 2150 1100 50  0001 C CNN
+F 1 "GND" H 2155 1177 50  0000 C CNN
+F 2 "" H 2150 1350 50  0001 C CNN
+F 3 "" H 2150 1350 50  0001 C CNN
+	1    2150 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 1300 2150 1350
+Wire Wire Line
+	1850 800  1850 1050
+Connection ~ 1850 1050
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D1D49D6
+P 4050 1550
+F 0 "M?" H 4208 1546 50  0000 L CNN
+F 1 "Motor_DC" H 4208 1455 50  0000 L CNN
+F 2 "" H 4050 1460 50  0001 C CNN
+F 3 "~" H 4050 1460 50  0001 C CNN
+	1    4050 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D1D5151
+P 4050 2300
+F 0 "M?" H 4208 2296 50  0000 L CNN
+F 1 "Motor_DC" H 4208 2205 50  0000 L CNN
+F 2 "" H 4050 2210 50  0001 C CNN
+F 3 "~" H 4050 2210 50  0001 C CNN
+	1    4050 2300
+	1    0    0    -1  
+$EndComp
+Text Label 4050 1350 0    50   ~ 0
+AOUT1
+Text Label 4050 1850 0    50   ~ 0
+AOUT2
+Text Label 4100 2100 0    50   ~ 0
+BOUT1
+Text Label 4100 2600 0    50   ~ 0
+BOUT2
+$Comp
+L power:GND #PWR?
+U 1 1 5D1DD36E
+P 2600 2900
+F 0 "#PWR?" H 2600 2650 50  0001 C CNN
+F 1 "GND" H 2605 2727 50  0000 C CNN
+F 2 "" H 2600 2900 50  0001 C CNN
+F 3 "" H 2600 2900 50  0001 C CNN
+	1    2600 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 2700 2550 2900
+Wire Wire Line
+	2550 2900 2600 2900
+Wire Wire Line
+	2650 2700 2650 2900
+Wire Wire Line
+	2650 2900 2600 2900
+Connection ~ 2600 2900
+$Comp
+L Device:C_Small C?
+U 1 1 5D1DE261
+P 3350 1350
+F 0 "C?" H 3442 1396 50  0000 L CNN
+F 1 "C_Small" H 3442 1305 50  0000 L CNN
+F 2 "" H 3350 1350 50  0001 C CNN
+F 3 "~" H 3350 1350 50  0001 C CNN
+	1    3350 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 1300 2850 1250
+Wire Wire Line
+	2850 1250 3350 1250
+$Comp
+L power:GND #PWR?
+U 1 1 5D1DEF80
+P 3350 1550
+F 0 "#PWR?" H 3350 1300 50  0001 C CNN
+F 1 "GND" H 3355 1377 50  0000 C CNN
+F 2 "" H 3350 1550 50  0001 C CNN
+F 3 "" H 3350 1550 50  0001 C CNN
+	1    3350 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 1450 3350 1550
+Wire Wire Line
+	4100 2100 4050 2100
+Wire Wire Line
+	4100 2600 4050 2600
+Text Label 2050 1600 2    50   ~ 0
+nSLEEP
+$Comp
+L Device:R_Small R?
+U 1 1 5D1E7C75
+P 1650 2100
+F 0 "R?" H 1709 2146 50  0000 L CNN
+F 1 "R_Small" H 1709 2055 50  0000 L CNN
+F 2 "" H 1650 2100 50  0001 C CNN
+F 3 "~" H 1650 2100 50  0001 C CNN
+	1    1650 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 1900 1650 2000
+Wire Wire Line
+	1650 1800 1650 1900
+Connection ~ 1650 1900
+$Comp
+L power:GND #PWR?
+U 1 1 5D1EBA36
+P 1650 2300
+F 0 "#PWR?" H 1650 2050 50  0001 C CNN
+F 1 "GND" H 1655 2127 50  0000 C CNN
+F 2 "" H 1650 2300 50  0001 C CNN
+F 3 "" H 1650 2300 50  0001 C CNN
+	1    1650 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 2200 1650 2300
+Wire Wire Line
+	1650 1800 2050 1800
+Wire Wire Line
+	1850 1700 2050 1700
+$Comp
+L Connector:Conn_01x08_Female J?
+U 1 1 5D1EFE14
+P 700 1500
+F 0 "J?" H 592 875 50  0000 C CNN
+F 1 "Conn_01x08_Female" H 592 966 50  0000 C CNN
+F 2 "" H 700 1500 50  0001 C CNN
+F 3 "~" H 700 1500 50  0001 C CNN
+	1    700  1500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x08_Female J?
+U 1 1 5D1F15F8
+P 750 2650
+F 0 "J?" H 642 2025 50  0000 C CNN
+F 1 "Conn_01x08_Female" H 642 2116 50  0000 C CNN
+F 2 "" H 750 2650 50  0001 C CNN
+F 3 "~" H 750 2650 50  0001 C CNN
+	1    750  2650
+	-1   0    0    -1  
+$EndComp
+Text Label 2050 2100 2    50   ~ 0
+GPIO4
+Text Label 2050 2200 2    50   ~ 0
+GPIO2
+Wire Wire Line
+	1650 1900 2050 1900
+$Comp
+L Driver_Motor:DRV8833PWP U?
+U 1 1 5D1CE3C8
+P 2650 2000
+F 0 "U?" H 2650 2881 50  0000 C CNN
+F 1 "DRV8833PWP" H 2650 2790 50  0000 C CNN
+F 2 "Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias" H 3100 2450 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/drv8833.pdf" H 2500 2550 50  0001 C CNN
+	1    2650 2000
+	1    0    0    -1  
+$EndComp
+Text Label 2050 2300 2    50   ~ 0
+GPIO4
+Text Label 2050 2400 2    50   ~ 0
+GPIO2
+Text Label 900  1200 0    50   ~ 0
+GPIO4
+Text Label 900  1300 0    50   ~ 0
+GPIO2
+$Comp
+L Device:C_Small C?
+U 1 1 5D1F7E27
+P 6500 1450
+F 0 "C?" H 6592 1496 50  0000 L CNN
+F 1 "C_Small" H 6592 1405 50  0000 L CNN
+F 2 "" H 6500 1450 50  0001 C CNN
+F 3 "~" H 6500 1450 50  0001 C CNN
+	1    6500 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 1550 6500 1800
+Wire Wire Line
+	6500 1350 6500 1150
+Wire Wire Line
+	6500 1150 6800 1150
+Wire Wire Line
+	7600 1150 7600 1400
+$Comp
+L Device:CP1_Small C?
+U 1 1 5D1F7E35
+P 6800 1300
+F 0 "C?" H 6891 1346 50  0000 L CNN
+F 1 "CP1_Small" H 6891 1255 50  0000 L CNN
+F 2 "" H 6800 1300 50  0001 C CNN
+F 3 "~" H 6800 1300 50  0001 C CNN
+	1    6800 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 1200 6800 1150
+Connection ~ 6800 1150
+Wire Wire Line
+	6800 1150 7600 1150
+$Comp
+L power:GND #PWR?
+U 1 1 5D1F7E42
+P 6800 1450
+F 0 "#PWR?" H 6800 1200 50  0001 C CNN
+F 1 "GND" H 6805 1277 50  0000 C CNN
+F 2 "" H 6800 1450 50  0001 C CNN
+F 3 "" H 6800 1450 50  0001 C CNN
+	1    6800 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 1400 6800 1450
+$Comp
+L power:+10V #PWR?
+U 1 1 5D1F7E4D
+P 6500 900
+F 0 "#PWR?" H 6500 750 50  0001 C CNN
+F 1 "+10V" H 6515 1073 50  0000 C CNN
+F 2 "" H 6500 900 50  0001 C CNN
+F 3 "" H 6500 900 50  0001 C CNN
+	1    6500 900 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 900  6500 1150
+Connection ~ 6500 1150
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D1F7E59
+P 8700 1650
+F 0 "M?" H 8858 1646 50  0000 L CNN
+F 1 "Motor_DC" H 8858 1555 50  0000 L CNN
+F 2 "" H 8700 1560 50  0001 C CNN
+F 3 "~" H 8700 1560 50  0001 C CNN
+	1    8700 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D1F7E63
+P 8700 2400
+F 0 "M?" H 8858 2396 50  0000 L CNN
+F 1 "Motor_DC" H 8858 2305 50  0000 L CNN
+F 2 "" H 8700 2310 50  0001 C CNN
+F 3 "~" H 8700 2310 50  0001 C CNN
+	1    8700 2400
+	1    0    0    -1  
+$EndComp
+Text Label 8700 1450 0    50   ~ 0
+ADER1
+Text Label 8700 1950 0    50   ~ 0
+ADER2
+Text Label 8750 2200 0    50   ~ 0
+BDER1
+Text Label 8750 2700 0    50   ~ 0
+BDER2
+$Comp
+L power:GND #PWR?
+U 1 1 5D1F7E71
+P 7250 3000
+F 0 "#PWR?" H 7250 2750 50  0001 C CNN
+F 1 "GND" H 7255 2827 50  0000 C CNN
+F 2 "" H 7250 3000 50  0001 C CNN
+F 3 "" H 7250 3000 50  0001 C CNN
+	1    7250 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 2800 7200 3000
+Wire Wire Line
+	7200 3000 7250 3000
+Wire Wire Line
+	7300 2800 7300 3000
+Wire Wire Line
+	7300 3000 7250 3000
+Connection ~ 7250 3000
+$Comp
+L Device:C_Small C?
+U 1 1 5D1F7E80
+P 8000 1450
+F 0 "C?" H 8092 1496 50  0000 L CNN
+F 1 "C_Small" H 8092 1405 50  0000 L CNN
+F 2 "" H 8000 1450 50  0001 C CNN
+F 3 "~" H 8000 1450 50  0001 C CNN
+	1    8000 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 1400 7500 1350
+Wire Wire Line
+	7500 1350 8000 1350
+$Comp
+L power:GND #PWR?
+U 1 1 5D1F7E8C
+P 8000 1650
+F 0 "#PWR?" H 8000 1400 50  0001 C CNN
+F 1 "GND" H 8005 1477 50  0000 C CNN
+F 2 "" H 8000 1650 50  0001 C CNN
+F 3 "" H 8000 1650 50  0001 C CNN
+	1    8000 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 1550 8000 1650
+Wire Wire Line
+	8750 2200 8700 2200
+Wire Wire Line
+	8750 2700 8700 2700
+Text Label 6700 1700 2    50   ~ 0
+nSLEEP
+$Comp
+L Device:R_Small R?
+U 1 1 5D1F7E9A
+P 6300 2200
+F 0 "R?" H 6359 2246 50  0000 L CNN
+F 1 "R_Small" H 6359 2155 50  0000 L CNN
+F 2 "" H 6300 2200 50  0001 C CNN
+F 3 "~" H 6300 2200 50  0001 C CNN
+	1    6300 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2000 6300 2100
+Wire Wire Line
+	6300 1900 6300 2000
+Connection ~ 6300 2000
+$Comp
+L power:GND #PWR?
+U 1 1 5D1F7EA7
+P 6300 2400
+F 0 "#PWR?" H 6300 2150 50  0001 C CNN
+F 1 "GND" H 6305 2227 50  0000 C CNN
+F 2 "" H 6300 2400 50  0001 C CNN
+F 3 "" H 6300 2400 50  0001 C CNN
+	1    6300 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2300 6300 2400
+Wire Wire Line
+	6300 1900 6700 1900
+Wire Wire Line
+	6500 1800 6700 1800
+Wire Wire Line
+	6300 2000 6700 2000
+$Comp
+L Driver_Motor:DRV8833PWP U?
+U 1 1 5D1F7EB7
+P 7300 2100
+F 0 "U?" H 7300 2981 50  0000 C CNN
+F 1 "DRV8833PWP" H 7300 2890 50  0000 C CNN
+F 2 "Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias" H 7750 2550 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/drv8833.pdf" H 7150 2650 50  0001 C CNN
+	1    7300 2100
+	1    0    0    -1  
+$EndComp
+Text Notes 6750 3450 0    50   ~ 0
+MOTORES LLANTAS DERECHA\n\n
+Text Notes 2000 3400 0    50   ~ 0
+MOTORES LLANTAS IZQUIERDA\n
+Text Label 6700 2200 2    50   ~ 0
+GPIO14
+Text Label 6700 2300 2    50   ~ 0
+GPIO15
+Text Label 6700 2500 2    50   ~ 0
+GPIO15
+Text Label 6700 2400 2    50   ~ 0
+GPIO14
+Text Label 7900 2200 0    50   ~ 0
+ADER1
+Text Label 7900 2300 0    50   ~ 0
+ADER2
+Text Label 7900 2400 0    50   ~ 0
+BDER1
+Text Label 7900 2500 0    50   ~ 0
+BDER2
+Text Label 3250 2100 0    50   ~ 0
+AOUT1
+Text Label 3250 2200 0    50   ~ 0
+AOUT2
+Text Label 3250 2300 0    50   ~ 0
+BOUT1
+Text Label 3250 2400 0    50   ~ 0
+BOUT2
+Text Label 900  1400 0    50   ~ 0
+GPIO14
+Text Label 900  1500 0    50   ~ 0
+GPIO15
+$Comp
+L Device:C_Small C?
+U 1 1 5D21617C
+P 3600 4750
+F 0 "C?" H 3692 4796 50  0000 L CNN
+F 1 "C_Small" H 3692 4705 50  0000 L CNN
+F 2 "" H 3600 4750 50  0001 C CNN
+F 3 "~" H 3600 4750 50  0001 C CNN
+	1    3600 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 4850 3600 5100
+Wire Wire Line
+	3600 4650 3600 4450
+Wire Wire Line
+	3600 4450 3900 4450
+Wire Wire Line
+	4700 4450 4700 4700
+$Comp
+L Device:CP1_Small C?
+U 1 1 5D21618A
+P 3900 4600
+F 0 "C?" H 3991 4646 50  0000 L CNN
+F 1 "CP1_Small" H 3991 4555 50  0000 L CNN
+F 2 "" H 3900 4600 50  0001 C CNN
+F 3 "~" H 3900 4600 50  0001 C CNN
+	1    3900 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4500 3900 4450
+Connection ~ 3900 4450
+Wire Wire Line
+	3900 4450 4700 4450
+$Comp
+L power:GND #PWR?
+U 1 1 5D216197
+P 3900 4750
+F 0 "#PWR?" H 3900 4500 50  0001 C CNN
+F 1 "GND" H 3905 4577 50  0000 C CNN
+F 2 "" H 3900 4750 50  0001 C CNN
+F 3 "" H 3900 4750 50  0001 C CNN
+	1    3900 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4700 3900 4750
+$Comp
+L power:+10V #PWR?
+U 1 1 5D2161A2
+P 3600 4200
+F 0 "#PWR?" H 3600 4050 50  0001 C CNN
+F 1 "+10V" H 3615 4373 50  0000 C CNN
+F 2 "" H 3600 4200 50  0001 C CNN
+F 3 "" H 3600 4200 50  0001 C CNN
+	1    3600 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 4200 3600 4450
+Connection ~ 3600 4450
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D2161AE
+P 5800 4950
+F 0 "M?" H 5958 4946 50  0000 L CNN
+F 1 "Motor_DC" H 5958 4855 50  0000 L CNN
+F 2 "" H 5800 4860 50  0001 C CNN
+F 3 "~" H 5800 4860 50  0001 C CNN
+	1    5800 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5D2161B8
+P 5800 5700
+F 0 "M?" H 5958 5696 50  0000 L CNN
+F 1 "Motor_DC" H 5958 5605 50  0000 L CNN
+F 2 "" H 5800 5610 50  0001 C CNN
+F 3 "~" H 5800 5610 50  0001 C CNN
+	1    5800 5700
+	1    0    0    -1  
+$EndComp
+Text Label 5800 4750 0    50   ~ 0
+AFDER1
+Text Label 5800 5250 0    50   ~ 0
+AFDER2
+Text Label 5850 5500 0    50   ~ 0
+BFDER1
+Text Label 5850 6000 0    50   ~ 0
+BFDER2
+$Comp
+L power:GND #PWR?
+U 1 1 5D2161C6
+P 4350 6300
+F 0 "#PWR?" H 4350 6050 50  0001 C CNN
+F 1 "GND" H 4355 6127 50  0000 C CNN
+F 2 "" H 4350 6300 50  0001 C CNN
+F 3 "" H 4350 6300 50  0001 C CNN
+	1    4350 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 6100 4300 6300
+Wire Wire Line
+	4300 6300 4350 6300
+Wire Wire Line
+	4400 6100 4400 6300
+Wire Wire Line
+	4400 6300 4350 6300
+Connection ~ 4350 6300
+$Comp
+L Device:C_Small C?
+U 1 1 5D2161D5
+P 5100 4750
+F 0 "C?" H 5192 4796 50  0000 L CNN
+F 1 "C_Small" H 5192 4705 50  0000 L CNN
+F 2 "" H 5100 4750 50  0001 C CNN
+F 3 "~" H 5100 4750 50  0001 C CNN
+	1    5100 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4700 4600 4650
+Wire Wire Line
+	4600 4650 5100 4650
+$Comp
+L power:GND #PWR?
+U 1 1 5D2161E1
+P 5100 4950
+F 0 "#PWR?" H 5100 4700 50  0001 C CNN
+F 1 "GND" H 5105 4777 50  0000 C CNN
+F 2 "" H 5100 4950 50  0001 C CNN
+F 3 "" H 5100 4950 50  0001 C CNN
+	1    5100 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 4850 5100 4950
+Wire Wire Line
+	5850 5500 5800 5500
+Wire Wire Line
+	5850 6000 5800 6000
+Text Label 3800 5000 2    50   ~ 0
+nSLEEP
+$Comp
+L Device:R_Small R?
+U 1 1 5D2161EF
+P 3400 5500
+F 0 "R?" H 3459 5546 50  0000 L CNN
+F 1 "R_Small" H 3459 5455 50  0000 L CNN
+F 2 "" H 3400 5500 50  0001 C CNN
+F 3 "~" H 3400 5500 50  0001 C CNN
+	1    3400 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 5300 3400 5400
+Wire Wire Line
+	3400 5200 3400 5300
+Connection ~ 3400 5300
+$Comp
+L power:GND #PWR?
+U 1 1 5D2161FC
+P 3400 5700
+F 0 "#PWR?" H 3400 5450 50  0001 C CNN
+F 1 "GND" H 3405 5527 50  0000 C CNN
+F 2 "" H 3400 5700 50  0001 C CNN
+F 3 "" H 3400 5700 50  0001 C CNN
+	1    3400 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 5600 3400 5700
+Wire Wire Line
+	3400 5200 3800 5200
+Wire Wire Line
+	3600 5100 3800 5100
+Wire Wire Line
+	3400 5300 3800 5300
+$Comp
+L Driver_Motor:DRV8833PWP U?
+U 1 1 5D21620A
+P 4400 5400
+F 0 "U?" H 4400 6281 50  0000 C CNN
+F 1 "DRV8833PWP" H 4400 6190 50  0000 C CNN
+F 2 "Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias" H 4850 5850 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/drv8833.pdf" H 4250 5950 50  0001 C CNN
+	1    4400 5400
+	1    0    0    -1  
+$EndComp
+Text Notes 3850 6750 0    50   ~ 0
+MOTORES LLANTAS FRONTALES\n\n
+Text Label 3800 5500 2    50   ~ 0
+GPIO12
+Text Label 3800 5600 2    50   ~ 0
+GPIO13
+Text Label 3800 5800 2    50   ~ 0
+GPIO3
+Text Label 3800 5700 2    50   ~ 0
+GPIO1
+Text Label 5000 5500 0    50   ~ 0
+AFDER1
+Text Label 5000 5600 0    50   ~ 0
+AFDER2
+Text Label 5000 5700 0    50   ~ 0
+BFDER1
+Text Label 5000 5800 0    50   ~ 0
+BFDER2
+Text Label 900  1700 0    50   ~ 0
+GPIO12
+Text Label 900  1600 0    50   ~ 0
+GPIO13
+Text Label 950  2450 0    50   ~ 0
+GPIO1
+Text Label 950  2550 0    50   ~ 0
+GPIO3
+Text Label 950  2350 0    50   ~ 0
+GND
+Text Label 950  2750 0    50   ~ 0
+GND
+Text Label 950  2650 0    50   ~ 0
+3.3V\5V
+Text Label 950  3050 0    50   ~ 0
+3.3V
+Text Label 950  2850 0    50   ~ 0
+GPIO0
+Text Label 950  2950 0    50   ~ 0
+GPIO16
+Text Label 900  1800 0    50   ~ 0
+GND
+Text Label 900  1900 0    50   ~ 0
+5V
+$Comp
+L Device:R_Small R?
+U 1 1 5D23B9EF
+P 3550 1800
+F 0 "R?" H 3609 1846 50  0000 L CNN
+F 1 "R_Small" H 3609 1755 50  0000 L CNN
+F 2 "" H 3550 1800 50  0001 C CNN
+F 3 "~" H 3550 1800 50  0001 C CNN
+	1    3550 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 1900 3550 1900
+$Comp
+L power:+5V #PWR?
+U 1 1 5D23DC80
+P 3550 1150
+F 0 "#PWR?" H 3550 1000 50  0001 C CNN
+F 1 "+5V" H 3565 1323 50  0000 C CNN
+F 2 "" H 3550 1150 50  0001 C CNN
+F 3 "" H 3550 1150 50  0001 C CNN
+	1    3550 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 1150 3550 1700
+$Comp
+L power:+12V #PWR?
+U 1 1 5D241FAE
+P 1850 800
+F 0 "#PWR?" H 1850 650 50  0001 C CNN
+F 1 "+12V" H 1865 973 50  0000 C CNN
+F 2 "" H 1850 800 50  0001 C CNN
+F 3 "" H 1850 800 50  0001 C CNN
+	1    1850 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 5D24338F
+P 8200 1900
+F 0 "R?" H 8259 1946 50  0000 L CNN
+F 1 "R_Small" H 8259 1855 50  0000 L CNN
+F 2 "" H 8200 1900 50  0001 C CNN
+F 3 "~" H 8200 1900 50  0001 C CNN
+	1    8200 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 2000 8200 2000
+$Comp
+L power:+5V #PWR?
+U 1 1 5D24339A
+P 8200 1250
+F 0 "#PWR?" H 8200 1100 50  0001 C CNN
+F 1 "+5V" H 8215 1423 50  0000 C CNN
+F 2 "" H 8200 1250 50  0001 C CNN
+F 3 "" H 8200 1250 50  0001 C CNN
+	1    8200 1250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8200 1250 8200 1800
+$Comp
+L Device:R_Small R?
+U 1 1 5D247081
+P 5300 5200
+F 0 "R?" H 5359 5246 50  0000 L CNN
+F 1 "R_Small" H 5359 5155 50  0000 L CNN
+F 2 "" H 5300 5200 50  0001 C CNN
+F 3 "~" H 5300 5200 50  0001 C CNN
+	1    5300 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 5300 5300 5300
+$Comp
+L power:+5V #PWR?
+U 1 1 5D24708C
+P 5300 4550
+F 0 "#PWR?" H 5300 4400 50  0001 C CNN
+F 1 "+5V" H 5315 4723 50  0000 C CNN
+F 2 "" H 5300 4550 50  0001 C CNN
+F 3 "" H 5300 4550 50  0001 C CNN
+	1    5300 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4550 5300 5100
+$EndSCHEMATC
