@@ -1,2 +1,2 @@
-# Rover
+# Cat Finder
 An explorer spacial
