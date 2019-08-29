@@ -1,21 +1,23 @@
-#include <Wire.h>
-#include "SparkFunBME280.h"
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <DNSServer.h>
 
-const int ledPin = 12; // Pin controlado por PWM 
-const int ledPin1 = 13; // Pin controlado por PWM 
-const int ledPin2 = 14; // Pin controlado por PWM 
-const int ledPin3 = 15; // Pin controlado por PWM 
+
+const int ledPin = 15; // Pin controlado por PWM 
+const int ledPin1 = 14; // Pin controlado por PWM 
+const int ledPin2 = 12; // Pin controlado por PWM 
+const int ledPin3 = 13; // Pin controlado por PWM 
 
 extern int go_front;
 extern int go_back;
 extern int go_right;
 extern int go_left;
 extern int datain;
+String Serialdata;
 
 int Humidity=0;
+
+void startCameraServer();
 
 // WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
 //            or another board which has PSRAM enabled
@@ -24,34 +26,18 @@ int Humidity=0;
 
 #include "camera_pins.h"
 
-TaskHandle_t Task1;
-
-BME280 mySensorB; //Uses I2C address 0x76 (jumper closed)
-
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 4, 1);
 DNSServer dnsServer;
 
-void startCameraServer();
-
 void setup() {
   Serial.begin(115200);
-        xTaskCreatePinnedToCore(
-                    Task1code,   /* Task function. */
-                    "Task1",     /* name of task. */
-                    10000,       /* Stack size of task */
-                    NULL,        /* parameter of the task */
-                    1,           /* priority of the task */
-                    &Task1,      /* Task handle to keep track of created task */
-                    0);          /* pin task to core 0 */                  
-            delay(500); 
-  
-  //Controlers
   Serial.setDebugOutput(true);
   pinMode(ledPin1, OUTPUT);
   pinMode(ledPin2, OUTPUT);
   pinMode(ledPin3, OUTPUT);
   pinMode(ledPin, OUTPUT);
+  pinMode(4, OUTPUT);
 
    //WiFi Access point
   WiFi.mode(WIFI_AP);
@@ -106,40 +92,59 @@ void setup() {
   s->set_framesize(s, FRAMESIZE_QVGA);
 }
 
-//Task1code: blinks an LED every 1000 ms
-void Task1code( void * pvParameters ){
-  Serial.print("Task1 running on core ");
-  Serial.println(xPortGetCoreID());
-
-   //I2C config 
-  Wire.begin(0,16);
-  mySensorB.setI2CAddress(0x76); //Connect to a second sensor
-  if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
-
-
-  for(;;){
-  Humidity= mySensorB.readFloatHumidity(), 0;
-  Serial.print(Humidity);
-  delay(5000)
-  } 
-}
-
-
 void loop() {
   // put your main code here, to run repeatedly:
   if(datain){activationoutput();}
   datain=0;
+  if (Serial.available())
+   {
+     if (Serial.available() > 0)
+     {
+      Serialdata = Serial.readStringUntil('\n');
+      Serial.println(Serialdata);
+     }
+   }   
   delay(1000);
 }
 
-void activationoutput()
+void activationoutput()  
 {
-  if (go_front){digitalWrite(ledPin, HIGH);}
-     else{digitalWrite(ledPin, LOW);}
-  if (go_back!=0){digitalWrite(ledPin1, HIGH);}
-  else{digitalWrite(ledPin1, LOW);}
-     if (go_left){digitalWrite(ledPin2, HIGH); }
-     else{digitalWrite(ledPin2, LOW);}
-  if (go_right){digitalWrite(ledPin3, HIGH);}
-  else{digitalWrite(ledPin3, LOW);}
+  if (go_front)
+  {digitalWrite(ledPin, HIGH);
+   digitalWrite(ledPin1, LOW);
+   digitalWrite(ledPin2, HIGH);
+   digitalWrite(ledPin3, LOW);
+   //Serial.println("front");
+  }
+  
+  if (go_back)
+  {
+   //Serial.println("back");
+   digitalWrite(ledPin, LOW);
+   digitalWrite(ledPin1, HIGH);
+   digitalWrite(ledPin2, LOW);
+   digitalWrite(ledPin3, HIGH);}
+  
+  if (go_left)
+  {//Serial.println("left");
+   digitalWrite(ledPin, HIGH);
+   digitalWrite(ledPin1, LOW);
+   digitalWrite(ledPin2, LOW);
+   digitalWrite(ledPin3, HIGH);}
+     
+  if (go_right)
+  {//Serial.println("rigth");
+   digitalWrite(ledPin, LOW);
+   digitalWrite(ledPin1, HIGH);
+   digitalWrite(ledPin2, HIGH);
+   digitalWrite(ledPin3, LOW);}
+
+  if (!go_right&!go_left&!go_back&!go_front)
+    { //Serial.println("nothing");
+      digitalWrite(ledPin, LOW);
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, LOW);
+      digitalWrite(ledPin3, LOW);}
  }
+
+  

@@ -352,17 +352,6 @@ Wire Wire Line
 Wire Wire Line
 	1760 6310 2010 6310
 $Comp
-L power:GND #PWR09
-U 1 1 5D24666B
-P 3280 6200
-F 0 "#PWR09" H 3280 5950 50  0001 C CNN
-F 1 "GND" H 3285 6027 50  0000 C CNN
-F 2 "" H 3280 6200 50  0001 C CNN
-F 3 "" H 3280 6200 50  0001 C CNN
-	1    3280 6200
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3.3V #PWR08
 U 1 1 5D246C08
 P 3280 6000
@@ -377,10 +366,6 @@ Wire Wire Line
 	3280 6000 3280 6060
 Wire Wire Line
 	3280 6060 3570 6060
-Wire Wire Line
-	3280 6200 3280 6160
-Wire Wire Line
-	3280 6160 3570 6160
 $Comp
 L rover_main-rescue:MCP732831CHARGER-electroniccats U2
 U 1 1 5D24ED12
@@ -721,27 +706,27 @@ F 3 "~" H 8450 5850 50  0001 C CNN
 	1    8450 5850
 	0    -1   -1   0   
 $EndComp
-Text Label 10400 4800 0    50   ~ 0
+Text Label 10760 4600 0    50   ~ 0
 SCL
-Text Label 10400 4400 0    50   ~ 0
+Text Label 10760 4300 0    50   ~ 0
 SDA
-Text Label 9800 4400 2    50   ~ 0
+Text Label 10160 4300 2    50   ~ 0
 SDAB
 Text Label 8450 6050 3    50   ~ 0
 SDAB
-Text Label 9800 4800 2    50   ~ 0
+Text Label 10160 4600 2    50   ~ 0
 SCLB
 Text Label 8550 6050 3    50   ~ 0
 SCLB
-Text Label 9800 6000 2    50   ~ 0
+Text Label 10150 5500 2    50   ~ 0
 A3
-Text Label 10400 5600 0    50   ~ 0
+Text Label 10750 5210 0    50   ~ 0
 GPIO12
-Text Label 10400 5200 0    50   ~ 0
+Text Label 10750 4900 0    50   ~ 0
 GPIO13
-Text Label 10400 6000 0    50   ~ 0
+Text Label 10750 5500 0    50   ~ 0
 GPIO15
-Text Label 10380 6400 0    50   ~ 0
+Text Label 10700 5800 0    50   ~ 0
 GPIO14
 $Comp
 L power:VCC #PWR025
@@ -873,11 +858,11 @@ Wire Wire Line
 	4940 6100 4940 5920
 Text Label 5290 6000 2    50   ~ 0
 VCC-IN
-Text Label 9800 5600 2    50   ~ 0
+Text Label 10150 5210 2    50   ~ 0
 11
-Text Label 9800 5200 2    50   ~ 0
+Text Label 10150 4900 2    50   ~ 0
 A1
-Text Label 9820 6400 2    50   ~ 0
+Text Label 10140 5800 2    50   ~ 0
 9
 $Comp
 L Connector:Conn_01x06_Female J2
@@ -934,91 +919,133 @@ BAST PRO-MINI\n
 $Comp
 L Device:Jumper_NO_Small JP5
 U 1 1 5D4C5CB0
-P 10080 4400
-F 0 "JP5" H 10080 4585 50  0000 C CNN
-F 1 "SDA" H 10080 4494 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10080 4400 50  0001 C CNN
-F 3 "~" H 10080 4400 50  0001 C CNN
-	1    10080 4400
+P 10440 4300
+F 0 "JP5" H 10440 4485 50  0000 C CNN
+F 1 "SDA" H 10440 4394 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10440 4300 50  0001 C CNN
+F 3 "~" H 10440 4300 50  0001 C CNN
+	1    10440 4300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Jumper_NO_Small JP6
 U 1 1 5D4C667E
-P 10100 4800
-F 0 "JP6" H 10100 4985 50  0000 C CNN
-F 1 "SCL" H 10100 4894 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 4800 50  0001 C CNN
-F 3 "~" H 10100 4800 50  0001 C CNN
-	1    10100 4800
+P 10460 4600
+F 0 "JP6" H 10460 4785 50  0000 C CNN
+F 1 "SCL" H 10460 4694 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10460 4600 50  0001 C CNN
+F 3 "~" H 10460 4600 50  0001 C CNN
+	1    10460 4600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10180 4400 10400 4400
+	10540 4300 10760 4300
 Wire Wire Line
-	9980 4400 9800 4400
+	10340 4300 10160 4300
 Wire Wire Line
-	10400 4800 10200 4800
+	10760 4600 10560 4600
 Wire Wire Line
-	9800 4800 10000 4800
+	10160 4600 10360 4600
 $Comp
 L Device:Jumper_NO_Small JP7
 U 1 1 5D4CD611
-P 10120 5200
-F 0 "JP7" H 10120 5385 50  0000 C CNN
-F 1 "Engine 1 A" H 10120 5294 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10120 5200 50  0001 C CNN
-F 3 "~" H 10120 5200 50  0001 C CNN
-	1    10120 5200
+P 10470 4900
+F 0 "JP7" H 10470 5085 50  0000 C CNN
+F 1 "Engine 1 A" H 10470 4994 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10470 4900 50  0001 C CNN
+F 3 "~" H 10470 4900 50  0001 C CNN
+	1    10470 4900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10220 5200 10400 5200
+	10570 4900 10750 4900
 Wire Wire Line
-	10020 5200 9800 5200
+	10370 4900 10150 4900
 $Comp
 L Device:Jumper_NO_Small JP8
 U 1 1 5D4D2033
-P 10130 5600
-F 0 "JP8" H 10130 5785 50  0000 C CNN
-F 1 "Engine 1B" H 10130 5694 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10130 5600 50  0001 C CNN
-F 3 "~" H 10130 5600 50  0001 C CNN
-	1    10130 5600
+P 10480 5210
+F 0 "JP8" H 10480 5395 50  0000 C CNN
+F 1 "Engine 1B" H 10480 5304 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10480 5210 50  0001 C CNN
+F 3 "~" H 10480 5210 50  0001 C CNN
+	1    10480 5210
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10230 5600 10400 5600
+	10580 5210 10750 5210
 Wire Wire Line
-	10030 5600 9800 5600
+	10380 5210 10150 5210
 $Comp
 L Device:Jumper_NO_Small JP9
 U 1 1 5D4D5761
-P 10100 6000
-F 0 "JP9" H 10100 6185 50  0000 C CNN
-F 1 "Engine 2A" H 10100 6094 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6000 50  0001 C CNN
-F 3 "~" H 10100 6000 50  0001 C CNN
-	1    10100 6000
+P 10450 5500
+F 0 "JP9" H 10450 5685 50  0000 C CNN
+F 1 "Engine 2A" H 10450 5594 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10450 5500 50  0001 C CNN
+F 3 "~" H 10450 5500 50  0001 C CNN
+	1    10450 5500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10200 6000 10400 6000
+	10550 5500 10750 5500
 Wire Wire Line
-	9800 6000 10000 6000
+	10150 5500 10350 5500
 $Comp
 L Device:Jumper_NO_Small JP10
 U 1 1 5D4DA54D
-P 10100 6400
-F 0 "JP10" H 10100 6585 50  0000 C CNN
-F 1 "Engine 2B" H 10100 6494 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10100 6400 50  0001 C CNN
-F 3 "~" H 10100 6400 50  0001 C CNN
-	1    10100 6400
+P 10420 5800
+F 0 "JP10" H 10420 5985 50  0000 C CNN
+F 1 "Engine 2B" H 10420 5894 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10420 5800 50  0001 C CNN
+F 3 "~" H 10420 5800 50  0001 C CNN
+	1    10420 5800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10200 6400 10380 6400
+	10520 5800 10700 5800
 Wire Wire Line
-	10000 6400 9820 6400
+	10320 5800 10140 5800
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5D54B969
+P 3000 6400
+F 0 "#PWR?" H 3000 6250 50  0001 C CNN
+F 1 "+3.3V" H 2840 6420 50  0000 C CNN
+F 2 "" H 3000 6400 50  0001 C CNN
+F 3 "" H 3000 6400 50  0001 C CNN
+	1    3000 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D544C06
+P 3200 6470
+F 0 "#PWR?" H 3200 6220 50  0001 C CNN
+F 1 "GND" H 3100 6470 50  0000 C CNN
+F 2 "" H 3200 6470 50  0001 C CNN
+F 3 "" H 3200 6470 50  0001 C CNN
+	1    3200 6470
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3570 6460 3200 6460
+Wire Wire Line
+	3200 6460 3200 6470
+Wire Wire Line
+	3570 6160 3200 6160
+Wire Wire Line
+	3200 6160 3200 6460
+Connection ~ 3200 6460
+Wire Wire Line
+	3570 6560 3300 6560
+Wire Wire Line
+	3300 6560 3300 6660
+Wire Wire Line
+	3300 6660 3570 6660
+Wire Wire Line
+	3300 6660 3000 6660
+Connection ~ 3300 6660
+Wire Wire Line
+	3000 6660 3000 6400
 $EndSCHEMATC
