@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 6386)
+    (drawings 6388)
     (tracks 304)
     (zones 0)
     (modules 38)
@@ -11,8 +11,8 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal)
-    (31 B.Cu signal)
+    (0 F.Cu signal hide)
+    (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -3185,6 +3185,12 @@
     )
   )
 
+  (gr_text "Battery Out" (at 179.8 87 90) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (gr_text "5V IN" (at 168.2 86.9 270) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_line (start 119.38 119.38) (end 165.1 119.38) (layer B.SilkS) (width 0.12))
   (gr_line (start 149.86 116.84) (end 149.86 127) (layer B.SilkS) (width 0.12))
   (gr_line (start 134.62 116.84) (end 134.62 127) (layer B.SilkS) (width 0.12) (tstamp 5D4B6F19))
