@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:rover_main-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -366,18 +365,6 @@ Wire Wire Line
 	3280 6000 3280 6060
 Wire Wire Line
 	3280 6060 3570 6060
-$Comp
-L rover_main-rescue:MCP732831CHARGER-electroniccats U2
-U 1 1 5D24ED12
-P 4180 3790
-F 0 "U2" H 4180 4205 50  0000 C CNN
-F 1 "MCP732831CHARGER" H 4180 4114 50  0000 C CNN
-F 2 "Batteries:charger_EC_3.3V_battery" H 4180 3790 50  0001 C CNN
-F 3 "" H 4180 3790 50  0001 C CNN
-F 4 "EC" H 4180 3790 50  0001 C CNN "manf#"
-	1    4180 3790
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:VCC #PWR05
 U 1 1 5D24F7E2
@@ -1048,4 +1035,16 @@ Wire Wire Line
 Connection ~ 3300 6660
 Wire Wire Line
 	3000 6660 3000 6400
+$Comp
+L electroniccats:MCP732831CHARGER U2
+U 1 1 5D6C735F
+P 4180 3790
+F 0 "U2" H 4180 4205 50  0000 C CNN
+F 1 "MCP732831CHARGER" H 4180 4114 50  0000 C CNN
+F 2 "Batteries:charger_EC_3.3V_battery" H 4180 3790 50  0001 C CNN
+F 3 "" H 4180 3790 50  0001 C CNN
+F 4 "EC" H 4180 3790 50  0001 C CNN "manf#"
+	1    4180 3790
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
