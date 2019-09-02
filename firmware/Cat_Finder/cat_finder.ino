@@ -13,9 +13,23 @@ extern int go_back;
 extern int go_right;
 extern int go_left;
 extern int datain;
-String Serialdata;
+//String Serialdata;
+String str = "";
+const char separator = ',';
+const int dataLength = 11;
+int data[dataLength];
 
-int Humidity=0;
+String Humidity="";
+String Pressure="";
+String temp="";
+String co2="";
+String tvoc="";
+String acex="";
+String acey="";
+String acez="";
+String gx="";
+String gy="";
+String gz="";
 
 void startCameraServer();
 
@@ -98,12 +112,25 @@ void loop() {
   datain=0;
   if (Serial.available())
    {
-     if (Serial.available() > 0)
-     {
-      Serialdata = Serial.readStringUntil('\n');
-      Serial.println(Serialdata);
-     }
-   }   
+      str = Serial.readStringUntil('\n');
+      for (int i = 0; i < dataLength ; i++)
+      {
+         int index = str.indexOf(separator);
+         data[i] = str.substring(0, index).toInt();
+         str = str.substring(index + 1);
+         Humidity= data[0];
+         Pressure= data[1];
+         temp= data[2];
+         co2= data[3];
+         tvoc= data[4];
+         acex= data[5];
+         acey= data[6];
+         acez= data[7];
+         gx= data[8];
+         gy= data[9];
+         gz= data[10];
+      }
+   }  
   delay(1000);
 }
 
@@ -114,7 +141,6 @@ void activationoutput()
    digitalWrite(ledPin1, LOW);
    digitalWrite(ledPin2, HIGH);
    digitalWrite(ledPin3, LOW);
-   //Serial.println("front");
   }
   
   if (go_back)
@@ -140,11 +166,11 @@ void activationoutput()
    digitalWrite(ledPin3, LOW);}
 
   if (!go_right&!go_left&!go_back&!go_front)
-    { //Serial.println("nothing");
-      digitalWrite(ledPin, LOW);
-      digitalWrite(ledPin1, LOW);
-      digitalWrite(ledPin2, LOW);
-      digitalWrite(ledPin3, LOW);}
+  { //Serial.println("nothing");
+   digitalWrite(ledPin, LOW);
+   digitalWrite(ledPin1, LOW);
+   digitalWrite(ledPin2, LOW);
+   digitalWrite(ledPin3, LOW);}
  }
 
   
