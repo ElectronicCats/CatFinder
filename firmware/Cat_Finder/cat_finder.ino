@@ -1,3 +1,5 @@
+//Electronic Cats 
+
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <DNSServer.h>
@@ -13,7 +15,6 @@ extern int go_back;
 extern int go_right;
 extern int go_left;
 extern int datain;
-//String Serialdata;
 String str = "";
 const char separator = ',';
 const int dataLength = 11;
@@ -38,7 +39,28 @@ void startCameraServer();
 
 #define CAMERA_MODEL_AI_THINKER
 
-#include "camera_pins.h"
+#if defined(CAMERA_MODEL_AI_THINKER)
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
+
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
+
+#else
+#error "Camera model not selected"
+#endif
 
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 4, 1);
@@ -145,28 +167,27 @@ void activationoutput()
   
   if (go_back)
   {
-   //Serial.println("back");
    digitalWrite(ledPin, LOW);
    digitalWrite(ledPin1, HIGH);
    digitalWrite(ledPin2, LOW);
    digitalWrite(ledPin3, HIGH);}
   
   if (go_left)
-  {//Serial.println("left");
+  {
    digitalWrite(ledPin, HIGH);
    digitalWrite(ledPin1, LOW);
    digitalWrite(ledPin2, LOW);
    digitalWrite(ledPin3, HIGH);}
      
   if (go_right)
-  {//Serial.println("rigth");
+  {
    digitalWrite(ledPin, LOW);
    digitalWrite(ledPin1, HIGH);
    digitalWrite(ledPin2, HIGH);
    digitalWrite(ledPin3, LOW);}
 
   if (!go_right&!go_left&!go_back&!go_front)
-  { //Serial.println("nothing");
+  {;
    digitalWrite(ledPin, LOW);
    digitalWrite(ledPin1, LOW);
    digitalWrite(ledPin2, LOW);

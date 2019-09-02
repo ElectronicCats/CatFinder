@@ -1,21 +1,10 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+//Electronic Cats "Cat Finder"
+
+
 #include "esp_http_server.h"
 #include "esp_timer.h"
 #include "esp_camera.h"
 #include "img_converters.h"
-//#include "camera_index.h"
 #include "Arduino.h"
 #include <HTTPClient.h>
 
@@ -111,41 +100,6 @@ static int ra_filter_run(ra_filter_t * filter, int value){
     return filter->sum / filter->count;
 }
 
-static void rgb_print(dl_matrix3du_t *image_matrix, uint32_t color, const char * str){
-    fb_data_t fb;
-    fb.width = image_matrix->w;
-    fb.height = image_matrix->h;
-    fb.data = image_matrix->item;
-    fb.bytes_per_pixel = 3;
-    fb.format = FB_BGR888;
-    fb_gfx_print(&fb, (fb.width - (strlen(str) * 14)) / 2, 10, color, str);
-}
-
-static int rgb_printf(dl_matrix3du_t *image_matrix, uint32_t color, const char *format, ...){
-    char loc_buf[64];
-    char * temp = loc_buf;
-    int len;
-    va_list arg;
-    va_list copy;
-    va_start(arg, format);
-    va_copy(copy, arg);
-    len = vsnprintf(loc_buf, sizeof(loc_buf), format, arg);
-    va_end(copy);
-    if(len >= sizeof(loc_buf)){
-        temp = (char*)malloc(len+1);
-        if(temp == NULL) {
-            return 0;
-        }
-    }
-    vsnprintf(temp, len+1, format, arg);
-    va_end(arg);
-    rgb_print(image_matrix, color, temp);
-    if(len > 64){
-        free(temp);
-    }
-    return len;
-}
-
 static esp_err_t stream_handler(httpd_req_t *req){
     camera_fb_t * fb = NULL;
     esp_err_t res = ESP_OK;
@@ -173,7 +127,7 @@ static esp_err_t stream_handler(httpd_req_t *req){
 
     while(true){
         detected = false;
-        face_id = 0;
+        //face_id = 0;
         fb = esp_camera_fb_get();
         if (!fb) {
             Serial.println("Camera capture failed");
@@ -219,9 +173,6 @@ static esp_err_t stream_handler(httpd_req_t *req){
                         if (net_boxes || fb->format != PIXFORMAT_JPEG){
                             if(net_boxes){
                                 detected = true;
-                                if(recognition_enabled){
-                                  //  face_id = run_face_recognition(image_matrix, net_boxes);
-                                }
                                 fr_recognize = esp_timer_get_time();
                                 //draw_face_boxes(image_matrix, net_boxes, face_id);
                                 free(net_boxes->box);
@@ -266,24 +217,10 @@ static esp_err_t stream_handler(httpd_req_t *req){
             break;
         }
         int64_t fr_end = esp_timer_get_time();
-
-        int64_t ready_time = (fr_ready - fr_start)/1000;
-        int64_t face_time = (fr_face - fr_ready)/1000;
-        int64_t recognize_time = (fr_recognize - fr_face)/1000;
-        int64_t encode_time = (fr_encode - fr_recognize)/1000;
-        int64_t process_time = (fr_encode - fr_start)/1000;
-        
         int64_t frame_time = fr_end - last_frame;
         last_frame = fr_end;
         frame_time /= 1000;
         uint32_t avg_frame_time = ra_filter_run(&ra_filter, frame_time);
-      /*  Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
-            (uint32_t)(_jpg_buf_len),
-            (uint32_t)frame_time, 1000.0 / (uint32_t)frame_time,
-            avg_frame_time, 1000.0 / avg_frame_time,
-            (uint32_t)ready_time, (uint32_t)face_time, (uint32_t)recognize_time, (uint32_t)encode_time, (uint32_t)process_time,
-            (detected)?"DETECTED ":"", face_id
-        );*/
     }
 
     last_frame = 0;
@@ -292,7 +229,7 @@ static esp_err_t stream_handler(httpd_req_t *req){
 
 static esp_err_t cmd_handler(httpd_req_t *req){
     char*  buf;
-    size_t buf_len;
+    size_t buf_len; 
     char variable[32] = {0,};
     char value[32] = {0,};
     datain=1;
@@ -375,16 +312,6 @@ static esp_err_t get_handler(httpd_req_t *req)
     SendHTML.toCharArray(HTMLCh,SendHTML.length());
     httpd_resp_send(req,HTMLCh,SendHTML.length());
     return ESP_OK;
-}
-
-static esp_err_t test_handler(httpd_req_t *req){
-    httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    sensor_t * s = esp_camera_sensor_get();
-    if (s->id.PID == OV3660_PID) {
-        return httpd_resp_send(req, (const char *)test_handler, 2500);
-    }
-    return httpd_resp_send(req, (const char *)test_handler, 2500);
 }
 
 static esp_err_t post_handler(httpd_req_t *req){
