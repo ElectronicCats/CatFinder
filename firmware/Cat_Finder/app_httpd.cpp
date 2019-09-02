@@ -15,7 +15,7 @@
 #include "esp_timer.h"
 #include "esp_camera.h"
 #include "img_converters.h"
-#include "camera_index.h"
+//#include "camera_index.h"
 #include "Arduino.h"
 #include <HTTPClient.h>
 
@@ -41,7 +41,18 @@ int go_back=0;
 int go_right=0;
 int go_left=0;
 int datain=0;
-extern String Serialdata;
+
+extern String Humidity;
+extern String Pressure;
+extern String temp;
+extern String co2;
+extern String tvoc;
+extern String acex;
+extern String acey;
+extern String acez;
+extern String gx;
+extern String gy;
+extern String gz;
 
 typedef struct {
         size_t size; //number of values used for filtering
@@ -389,7 +400,28 @@ static esp_err_t post_handler(httpd_req_t *req){
   Senddatos +="</thead>\n";
   Senddatos +="</section>\n";
   Senddatos +="<h2>Datos Sensores</h2>\n";
-  Senddatos +=Serialdata;
+  Senddatos +="<h2>Humidity</h2>\n";
+  Senddatos +=Humidity;
+  Senddatos +="<h2>Pressure</h2>\n";
+  Senddatos +=Pressure;
+  Senddatos +="<h2>Temperatura</h2>\n";
+  Senddatos +=temp;
+  Senddatos +="<h2>CO2</h2>\n";
+  Senddatos +=co2;
+  Senddatos +="<h2>TVOC</h2>\n";
+  Senddatos +=tvoc;
+  Senddatos +="<h2>Ace X</h2>\n";
+  Senddatos +=acex;
+  Senddatos +="<h2>Ace Y</h2>\n";
+  Senddatos +=acey;
+  Senddatos +="<h2>Ace Z</h2>\n";
+  Senddatos +=acez;
+  Senddatos +="<h2>Gx</h2>\n";
+  Senddatos +=gx;
+  Senddatos +="<h2>Gy</h2>\n";
+  Senddatos +=gy;
+  Senddatos +="<h2>Gz</h2>\n";
+  Senddatos +=gz;
   Senddatos +="</body>\n";
   Senddatos +="</html>\n";
         
