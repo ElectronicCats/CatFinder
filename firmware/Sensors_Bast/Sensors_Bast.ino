@@ -41,7 +41,7 @@ void setup()
   Serial.begin(115200);
   Serial1.begin(115200);
   
-// while(!Serial);
+  while(!Serial);
 
   //BME280 CONFIG
    mySensorB.setI2CAddress(0x76); //Connect to a second sensor
@@ -94,27 +94,26 @@ void loop()
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
   //send all data
-    Todo+="Humidity : ";
     Todo+=humidity;
-    Todo+="Pressure : ";
+    Todo+=",";
     Todo+=pressure;
-    Todo+="Temperature : ";
+    Todo+=",";
     Todo+=temp;//°C
-    Todo+="CO2 Level ppm : ";
+    Todo+=",";
     Todo+=co2;//ppm
-    Todo+="Tvoc level ppb: ";
+    Todo+=",";
     Todo+=tvoc;//ppb
-    Todo+="Acelerometer x: ";
+    Todo+=",";
     Todo+=ax;
-    Todo+="Acelerometer y: ";
+    Todo+=",";
     Todo+=ay;
-    Todo+="Acelerometer z: ";
+    Todo+=",";
     Todo+=az;
-    Todo+="Gyroscope x: ";
+    Todo+=",";
     Todo+=gx;
-    Todo+="Gyroscope y: ";
+    Todo+=",";
     Todo+=gy;
-    Todo+="Gyroscope x: ";
+    Todo+=",";
     Todo+=gz;
     Serial.println(Todo);
     Serial1.println(Todo);
