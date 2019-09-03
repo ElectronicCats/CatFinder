@@ -238,17 +238,6 @@ F 3 "" H 2500 1000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2800 900  2800 1000
-$Comp
-L power:+3.3V #PWR010
-U 1 1 5D24B77A
-P 4400 1300
-F 0 "#PWR010" H 4400 1150 50  0001 C CNN
-F 1 "+3.3V" H 4415 1473 50  0000 C CNN
-F 2 "" H 4400 1300 50  0001 C CNN
-F 3 "" H 4400 1300 50  0001 C CNN
-	1    4400 1300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4400 1700 4400 1900
 Wire Wire Line
@@ -257,8 +246,6 @@ Wire Wire Line
 	4000 1400 4400 1400
 Wire Wire Line
 	4400 1400 4400 1500
-Wire Wire Line
-	4400 1300 4400 1400
 Connection ~ 4400 1400
 $Comp
 L power:+3.3V #PWR012
@@ -475,8 +462,6 @@ Wire Wire Line
 	9180 2790 9100 2790
 Wire Wire Line
 	8980 3290 9180 3290
-Text Label 10910 1280 0    50   ~ 0
-SDA
 Text Label 8630 1800 2    50   ~ 0
 SCLE
 Text Label 9180 2890 2    50   ~ 0
@@ -530,50 +515,16 @@ Wire Wire Line
 $Comp
 L power:GND #PWR023
 U 1 1 5D494473
-P 7390 1750
-F 0 "#PWR023" H 7390 1500 50  0001 C CNN
-F 1 "GND" H 7390 1610 50  0000 C CNN
-F 2 "" H 7390 1750 50  0001 C CNN
-F 3 "" H 7390 1750 50  0001 C CNN
-	1    7390 1750
+P 7300 1400
+F 0 "#PWR023" H 7300 1150 50  0001 C CNN
+F 1 "GND" H 7300 1260 50  0000 C CNN
+F 2 "" H 7300 1400 50  0001 C CNN
+F 3 "" H 7300 1400 50  0001 C CNN
+	1    7300 1400
 	1    0    0    -1  
 $EndComp
-Text Label 7490 1550 2    50   ~ 0
+Text Label 7990 1300 0    50   ~ 0
 GPIO0
-Wire Wire Line
-	7390 1750 7390 1650
-Wire Wire Line
-	7390 1650 7490 1650
-$Comp
-L Device:Jumper JP11
-U 1 1 5D49CFDF
-P 10610 1280
-F 0 "JP11" H 10610 1544 50  0000 C CNN
-F 1 "SDE ESP" H 10610 1453 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" H 10610 1280 50  0001 C CNN
-F 3 "~" H 10610 1280 50  0001 C CNN
-	1    10610 1280
-	1    0    0    -1  
-$EndComp
-Text Label 10310 1280 2    50   ~ 0
-SDAE
-Text Label 7490 1450 2    50   ~ 0
-SDAE
-$Comp
-L Device:Jumper JP12
-U 1 1 5D4A0E2A
-P 10610 1680
-F 0 "JP12" H 10610 1944 50  0000 C CNN
-F 1 "SCL ESP" H 10610 1853 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" H 10610 1680 50  0001 C CNN
-F 3 "~" H 10610 1680 50  0001 C CNN
-	1    10610 1680
-	1    0    0    -1  
-$EndComp
-Text Label 10910 1680 0    50   ~ 0
-SCL
-Text Label 10310 1680 2    50   ~ 0
-SCLE
 Wire Notes Line
 	7000 3910 11220 3910
 $Comp
@@ -682,18 +633,10 @@ F 3 "~" H 8450 5850 50  0001 C CNN
 	1    8450 5850
 	0    -1   -1   0   
 $EndComp
-Text Label 10760 4600 0    50   ~ 0
-SCL
-Text Label 10760 4300 0    50   ~ 0
-SDA
-Text Label 10160 4300 2    50   ~ 0
-SDAB
 Text Label 8450 6050 3    50   ~ 0
-SDAB
-Text Label 10160 4600 2    50   ~ 0
-SCLB
+SDA
 Text Label 8550 6050 3    50   ~ 0
-SCLB
+SCL
 Text Label 10150 5500 2    50   ~ 0
 A3
 Text Label 10750 5210 0    50   ~ 0
@@ -877,51 +820,10 @@ Wire Wire Line
 	9330 4360 9330 4280
 Wire Wire Line
 	9330 4660 9330 4790
-$Comp
-L Connector:Conn_01x03_Female J6
-U 1 1 5D4B08DF
-P 7690 1550
-F 0 "J6" H 7718 1576 50  0000 L CNN
-F 1 "Prog" H 7718 1485 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7690 1550 50  0001 C CNN
-F 3 "~" H 7690 1550 50  0001 C CNN
-	1    7690 1550
-	1    0    0    -1  
-$EndComp
 Text Label 9530 1300 0    50   ~ 0
 GPIO2
 Text Notes 7370 4060 0    50   ~ 0
 BAST PRO-MINI\n
-$Comp
-L Device:Jumper_NO_Small JP5
-U 1 1 5D4C5CB0
-P 10440 4300
-F 0 "JP5" H 10440 4485 50  0000 C CNN
-F 1 "SDA" H 10440 4394 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10440 4300 50  0001 C CNN
-F 3 "~" H 10440 4300 50  0001 C CNN
-	1    10440 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Jumper_NO_Small JP6
-U 1 1 5D4C667E
-P 10460 4600
-F 0 "JP6" H 10460 4785 50  0000 C CNN
-F 1 "SCL" H 10460 4694 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10460 4600 50  0001 C CNN
-F 3 "~" H 10460 4600 50  0001 C CNN
-	1    10460 4600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10540 4300 10760 4300
-Wire Wire Line
-	10340 4300 10160 4300
-Wire Wire Line
-	10760 4600 10560 4600
-Wire Wire Line
-	10160 4600 10360 4600
 $Comp
 L Device:Jumper_NO_Small JP7
 U 1 1 5D4CD611
@@ -1047,4 +949,49 @@ F 3 "" H 9080 1350 50  0001 C CNN
 	1    9080 1350
 	1    0    0    -1  
 $EndComp
+$Comp
+L Switch:SW_DIP_x02 SW1
+U 1 1 5D6FB55A
+P 7690 1300
+F 0 "SW1" H 7690 1667 50  0000 C CNN
+F 1 "SW_DIP_x02" H 7690 1576 50  0000 C CNN
+F 2 "connectors:DP-02" H 7690 1300 50  0001 C CNN
+F 3 "~" H 7690 1300 50  0001 C CNN
+	1    7690 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 1400 7300 1300
+Wire Wire Line
+	7300 1300 7390 1300
+Text Label 7390 1200 2    50   ~ 0
+BATT
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5D736D41
+P 8100 1090
+F 0 "#PWR?" H 8100 940 50  0001 C CNN
+F 1 "+3.3V" H 8115 1263 50  0000 C CNN
+F 2 "" H 8100 1090 50  0001 C CNN
+F 3 "" H 8100 1090 50  0001 C CNN
+	1    8100 1090
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7990 1200 8100 1200
+Wire Wire Line
+	8100 1200 8100 1090
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5D739360
+P 4400 1180
+F 0 "#PWR?" H 4400 1030 50  0001 C CNN
+F 1 "+3.3V" H 4415 1353 50  0000 C CNN
+F 2 "" H 4400 1180 50  0001 C CNN
+F 3 "" H 4400 1180 50  0001 C CNN
+	1    4400 1180
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 1180 4400 1400
 $EndSCHEMATC
