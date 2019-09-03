@@ -1,3 +1,4 @@
+
 // Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,16 +26,6 @@
 #include "fr_forward.h"
 
 #define ENROLL_CONFIRM_TIMES 5
-#define FACE_ID_SAVE_NUMBER 7
-
-#define FACE_COLOR_WHITE  0x00FFFFFF
-#define FACE_COLOR_BLACK  0x00000000
-#define FACE_COLOR_RED    0x000000FF
-#define FACE_COLOR_GREEN  0x0000FF00
-#define FACE_COLOR_BLUE   0x00FF0000
-#define FACE_COLOR_YELLOW (FACE_COLOR_RED | FACE_COLOR_GREEN)
-#define FACE_COLOR_CYAN   (FACE_COLOR_BLUE | FACE_COLOR_GREEN)
-#define FACE_COLOR_PURPLE (FACE_COLOR_BLUE | FACE_COLOR_RED)
 
 int go_front=0;
 int go_back=0;
@@ -81,7 +72,6 @@ static mtmn_config_t mtmn_config = {0};
 static int8_t detection_enabled = 0;
 static int8_t recognition_enabled = 0;
 static int8_t is_enrolling = 0;
-static face_id_list id_list = {0};
 
 static ra_filter_t * ra_filter_init(ra_filter_t * filter, size_t sample_size){
     memset(filter, 0, sizeof(ra_filter_t));
@@ -277,13 +267,7 @@ static esp_err_t stream_handler(httpd_req_t *req){
         last_frame = fr_end;
         frame_time /= 1000;
         uint32_t avg_frame_time = ra_filter_run(&ra_filter, frame_time);
-      /*  Serial.printf("MJPG: %uB %ums (%.1ffps), AVG: %ums (%.1ffps), %u+%u+%u+%u=%u %s%d\n",
-            (uint32_t)(_jpg_buf_len),
-            (uint32_t)frame_time, 1000.0 / (uint32_t)frame_time,
-            avg_frame_time, 1000.0 / avg_frame_time,
-            (uint32_t)ready_time, (uint32_t)face_time, (uint32_t)recognize_time, (uint32_t)encode_time, (uint32_t)process_time,
-            (detected)?"DETECTED ":"", face_id
-        );*/
+     
     }
 
     last_frame = 0;
@@ -342,7 +326,7 @@ static esp_err_t cmd_handler(httpd_req_t *req){
 
 static esp_err_t get_handler(httpd_req_t *req)
 {
-  String SendHTML = "<!DOCTYPE html> <html>\n";
+  String SendHTML = "<!DOCTYPE html><html>\n";
   SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no http-equiv='refresh' content='1'\">\n";
   SendHTML +="<title>Rover control</title>\n";
   SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
@@ -350,22 +334,13 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="</style>\n";
   SendHTML +="</head>\n";
   SendHTML +="<body>\n";
-  SendHTML +="<button id=\"btnFront\">FRONT</button> \n";
-  SendHTML +="<button id=\"btnLeft\">LEFT</button>  \n";
-  SendHTML +="<button id=\"btnRight\" >RIGHT</button> \n";
-  SendHTML +="<button id=\"btnBack\">BACK</button> \n";  
-  SendHTML +="</thead>\n";
-  SendHTML +="</section>\n";
-  SendHTML +="<script>\n";
-  SendHTML +="const buttonLeft = document.getElementById(\"btnLeft\");    const buttonRight = document.getElementById(\"btnRight\");    const buttonFront = document.getElementById(\"btnFront\");    const buttonBack = document.getElementById(\"btnBack\");    buttonLeft.addEventListener(\"mousedown\", (e) =>{  console.log(e); updateConfigController(e); });    buttonLeft.addEventListener(\"mouseup\", (e) =>{  console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    function updateConfigController(el) {        let value;        switch (el.srcElement.id) {            case \"btnLeft\":                value = el.buttons == 1 ? 1 : 0;                break;            case \"btnRight\":                value = el.buttons == 1 ? 1 : 0;                break;             case \"btnFront\":                 value = el.buttons == 1 ? 1 : 0;                break;             case \"btnBack\":                 value = el.buttons == 1 ? 1 : 0;                break;             default: return        }    const query = `http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;    console.log(\"query =>\" + query);    fetch(query)        .then(response =>{             console.log(`request to ${query} finished, status: ${response.status}`);         });    }\n";
-  SendHTML +="</script>\n";
-  SendHTML +="</figure>\n";
+  SendHTML +="<button id=\"btnFront\">FRONT</button><button id=\"btnLeft\">LEFT</button><button id=\"btnRight\" >RIGHT</button><button id=\"btnBack\">BACK</button>";
   SendHTML +="<h1>Explorador Rover</h1>\n";
   SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
   SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
   SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
   SendHTML +="</figure>\n";
-  SendHTML +="<iframe src=\"http://192.168.4.1:80/data\"</iframe>\n";
+  SendHTML +="<table class=\"table\"><thead><tr><th scope=\"col\">#</th><th scope=\"col\">DATA</th><th scope=\"col\">VALUE</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>Humedad</td><td><p id=\"humedad\">0</p></td></tr><tr><th scope=\"row\">2</th><td>presión atmosférica</td><td><p id=\"press\">0</p></td></tr><tr><th scope=\"row\">3</th><td>temperatura Cº</td><td><p id=\"tempC\"></p></td></tr><tr><th scope=\"row\">4</th><td>CO2 ppm</td><td><p id=\"co2\">0</p></td></tr><tr><th scope=\"row\">5</th><td> TVOC ppb</td><td><p id=\"tvoc\">0</p></td></tr><tr><th scope=\"row\">5</th><td>acelerómetro X</td><td><p id=\"acX\">0</p></td></tr><tr><th scope=\"row\">6</th><td>acelerómetro Y</td><td><p id=\"acY\">0</p></td></tr><tr><th scope=\"row\">7</th><td>acelerómetro Z</td><td><p id=\"acZ\">0</p></td></tr><tr><th scope=\"row\">8</th><td>giroscopio X</td><td><p id=\"grX\">0</p></td></tr><tr><th scope=\"row\">9</th> <td>giroscopio Y </td><td><p id=\"grY\">0</p></td></tr><tr><th scope=\"row\">10</th><td>giroscopio Z</td><td><p id=\"grZ\">0</p></td></tr></tbody></table>";
   SendHTML +="</body>\n";
   SendHTML +="</html>\n";
   
@@ -377,59 +352,15 @@ static esp_err_t get_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
-static esp_err_t test_handler(httpd_req_t *req){
-    httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    sensor_t * s = esp_camera_sensor_get();
-    if (s->id.PID == OV3660_PID) {
-        return httpd_resp_send(req, (const char *)test_handler, 2500);
-    }
-    return httpd_resp_send(req, (const char *)test_handler, 2500);
-}
-
 static esp_err_t post_handler(httpd_req_t *req){
 
-  String Senddatos = "<!DOCTYPE html> <html>\n";
-  Senddatos +="<head> <meta http-equiv='refresh' content='3'/>\n";
-  Senddatos +="<title>Rover control</title>\n";
-  Senddatos +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  Senddatos +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  Senddatos +="</style>\n";
-  Senddatos +="</head>\n";
-  Senddatos +="<body>\n";
-  Senddatos +="</thead>\n";
-  Senddatos +="</section>\n";
-  Senddatos +="<h2>Datos Sensores</h2>\n";
-  Senddatos +="<h2>Humidity</h2>\n";
-  Senddatos +=Humidity;
-  Senddatos +="<h2>Pressure</h2>\n";
-  Senddatos +=Pressure;
-  Senddatos +="<h2>Temperatura</h2>\n";
-  Senddatos +=temp;
-  Senddatos +="<h2>CO2</h2>\n";
-  Senddatos +=co2;
-  Senddatos +="<h2>TVOC</h2>\n";
-  Senddatos +=tvoc;
-  Senddatos +="<h2>Ace X</h2>\n";
-  Senddatos +=acex;
-  Senddatos +="<h2>Ace Y</h2>\n";
-  Senddatos +=acey;
-  Senddatos +="<h2>Ace Z</h2>\n";
-  Senddatos +=acez;
-  Senddatos +="<h2>Gx</h2>\n";
-  Senddatos +=gx;
-  Senddatos +="<h2>Gy</h2>\n";
-  Senddatos +=gy;
-  Senddatos +="<h2>Gz</h2>\n";
-  Senddatos +=gz;
-  Senddatos +="</body>\n";
-  Senddatos +="</html>\n";
-        
+  String sendData = "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='3'/></head><body><h1>Error!</h1></body></html>";
+  
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    char HTMLCh[Senddatos.length()+1];
-    Senddatos.toCharArray(HTMLCh,Senddatos.length());
-    httpd_resp_send(req,HTMLCh,Senddatos.length());
+    char HTMLCh[sendData.length()+1];
+    sendData.toCharArray(HTMLCh,sendData.length());
+    httpd_resp_send(req,HTMLCh,sendData.length());
     return ESP_OK;      
 }
 
@@ -477,8 +408,6 @@ void startCameraServer(){
     mtmn_config.o_threshold.score = 0.7;
     mtmn_config.o_threshold.nms = 0.4;
     mtmn_config.o_threshold.candidate_number = 1;
-    
-   face_id_init(&id_list, FACE_ID_SAVE_NUMBER, ENROLL_CONFIRM_TIMES);
     
     Serial.printf("Starting web server on port: '%d'\n", config.server_port);
     if (httpd_start(&camera_httpd, &config) == ESP_OK) {
