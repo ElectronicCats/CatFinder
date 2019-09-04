@@ -325,22 +325,20 @@ static esp_err_t cmd_handler(httpd_req_t *req){
 }
 
 static esp_err_t get_handler(httpd_req_t *req)
-{
+{ 
   String SendHTML = "<!DOCTYPE html><html>\n";
-  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no http-equiv='refresh' content='1'\">\n";
+  SendHTML +="<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no http-equiv='refresh' content='1'\">\n";
   SendHTML +="<title>Rover control</title>\n";
-  SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  SendHTML +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  SendHTML +="</style>\n";
-  SendHTML +="</head>\n";
-  SendHTML +="<body>\n";
-  SendHTML +="<button id=\"btnFront\">FRONT</button><button id=\"btnLeft\">LEFT</button><button id=\"btnRight\" >RIGHT</button><button id=\"btnBack\">BACK</button>";
-  SendHTML +="<h1>Explorador Rover</h1>\n";
-  SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
-  SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
-  SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
-  SendHTML +="</figure>\n";
-  SendHTML +="<table class=\"table\"><thead><tr><th scope=\"col\">#</th><th scope=\"col\">DATA</th><th scope=\"col\">VALUE</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>Humedad</td><td><p id=\"humedad\">0</p></td></tr><tr><th scope=\"row\">2</th><td>presión atmosférica</td><td><p id=\"press\">0</p></td></tr><tr><th scope=\"row\">3</th><td>temperatura Cº</td><td><p id=\"tempC\"></p></td></tr><tr><th scope=\"row\">4</th><td>CO2 ppm</td><td><p id=\"co2\">0</p></td></tr><tr><th scope=\"row\">5</th><td> TVOC ppb</td><td><p id=\"tvoc\">0</p></td></tr><tr><th scope=\"row\">5</th><td>acelerómetro X</td><td><p id=\"acX\">0</p></td></tr><tr><th scope=\"row\">6</th><td>acelerómetro Y</td><td><p id=\"acY\">0</p></td></tr><tr><th scope=\"row\">7</th><td>acelerómetro Z</td><td><p id=\"acZ\">0</p></td></tr><tr><th scope=\"row\">8</th><td>giroscopio X</td><td><p id=\"grX\">0</p></td></tr><tr><th scope=\"row\">9</th> <td>giroscopio Y </td><td><p id=\"grY\">0</p></td></tr><tr><th scope=\"row\">10</th><td>giroscopio Z</td><td><p id=\"grZ\">0</p></td></tr></tbody></table>";
+  SendHTML +="<style>a{width:119px;background-color:#000;border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
+  SendHTML +="body{backgorund-color:#f2f2f2;margin-top:50px;}h1{color:#444444;margin: 50px auto 30px;}h3{color: #444444;margin-bottom: 50px;}\n";
+  SendHTML +="</style><body></head>";
+  SendHTML +="<a id=\"btnFront\">FRONT</a><a id=\"btnBack\">BACK</a><br/><a id=\"btnLeft\">LEFT</a><a id=\"btnRight\" >RIGHT</a>";
+  SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">";
+  SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\" />";
+  SendHTML +="<iframe src=\"http://192.168.4.1:80/data\"</iframe>\n";
+  SendHTML +="<script>\n";
+  SendHTML +="const buttonLeft=document.getElementById(\"btnLeft\");const buttonRight=document.getElementById(\"btnRight\");const buttonFront=document.getElementById(\"btnFront\");const buttonBack = document.getElementById(\"btnBack\");buttonLeft.addEventListener(\"touchstart\", e=>{console.log(e);updateConfigController(e);});buttonLeft.addEventListener(\"touchend\", e=>{console.log(e);updateConfigController(e);});buttonRight.addEventListener(\"touchstart\", e=>{console.log(e);updateConfigController(e);});buttonRight.addEventListener(\"touchend\", e=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"touchstart\", e=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"touchend\", e=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"touchstart\", e=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"touchend\", e=>{console.log(e);updateConfigController(e);});buttonLeft.addEventListener(\"mousedown\", (e) =>{  console.log(e); updateConfigController(e); });    buttonLeft.addEventListener(\"mouseup\", (e) =>{  console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    function updateConfigController(el) {        let value;        switch (el.srcElement.id) {            case \"btnLeft\":                value = el.buttons == 1 ? 1 : 0;                break;            case \"btnRight\":                value = el.buttons == 1 ? 1 : 0;                break;             case \"btnFront\":                 value = el.buttons == 1 ? 1 : 0;                break;             case \"btnBack\":                 value = el.buttons == 1 ? 1 : 0;                break;             default: return        }    const query = `http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;    console.log(\"query =>\" + query);    fetch(query)          .then(response =>{             console.log(`request to ${query} finished, status: ${response.status}`);         });    }\n";
+  SendHTML +="</script>\n";
   SendHTML +="</body>\n";
   SendHTML +="</html>\n";
   
@@ -354,14 +352,14 @@ static esp_err_t get_handler(httpd_req_t *req)
 
 static esp_err_t post_handler(httpd_req_t *req){
 
-  String sendData = "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='3'/></head><body><h1>Error!</h1></body></html>";
-  
-    httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    char HTMLCh[sendData.length()+1];
-    sendData.toCharArray(HTMLCh,sendData.length());
-    httpd_resp_send(req,HTMLCh,sendData.length());
-    return ESP_OK;      
+  String sendData = "<table class=\"table\"><thead><tr><th scope=\"col\">#</th><th scope=\"col\">DATA</th><th scope=\"col\">VALUE</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>Humedad</td><td>"+Humidity+"</td></tr><tr><th scope=\"row\">2</th><td>presión atmosférica</td><td>"+Pressure+"</td></tr><tr><th scope=\"row\">3</th><td>temperatura Cº</td><td>"+temp+"</td></tr><tr><th scope=\"row\">4</th><td>CO2 ppm</td><td><p id=\"co2\">0</p></td></tr><tr><th scope=\"row\">5</th><td> TVOC ppb</td><td>"+tvoc+"</td></tr><tr><th scope=\"row\">5</th><td>acelerómetro X</td><td>"+acex+"</td></tr><tr><th scope=\"row\">6</th><td>acelerómetro Y</td><td>"+acey+"</td></tr><tr><th scope=\"row\">7</th><td>acelerómetro Z</td><td>"+acez+"</td></tr><tr><th scope=\"row\">8</th><td>giroscopio X</td><td>"+gx+"</td></tr><tr><th scope=\"row\">9</th> <td>giroscopio Y </td><td>"+gy+"</td></tr><tr><th scope=\"row\">10</th><td>giroscopio Z</td><td>"+gz+"</td></tr></tbody></table>";
+   
+  httpd_resp_set_type(req, "text/html");
+  httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
+  char HTMLCh[sendData.length()+1];
+  sendData.toCharArray(HTMLCh,sendData.length());
+  httpd_resp_send(req,HTMLCh,sendData.length());
+  return ESP_OK;      
 }
 
 
