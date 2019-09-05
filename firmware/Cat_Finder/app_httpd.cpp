@@ -316,42 +316,9 @@ static esp_err_t get_handler(httpd_req_t *req)
 
 static esp_err_t post_handler(httpd_req_t *req){
 
-  String Senddatos = "<!DOCTYPE html> <html>\n";
-  Senddatos +="<head> <meta http-equiv='refresh' content='3'/>\n";
-  Senddatos +="<title>Rover control</title>\n";
-  Senddatos +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  Senddatos +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  Senddatos +="</style>\n";
-  Senddatos +="</head>\n";
-  Senddatos +="<body>\n";
-  Senddatos +="</thead>\n";
-  Senddatos +="</section>\n";
-  Senddatos +="<h2>Datos Sensores</h2>\n";
-  Senddatos +="<h2>Humidity</h2>\n";
-  Senddatos +=Humidity;
-  Senddatos +="<h2>Pressure</h2>\n";
-  Senddatos +=Pressure;
-  Senddatos +="<h2>Temperatura</h2>\n";
-  Senddatos +=temp;
-  Senddatos +="<h2>CO2</h2>\n";
-  Senddatos +=co2;
-  Senddatos +="<h2>TVOC</h2>\n";
-  Senddatos +=tvoc;
-  Senddatos +="<h2>Ace X</h2>\n";
-  Senddatos +=acex;
-  Senddatos +="<h2>Ace Y</h2>\n";
-  Senddatos +=acey;
-  Senddatos +="<h2>Ace Z</h2>\n";
-  Senddatos +=acez;
-  Senddatos +="<h2>Gx</h2>\n";
-  Senddatos +=gx;
-  Senddatos +="<h2>Gy</h2>\n";
-  Senddatos +=gy;
-  Senddatos +="<h2>Gz</h2>\n";
-  Senddatos +=gz;
-  Senddatos +="</body>\n";
-  Senddatos +="</html>\n";
-        
+  String Senddatos = "<head> <meta http-equiv='refresh' content='3'/>\n";
+  Senddatos += "<table class=\"table\"><thead><tr><th scope=\"col\">#</th><th scope=\"col\">DATA</th><th scope=\"col\">VALUE</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>Humedad</td><td>"+Humidity+"</td></tr><tr><th scope=\"row\">2</th><td>presión atmosférica</td><td>"+Pressure+"</td></tr><tr><th scope=\"row\">3</th><td>temperatura Cº</td><td>"+temp+"</td></tr><tr><th scope=\"row\">4</th><td>CO2 ppm</td><td><p id=\"co2\">0</p></td></tr><tr><th scope=\"row\">5</th><td> TVOC ppb</td><td>"+tvoc+"</td></tr><tr><th scope=\"row\">5</th><td>acelerómetro X</td><td>"+acex+"</td></tr><tr><th scope=\"row\">6</th><td>acelerómetro Y</td><td>"+acey+"</td></tr><tr><th scope=\"row\">7</th><td>acelerómetro Z</td><td>"+acez+"</td></tr><tr><th scope=\"row\">8</th><td>giroscopio X</td><td>"+gx+"</td></tr><tr><th scope=\"row\">9</th> <td>giroscopio Y </td><td>"+gy+"</td></tr><tr><th scope=\"row\">10</th><td>giroscopio Z</td><td>"+gz+"</td></tr></tbody></table>";
+
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
     char HTMLCh[Senddatos.length()+1];
