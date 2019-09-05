@@ -637,15 +637,15 @@ Text Label 8450 6050 3    50   ~ 0
 SDA
 Text Label 8550 6050 3    50   ~ 0
 SCL
-Text Label 10150 5500 2    50   ~ 0
+Text Label 10130 4830 2    50   ~ 0
 A3
-Text Label 10750 5210 0    50   ~ 0
+Text Label 10730 4540 0    50   ~ 0
 GPIO12
-Text Label 10750 4900 0    50   ~ 0
+Text Label 10730 4230 0    50   ~ 0
 GPIO13
-Text Label 10750 5500 0    50   ~ 0
+Text Label 10730 4830 0    50   ~ 0
 GPIO15
-Text Label 10700 5800 0    50   ~ 0
+Text Label 10680 5130 0    50   ~ 0
 GPIO14
 $Comp
 L power:VCC #PWR025
@@ -777,11 +777,11 @@ Wire Wire Line
 	4940 6100 4940 5920
 Text Label 5290 6000 2    50   ~ 0
 VCC-IN
-Text Label 10150 5210 2    50   ~ 0
+Text Label 10300 5600 2    50   ~ 0
 11
-Text Label 10150 4900 2    50   ~ 0
+Text Label 10130 4540 2    50   ~ 0
 A1
-Text Label 10140 5800 2    50   ~ 0
+Text Label 10120 5130 2    50   ~ 0
 9
 $Comp
 L Connector:Conn_01x06_Female J2
@@ -827,63 +827,63 @@ BAST PRO-MINI\n
 $Comp
 L Device:Jumper_NO_Small JP7
 U 1 1 5D4CD611
-P 10470 4900
-F 0 "JP7" H 10470 5085 50  0000 C CNN
-F 1 "Engine 1 A" H 10470 4994 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10470 4900 50  0001 C CNN
-F 3 "~" H 10470 4900 50  0001 C CNN
-	1    10470 4900
+P 10450 4230
+F 0 "JP7" H 10450 4415 50  0000 C CNN
+F 1 "Engine 1 A" H 10450 4324 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10450 4230 50  0001 C CNN
+F 3 "~" H 10450 4230 50  0001 C CNN
+	1    10450 4230
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10570 4900 10750 4900
+	10550 4230 10730 4230
 Wire Wire Line
-	10370 4900 10150 4900
+	10350 4230 10130 4230
 $Comp
 L Device:Jumper_NO_Small JP8
 U 1 1 5D4D2033
-P 10480 5210
-F 0 "JP8" H 10480 5395 50  0000 C CNN
-F 1 "Engine 1B" H 10480 5304 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10480 5210 50  0001 C CNN
-F 3 "~" H 10480 5210 50  0001 C CNN
-	1    10480 5210
+P 10460 4540
+F 0 "JP8" H 10460 4725 50  0000 C CNN
+F 1 "Engine 1B" H 10460 4634 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10460 4540 50  0001 C CNN
+F 3 "~" H 10460 4540 50  0001 C CNN
+	1    10460 4540
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10580 5210 10750 5210
+	10560 4540 10730 4540
 Wire Wire Line
-	10380 5210 10150 5210
+	10360 4540 10130 4540
 $Comp
 L Device:Jumper_NO_Small JP9
 U 1 1 5D4D5761
-P 10450 5500
-F 0 "JP9" H 10450 5685 50  0000 C CNN
-F 1 "Engine 2A" H 10450 5594 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10450 5500 50  0001 C CNN
-F 3 "~" H 10450 5500 50  0001 C CNN
-	1    10450 5500
+P 10430 4830
+F 0 "JP9" H 10430 5015 50  0000 C CNN
+F 1 "Engine 2A" H 10430 4924 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10430 4830 50  0001 C CNN
+F 3 "~" H 10430 4830 50  0001 C CNN
+	1    10430 4830
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10550 5500 10750 5500
+	10530 4830 10730 4830
 Wire Wire Line
-	10150 5500 10350 5500
+	10130 4830 10330 4830
 $Comp
 L Device:Jumper_NO_Small JP10
 U 1 1 5D4DA54D
-P 10420 5800
-F 0 "JP10" H 10420 5985 50  0000 C CNN
-F 1 "Engine 2B" H 10420 5894 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10420 5800 50  0001 C CNN
-F 3 "~" H 10420 5800 50  0001 C CNN
-	1    10420 5800
+P 10400 5130
+F 0 "JP10" H 10400 5315 50  0000 C CNN
+F 1 "Engine 2B" H 10400 5224 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10400 5130 50  0001 C CNN
+F 3 "~" H 10400 5130 50  0001 C CNN
+	1    10400 5130
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10520 5800 10700 5800
+	10500 5130 10680 5130
 Wire Wire Line
-	10320 5800 10140 5800
+	10300 5130 10120 5130
 $Comp
 L power:+3.3V #PWR0101
 U 1 1 5D54B969
@@ -994,4 +994,25 @@ Wire Wire Line
 Wire Wire Line
 	3900 1400 3900 1100
 NoConn ~ 3700 1200
+Text Label 10130 4230 2    50   ~ 0
+A2
+$Comp
+L Connector:Conn_01x05_Female J11
+U 1 1 5D7B90BA
+P 10500 5700
+F 0 "J11" H 10528 5726 50  0000 L CNN
+F 1 "Bast Pin" H 10528 5635 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 10500 5700 50  0001 C CNN
+F 3 "~" H 10500 5700 50  0001 C CNN
+	1    10500 5700
+	1    0    0    -1  
+$EndComp
+Text Label 10300 5500 2    50   ~ 0
+10
+Text Label 10300 5700 2    50   ~ 0
+12
+Text Label 10300 5800 2    50   ~ 0
+13
+Text Label 10300 5900 2    50   ~ 0
+A0
 $EndSCHEMATC
