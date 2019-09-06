@@ -279,33 +279,13 @@ static esp_err_t cmd_handler(httpd_req_t *req){
 
 static esp_err_t get_handler(httpd_req_t *req)
 {
-  String SendHTML = "<!DOCTYPE html> <html>\n";
-  SendHTML +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no http-equiv='refresh' content='1'\">\n";
-  SendHTML +="<title>Rover control</title>\n";
-  SendHTML +="<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  SendHTML +="body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  SendHTML +="</style>\n";
-  SendHTML +="</head>\n";
-  SendHTML +="<body>\n";
-  SendHTML +="<button id=\"btnFront\">FRONT</button> \n";
-  SendHTML +="<button id=\"btnLeft\">LEFT</button>  \n";
-  SendHTML +="<button id=\"btnRight\" >RIGHT</button> \n";
-  SendHTML +="<button id=\"btnBack\">BACK</button> \n";  
-  SendHTML +="</thead>\n";
-  SendHTML +="</section>\n";
-  SendHTML +="<script>\n";
-  SendHTML +="const buttonLeft = document.getElementById(\"btnLeft\");    const buttonRight = document.getElementById(\"btnRight\");    const buttonFront = document.getElementById(\"btnFront\");    const buttonBack = document.getElementById(\"btnBack\");    buttonLeft.addEventListener(\"mousedown\", (e) =>{  console.log(e); updateConfigController(e); });    buttonLeft.addEventListener(\"mouseup\", (e) =>{  console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonFront.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mousedown\", (e) =>{ console.log(e); updateConfigController(e); });    buttonBack.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });    function updateConfigController(el) {        let value;        switch (el.srcElement.id) {            case \"btnLeft\":                value = el.buttons == 1 ? 1 : 0;                break;            case \"btnRight\":                value = el.buttons == 1 ? 1 : 0;                break;             case \"btnFront\":                 value = el.buttons == 1 ? 1 : 0;                break;             case \"btnBack\":                 value = el.buttons == 1 ? 1 : 0;                break;             default: return        }    const query = `http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;    console.log(\"query =>\" + query);    fetch(query)        .then(response =>{             console.log(`request to ${query} finished, status: ${response.status}`);         });    }\n";
-  SendHTML +="</script>\n";
-  SendHTML +="</figure>\n";
-  SendHTML +="<h1>Explorador Rover</h1>\n";
-  SendHTML +="<div id=\"stream-container\" class=\"image-container hidden\">\n";
-  SendHTML +="<div class=\"close\" id=\"close-stream\">×</div>\n";
-  SendHTML +="<img id=\"stream\" src=\"http://192.168.4.1:81/stream\">\n";
-  SendHTML +="</figure>\n";
-  SendHTML +="<iframe src=\"http://192.168.4.1:80/data\"</iframe>\n";
-  SendHTML +="</body>\n";
-  SendHTML +="</html>\n";
-  
+  String SendHTML = "<DOCTYPE html><html><head><meta charset=\"utf-8\" /></head><body><img src=\"\"><a href=\"#\" id=\"btnFront\">FRONT</a><a href=\"#\" id=\"btnBack\">BACK</a><br/><a href=\"#\" id=\"btnLeft\">LEFT</a><a href=\"#\" id=\"btnRight\">RIGHT</a><h1>Explorador Rover</h1><img id=\"stream\" src=\"http://192.168.4.1:81/stream\"><br/><iframe src=\"http://192.168.4.1:80/data\"></iframe>";
+  SendHTML +="<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{width: 75%;height: auto;border: none;}</style>";
+  SendHTML +="<script>const buttonLeft=document.getElementById(\"btnLeft\");const buttonRight=document.getElementById(\"btnRight\");const buttonFront = document.getElementById(\"btnFront\");const buttonBack = document.getElementById(\"btnBack\");buttonLeft.addEventListener(\"touchstart\", e=>{updateConfigController(e);});buttonLeft.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchend\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchend\",e=>{updateConfigController(e);});";
+  SendHTML +="buttonLeft.addEventListener(\"mousedown\",(e)=>{updateConfigController(e);});buttonLeft.addEventListener(\"mouseup\",(e)=>{updateConfigController(e);});buttonRight.addEventListener(\"mousedown\",(e)=>{updateConfigController(e); });buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });";
+  SendHTML += "buttonFront.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});function updateConfigController(el){let value;switch(el.srcElement.id) {case \"btnLeft\":value = el.buttons==1?1:0;break;case \"btnRight\":value = el.buttons == 1 ? 1 : 0;break; case \"btnFront\":value = el.buttons==1?1:0;break;case \"btnBack\":value = el.buttons==1?1:0;break;default: return}const query=`http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;console.log(\"query =>\"+query);fetch(query).then(response =>{console.log(`request to ${query} finished, status: ${response.status}`);});}</script>";
+  SendHTML +="</body></html>";
+    
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
     char HTMLCh[SendHTML.length()+1];
@@ -316,14 +296,14 @@ static esp_err_t get_handler(httpd_req_t *req)
 
 static esp_err_t post_handler(httpd_req_t *req){
 
-  String Senddatos = "<head> <meta http-equiv='refresh' content='3'/>\n";
-  Senddatos += "<table class=\"table\"><thead><tr><th scope=\"col\">#</th><th scope=\"col\">DATA</th><th scope=\"col\">VALUE</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>Humedad</td><td>"+Humidity+"</td></tr><tr><th scope=\"row\">2</th><td>presión atmosférica</td><td>"+Pressure+"</td></tr><tr><th scope=\"row\">3</th><td>temperatura Cº</td><td>"+temp+"</td></tr><tr><th scope=\"row\">4</th><td>CO2 ppm</td><td><p id=\"co2\">0</p></td></tr><tr><th scope=\"row\">5</th><td> TVOC ppb</td><td>"+tvoc+"</td></tr><tr><th scope=\"row\">5</th><td>acelerómetro X</td><td>"+acex+"</td></tr><tr><th scope=\"row\">6</th><td>acelerómetro Y</td><td>"+acey+"</td></tr><tr><th scope=\"row\">7</th><td>acelerómetro Z</td><td>"+acez+"</td></tr><tr><th scope=\"row\">8</th><td>giroscopio X</td><td>"+gx+"</td></tr><tr><th scope=\"row\">9</th> <td>giroscopio Y </td><td>"+gy+"</td></tr><tr><th scope=\"row\">10</th><td>giroscopio Z</td><td>"+gz+"</td></tr></tbody></table>";
-
+  String SendData = "<head> <meta http-equiv='refresh' content='3'/></head>";
+  SendData += "<table><tr class=\"head-table\"><th colspan=\"2\">Datos</th><th>Acelerometro</th><th>Giroscopio</th></tr><tr><th scope=\"row\">Humedad:</th><th>CO2:</th><th>ACX:</th><th>GX:</th></tr><tr><th scope=\"row\">Temp:</th><th>TVOC:</th><th>ACY:</th><th>GY:</th></tr><tr><th scope=\"row\">Presión:</th><th></th><th>ACZ:</th><th>GZ:</th></tr></table>";
+  SendData += "<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{height: auto;border: none;}table{width: 100%;}th, td{border-bottom: 1px solid #ddd;padding: 5x;}.head-table{padding: 5x;background-color: #000;color: #fff;}</style>";
     httpd_resp_set_type(req, "text/html");
-    httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
-    char HTMLCh[Senddatos.length()+1];
-    Senddatos.toCharArray(HTMLCh,Senddatos.length());
-    httpd_resp_send(req,HTMLCh,Senddatos.length());
+    httpd_resp_set_hdr(req, "Content-Encoding", "utf-8");
+    char HTMLCh[SendData.length()+1];
+    SendData.toCharArray(HTMLCh,SendData.length());
+    httpd_resp_send(req,HTMLCh,SendData.length());
     return ESP_OK;      
 }
 
