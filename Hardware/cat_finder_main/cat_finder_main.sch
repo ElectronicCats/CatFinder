@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:cat_finder_main-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -41,7 +40,7 @@ L Device:D_Schottky D1
 U 1 1 5D1FB64C
 P 1700 1330
 F 0 "D1" V 1746 1251 50  0000 R CNN
-F 1 "D_Schottky" V 1655 1251 50  0000 R CNN
+F 1 "SB260" V 1655 1251 50  0000 R CNN
 F 2 "Diode_THT:D_A-405_P10.16mm_Horizontal" H 1700 1330 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/427/sb220-104141.pdf" H 1700 1330 50  0001 C CNN
 F 4 "SB260-E3/54" V 1700 1330 50  0001 C CNN "manf#"
@@ -793,7 +792,7 @@ L Device:D_Schottky D3
 U 1 1 5D4CB997
 P 9330 4510
 F 0 "D3" V 9376 4431 50  0000 R CNN
-F 1 "D_Schottky" V 9285 4431 50  0000 R CNN
+F 1 "SB260" V 9285 4431 50  0000 R CNN
 F 2 "Diode_THT:D_A-405_P10.16mm_Horizontal" H 9330 4510 50  0001 C CNN
 F 3 "https://www.mouser.mx/datasheet/2/427/sb220-104141.pdf" H 9330 4510 50  0001 C CNN
 F 4 "SB260-E3/54" V 9330 4510 50  0001 C CNN "manf#"
@@ -1004,7 +1003,7 @@ L Device:D_Schottky D4
 U 1 1 5D782221
 P 1400 1330
 F 0 "D4" V 1450 1670 50  0000 R CNN
-F 1 "D_Schottky" V 1350 1830 50  0000 R CNN
+F 1 "1N5817" V 1360 1750 50  0000 R CNN
 F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 1400 1330 50  0001 C CNN
 F 3 "mouser.mx/datasheet/2/345/1n5817-1n5819-24580.pdf" H 1400 1330 50  0001 C CNN
 F 4 "1N5817-T" V 1400 1330 50  0001 C CNN "manf#"
