@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:cat_finder_main-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -168,10 +169,6 @@ F 3 "" H 8980 3290 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10230 2870 10230 2970
-Wire Wire Line
-	10230 2970 10530 2970
-Wire Wire Line
 	10230 3270 10230 3170
 Wire Wire Line
 	10230 3170 10530 3170
@@ -203,17 +200,6 @@ Wire Wire Line
 Connection ~ 2600 2080
 Wire Wire Line
 	2600 2180 2600 2080
-$Comp
-L power:VCC #PWR017
-U 1 1 5D247292
-P 10230 2870
-F 0 "#PWR017" H 10230 2720 50  0001 C CNN
-F 1 "VCC" H 10247 3043 50  0000 C CNN
-F 2 "" H 10230 2870 50  0001 C CNN
-F 3 "" H 10230 2870 50  0001 C CNN
-	1    10230 2870
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1700 1880 1700 2080
 Wire Wire Line
@@ -287,7 +273,7 @@ Wire Wire Line
 	5200 1400 5200 1610
 Wire Wire Line
 	5200 1810 5200 2000
-NoConn ~ 12410 3690
+NoConn ~ 10530 2970
 Text Label 2740 3860 0    50   ~ 0
 BATT
 Wire Wire Line
@@ -506,8 +492,6 @@ Text Label 9180 2990 2    50   ~ 0
 GPIO13
 Text Label 1700 1080 0    50   ~ 0
 BATT
-Wire Wire Line
-	1400 1180 1400 1580
 Wire Wire Line
 	1400 1580 1700 1580
 Wire Wire Line
@@ -1015,4 +999,18 @@ Text Label 10300 5800 2    50   ~ 0
 13
 Text Label 10300 5900 2    50   ~ 0
 A0
+$Comp
+L Device:D_Schottky D4
+U 1 1 5D782221
+P 1400 1330
+F 0 "D4" V 1450 1670 50  0000 R CNN
+F 1 "D_Schottky" V 1350 1830 50  0000 R CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 1400 1330 50  0001 C CNN
+F 3 "mouser.mx/datasheet/2/345/1n5817-1n5819-24580.pdf" H 1400 1330 50  0001 C CNN
+F 4 "1N5817-T" V 1400 1330 50  0001 C CNN "manf#"
+	1    1400 1330
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1400 1480 1400 1580
 $EndSCHEMATC
