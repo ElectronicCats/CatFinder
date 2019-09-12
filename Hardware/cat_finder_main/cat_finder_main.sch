@@ -322,8 +322,6 @@ F 3 "" H 3630 3490 50  0001 C CNN
 	1    3630 3490
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3630 3680 3830 3680
 $Comp
 L power:GND #PWR06
 U 1 1 5D25622A
@@ -941,18 +939,6 @@ Text Label 10300 5900 2    50   ~ 0
 A0
 NoConn ~ 8980 4790
 $Comp
-L Device:D_Schottky D1
-U 1 1 5D782221
-P 3980 3680
-F 0 "D1" H 4030 3580 50  0000 R CNN
-F 1 "1N5817" H 4130 3790 50  0000 R CNN
-F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 3980 3680 50  0001 C CNN
-F 3 "mouser.mx/datasheet/2/345/1n5817-1n5819-24580.pdf" H 3980 3680 50  0001 C CNN
-F 4 "1N5817-T" V 3980 3680 50  0001 C CNN "manf#"
-	1    3980 3680
-	-1   0    0    1   
-$EndComp
-$Comp
 L Device:Q_PMOS_GDS Q1
 U 1 1 5D7B7439
 P 2280 1210
@@ -989,8 +975,6 @@ Wire Wire Line
 Wire Wire Line
 	1380 1690 2380 1690
 Wire Wire Line
-	4130 3680 4220 3680
-Wire Wire Line
 	3630 3880 4220 3880
 $Comp
 L Device:R R2
@@ -1020,4 +1004,6 @@ Wire Wire Line
 Connection ~ 1380 1690
 Wire Wire Line
 	1380 2110 1380 2220
+Wire Wire Line
+	3630 3680 4220 3680
 $EndSCHEMATC
