@@ -193,11 +193,6 @@ Wire Wire Line
 Wire Wire Line
 	2380 2190 3280 2190
 Wire Wire Line
-	2980 1690 2380 1690
-Connection ~ 2380 1690
-Wire Wire Line
-	2380 1690 2380 1790
-Wire Wire Line
 	3980 1990 3980 2190
 Wire Wire Line
 	3980 2190 3280 2190
@@ -937,7 +932,6 @@ Text Label 10300 5800 2    50   ~ 0
 13
 Text Label 10300 5900 2    50   ~ 0
 A0
-NoConn ~ 8980 4790
 $Comp
 L power:VCC #PWR04
 U 1 1 5D24A1C2
@@ -951,17 +945,11 @@ F 3 "" H 1380 920 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2380 1010 2380 910 
-Wire Wire Line
-	2380 1410 2380 1690
-Wire Wire Line
-	1380 1690 1380 1210
 Connection ~ 1380 1210
 Wire Wire Line
 	1380 1210 1380 920 
 Wire Wire Line
 	1380 1210 2080 1210
-Wire Wire Line
-	1380 1690 2380 1690
 Wire Wire Line
 	3630 3880 4220 3880
 $Comp
@@ -988,9 +976,6 @@ F 3 "" H 1380 2220 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1380 1810 1380 1690
-Connection ~ 1380 1690
-Wire Wire Line
 	1380 2110 1380 2220
 Wire Wire Line
 	3630 3680 4220 3680
@@ -1006,4 +991,47 @@ F 4 "TP2104N3-G" H 2280 1210 50  0001 C CNN "manf#"
 	1    2280 1210
 	1    0    0    1   
 $EndComp
+$Comp
+L Device:D_Schottky D1
+U 1 1 5D7ED820
+P 1890 1690
+F 0 "D1" H 1890 1474 50  0000 C CNN
+F 1 "SB260-E3/54" H 1890 1565 50  0000 C CNN
+F 2 "Diode_THT:D_A-405_P7.62mm_Horizontal" H 1890 1690 50  0001 C CNN
+F 3 "~" H 1890 1690 50  0001 C CNN
+F 4 "SB260-E3/54" H 1890 1690 50  0001 C CNN "manf#"
+	1    1890 1690
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1380 1210 1380 1690
+Wire Wire Line
+	1740 1690 1380 1690
+Connection ~ 1380 1690
+Wire Wire Line
+	1380 1690 1380 1810
+Wire Wire Line
+	2380 1410 2380 1690
+Wire Wire Line
+	2040 1690 2380 1690
+Connection ~ 2380 1690
+Wire Wire Line
+	2380 1690 2380 1790
+Wire Wire Line
+	2380 1690 2980 1690
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5D8098BD
+P 9305 4665
+F 0 "#PWR?" H 9305 4515 50  0001 C CNN
+F 1 "+3.3V" H 9320 4838 50  0000 C CNN
+F 2 "" H 9305 4665 50  0001 C CNN
+F 3 "" H 9305 4665 50  0001 C CNN
+	1    9305 4665
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8980 4790 9305 4790
+Wire Wire Line
+	9305 4790 9305 4665
 $EndSCHEMATC
