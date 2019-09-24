@@ -1,7 +1,7 @@
 # CatFinder
 
 
-The electronic cats team in conjunction with The Inventor's House, have developed a new Mars Rover Kit 
+The electronic cats team in conjunction with The Inventor's House A.C, have developed a new Mars Rover Kit 
 
 The electronic cats team together with The Inventor's House have developed a new development kit for a Mars Rover in which almost everyone can participate
 
