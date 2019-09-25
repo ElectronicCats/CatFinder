@@ -78,7 +78,7 @@ void setup() {
    //WiFi Access point
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 0, 0));
-  WiFi.softAP("ESP32-CAM Portal");
+  WiFi.softAP("ESP32-CAM TEST");
 
   //init camera
   startCameraServer();
@@ -129,29 +129,12 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   if(datain){activationoutput();}
   datain=0;
   if (Serial.available())
    {
       str = Serial.readStringUntil('\n');
-      for (int i = 0; i < dataLength ; i++)
-      {
-         int index = str.indexOf(separator);
-         data[i] = str.substring(0, index).toInt();
-         str = str.substring(index + 1);
-         Humidity= data[0];
-         Pressure= data[1];
-         temp= data[2];
-         co2= data[3];
-         tvoc= data[4];
-         acex= data[5];
-         acey= data[6];
-         acez= data[7];
-         gx= data[8];
-         gy= data[9];
-         gz= data[10];
-      }
+      //datastring(); 
    }  
   delay(1000);
 }
@@ -194,4 +177,24 @@ void activationoutput()
    digitalWrite(ledPin3, LOW);}
  }
 
+void  datastring()  
+{
+   for (int i = 0; i < dataLength ; i++)
+      {
+         int index = str.indexOf(separator);
+         data[i] = str.substring(0, index).toInt();
+         str = str.substring(index + 1);
+         Humidity= data[0];
+         Pressure= data[1];
+         temp= data[2];
+         co2= data[3];
+         tvoc= data[4];
+         acex= data[5];
+         acey= data[6];
+         acez= data[7];
+         gx= data[8];
+         gy= data[9];
+         gz= data[10];
+      }
+ }
   

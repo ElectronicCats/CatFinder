@@ -41,7 +41,7 @@ void setup()
   Serial.begin(115200);
   Serial1.begin(115200);
   
-  while(!Serial);
+  //while(!Serial);
 
   //BME280 CONFIG
    mySensorB.setI2CAddress(0x76); //Connect to a second sensor
