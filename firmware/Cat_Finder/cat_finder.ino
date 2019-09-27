@@ -119,6 +119,7 @@ void startCameraServer();
 #error "Camera model not selected"
 #endif
 
+char ssid[15]; //Create a Unique AP from MAC address
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 4, 1);
 DNSServer dnsServer;
@@ -135,7 +136,11 @@ void setup() {
    //WiFi Access point
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 0, 0));
-  WiFi.softAP("ESP32-CAM TEST");
+  
+  uint64_t chipid=ESP.getEfuseMac();//The chip ID is essentially its MAC address(length: 6 bytes).
+  uint16_t chip = (uint16_t)(chipid>>32);
+  snprintf(ssid,15,"Cat Finder-%04X",chip);
+  WiFi.softAP(ssid);
 
   //init camera
   startCameraServer();
