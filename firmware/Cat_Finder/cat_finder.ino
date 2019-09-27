@@ -1,4 +1,61 @@
-//Electronic Cats 
+/************************************************************
+  SPANISH
+  Cat Finder
+  Cat Finder - Rover Educativo
+  Rocio Rosales @ Electronic Cats
+  Eduardo Contreras @ Electronic Cats
+  Original Creation Date: Sep 23, 2019
+  https://github.com/ElectronicCats/Cat_Finder
+
+  Este ejemplos demuestra el funcionamiento basico de los sensores y funcionalidad
+  basica del Cat Finder Kit de Rover Educativo
+  http://electroniccats.com
+
+  Especificaciones del entorno de Desarrollo:
+  IDE: Arduino 1.8.4
+  Plataforma de Hardware:
+  Kit Cat Finder
+  - ESP32 CAM
+  - BMP280
+  - CCS811
+  - MPU6050
+  - HMC5883
+
+
+  Este código es beerware si tu me ves ( o cualquier otro miembro de Electronic Cats)
+  a nivel local, y tu has encontrado nuestro código útil ,
+  por favor comprar una ronda de cervezas!
+
+  Distribuido como; no se da ninguna garantía.
+************************************************************/
+
+/************************************************************
+  ENGLISH
+  Cat Finder
+  Cat Finer - Rover
+  Rocio Rosales @ Electronic Cats
+  Eduardo Contreras @ Electronic Cats
+  Original Creation Date: Sep 23, 2019
+  https://github.com/ElectronicCats/Cat_Finder
+
+  This example demonstrates how to use ESP32 Cam
+
+  Development environment specifics:
+  IDE: Arduino 1.8.4
+  Hardware Platform:
+  Kit Can Finder
+  - ESP32 CAM
+  - BMP280
+  - CCS811
+  - MPU6050
+  - HMC5883
+
+  This code is beerware; if you see me (or any other Electronic Cats
+  member) at the local, and you've found our code helpful,
+  please buy us a round!
+
+  Distributed as-is; no warranty is given.
+*/
 
 #include "esp_camera.h"
 #include <WiFi.h>
