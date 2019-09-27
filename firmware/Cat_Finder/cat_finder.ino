@@ -16,21 +16,21 @@ extern int go_right;
 extern int go_left;
 extern int datain;
 String str = "";
-const char separator = ',';
-const int dataLength = 11;
-int data[dataLength];
+//const char separator = ',';
+//const int dataLength = 11;
+//int data[dataLength];
 
-String Humidity="";
-String Pressure="";
-String temp="";
-String co2="";
-String tvoc="";
-String acex="";
-String acey="";
-String acez="";
-String gx="";
-String gy="";
-String gz="";
+//String Humidity="";
+//String Pressure="";
+//String temp="";
+//String co2="";
+//String tvoc="";
+//String acex="";
+//String acey="";
+//String acez="";
+//String gx="";
+//String gy="";
+//String gz="";
 
 void startCameraServer();
 
@@ -78,7 +78,7 @@ void setup() {
    //WiFi Access point
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 0, 0));
-  WiFi.softAP("ESP32-CAM TEST");
+  WiFi.softAP("CAT FINDER ID?");
 
   //init camera
   startCameraServer();
@@ -105,6 +105,7 @@ void setup() {
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
+  
   //init with high specs to pre-allocate larger buffers
   if(psramFound()){
     config.frame_size = FRAMESIZE_UXGA;
@@ -134,7 +135,7 @@ void loop() {
   if (Serial.available())
    {
       str = Serial.readStringUntil('\n');
-      //datastring(); 
+      //Serial.print(str);
    }  
   delay(1000);
 }
@@ -176,25 +177,25 @@ void activationoutput()
    digitalWrite(ledPin2, LOW);
    digitalWrite(ledPin3, LOW);}
  }
-
+/*
 void  datastring()  
 {
    for (int i = 0; i < dataLength ; i++)
       {
-         int index = str.indexOf(separator);
-         data[i] = str.substring(0, index).toInt();
-         str = str.substring(index + 1);
-         Humidity= data[0];
-         Pressure= data[1];
-         temp= data[2];
-         co2= data[3];
-         tvoc= data[4];
-         acex= data[5];
-         acey= data[6];
-         acez= data[7];
-         gx= data[8];
-         gy= data[9];
-         gz= data[10];
+         //int index = str.indexOf(separator);
+         //data[i] = str.substring(0, index).toInt();
+         //str = str.substring(index + 1);
+         //Humidity= data[0];
+         //Pressure= data[1];
+         //temp= data[2];
+         //co2= data[3];
+         //tvoc= data[4];
+         //acex= data[5];
+         //acey= data[6];
+         //acez= data[7];
+         //gx= data[8];
+         //gy= data[9];
+         //gz= data[10];
       }
- }
+ }*/
   
