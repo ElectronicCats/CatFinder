@@ -1,7 +1,7 @@
 # CatFinder
 
 
-The electronic cats team together with The Inventor's House have developed a new development kit for a Mars Rover in which almost everyone can participate
+The Electronic Cats team along with The Inventor's House have developed a new development kit for a Mars Rover in which almost everyone can participate
 
 "The CatFinder" is an exploration vehicle that collects data from the environment in which it travels.
 
