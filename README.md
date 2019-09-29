@@ -5,6 +5,8 @@ The electronic cats team together with The Inventor's House have developed a new
 
 "The CatFinder" is an exploration vehicle that collects data from the environment in which it travels.
 
+![Rover Render](https://github.com/ElectronicCats/Cat_Finder/blob/master/assets/rover_render.jpeg?raw=true)
+
 "The CatFinder" is cappable to read and transmit data about 
 - Humidity, 
 - Atmostfire pressure, 
