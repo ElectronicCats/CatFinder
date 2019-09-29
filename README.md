@@ -7,7 +7,7 @@ The Electronic Cats team along with The Inventor's House have developed a new de
 
 ![Rover Render](https://github.com/ElectronicCats/Cat_Finder/blob/master/assets/rover_render.jpeg?raw=true)
 
-The CatFinder Rover is cappable transmit:
+The CatFinder Rover is cappable of transmit:
 
 - Humidity
 - Atmosphere pressure
