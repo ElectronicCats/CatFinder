@@ -7,14 +7,17 @@ The electronic cats team together with The Inventor's House have developed a new
 
 ![Rover Render](https://github.com/ElectronicCats/Cat_Finder/blob/master/assets/rover_render.jpeg?raw=true)
 
-"The CatFinder" is cappable to read and transmit data about 
-- Humidity, 
-- Atmostfire pressure, 
-- Temperature, 
-- CO2 levels in ppm, 
-- TVOC levels in ppb, 
-- Position with acelerometer and gyroscope, 
-- and video broadcast of what the CatFinder are seeing about the space that vehicule is touring.
+The CatFinder Rover is cappable transmit:
+
+- Humidity
+- Atmosphere pressure
+- Temperature 
+- CO2 levels in ppm
+- TVOC levels in ppb 
+- Position with acelerometer and gyroscope
+- Video broadcasting.
+
+Yes! we're capable of getting data, control the motors and transmitting video, through WiFi thanks to the ESP32-CAM and the [Bast Pro Mini](https://github.com/ElectronicCats/Bast-Pro-Mini-M0) (Which is a devBoard fully compatible with the Arduino Pro Mini).
 
 ## Licence ##
 
