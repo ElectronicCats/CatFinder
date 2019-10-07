@@ -41,7 +41,7 @@ int datain=0;
 //extern String gx;
 //extern String gy;
 //extern String gz;
-//extern String str;
+extern String str;
 
 
 
@@ -285,7 +285,7 @@ static esp_err_t get_handler(httpd_req_t *req)
   SendHTML +="<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{width: 75%;height: auto;border: none;}</style>";
   SendHTML +="<script>const buttonLeft=document.getElementById(\"btnLeft\");const buttonRight=document.getElementById(\"btnRight\");const buttonFront = document.getElementById(\"btnFront\");const buttonBack = document.getElementById(\"btnBack\");buttonLeft.addEventListener(\"touchstart\", e=>{updateConfigController(e);});buttonLeft.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchend\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchend\",e=>{updateConfigController(e);});";
   SendHTML +="buttonLeft.addEventListener(\"mousedown\",(e)=>{updateConfigController(e);});buttonLeft.addEventListener(\"mouseup\",(e)=>{updateConfigController(e);});buttonRight.addEventListener(\"mousedown\",(e)=>{updateConfigController(e); });buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });";
-  SendHTML += "buttonFront.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});function updateConfigController(el){let value;switch(el.srcElement.id) {case \"btnLeft\":value = el.buttons==1?1:0;break;case \"btnRight\":value = el.buttons == 1 ? 1 : 0;break; case \"btnFront\":value = el.buttons==1?1:0;break;case \"btnBack\":value = el.buttons==1?1:0;break;default: return}const query=`http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;console.log(\"query =>\"+query);fetch(query).then(response =>{console.log(`request to ${query} finished, status: ${response.status}`);});}</script>";
+  SendHTML += "buttonFront.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});function updateConfigController(el){let value;switch(el.srcElement.id) {case \"btnLeft\":value = el.buttons==1?1:0;break;case \"btnRight\":value = el.buttons == 1 ? 1 : 0;break; case \"btnFront\":value = el.buttons==1?1:0;break;case \"btnBack\":value   = el.buttons==1?1:0;break;default: return}const query=`http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;console.log(\"query =>\"+query);fetch(query).then(response =>{console.log(`request to ${query} finished, status: ${response.status}`);});}</script>";
   SendHTML +="</body></html>";
     
     httpd_resp_set_type(req, "text/html");
@@ -298,9 +298,15 @@ static esp_err_t get_handler(httpd_req_t *req)
 
 static esp_err_t post_handler(httpd_req_t *req){
 
-  String SendData = "<head> <meta http-equiv='refresh' content='3'/></head>";
-  //SendData += str;
-  //TABLE TypeOf(data) SendData += "<table><tr class=\"head-table\"><th colspan=\"2\">Datos</th><th>Acelerometro</th><th>Giroscopio</th></tr><tr><th scope=\"row\">Humidity: "+Humidity+"</th><th>CO2: "+co2+"</th><th>ACX: "+acex+"</th><th>GX: "+gx+"</th></tr><tr><th scope=\"row\">Temp: "+temp+"</th><th>TVOC: "+tvoc+"</th><th>ACY: "+acey+"</th><th>GY: "+gy+"</th></tr><tr><th scope=\"row\">Pressure: "+Pressure+"</th><th></th><th>ACZ: "+acez+"</th><th>GZ: "+gz+"</th></tr></table>";
+  //Actualiza datos cada 3 seegundos
+  String SendData = "<head><meta http-equiv='refresh' content='3'/></head>";
+
+  // str => lectura de el serial data lo que manda la bast
+  SendData +="<div>";
+  SendData += str;
+  SendData +="</div>";
+ 
+  //(data) SendData += "<table><tr class=\"head-table\"><th colspan=\"2\">Datos</th><th>Acelerometro</th><th>Giroscopio</th></tr><tr><th scope=\"row\">Humidity: "+Humidity+"</th><th>CO2: "+co2+"</th><th>ACX: "+acex+"</th><th>GX: "+gx+"</th></tr><tr><th scope=\"row\">Temp: "+temp+"</th><th>TVOC: "+tvoc+"</th><th>ACY: "+acey+"</th><th>GY: "+gy+"</th></tr><tr><th scope=\"row\">Pressure: "+Pressure+"</th><th></th><th>ACZ: "+acez+"</th><th>GZ: "+gz+"</th></tr></table>";
   //SendData += "<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{height: auto;border: none;}table{width: 100%;}th, td{border-bottom: 1px solid #ddd;padding: 5x;}.head-table{padding: 5x;background-color: #000;color: #fff;}</style>";
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "utf-8");

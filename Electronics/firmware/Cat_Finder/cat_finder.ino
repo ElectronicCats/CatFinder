@@ -197,7 +197,7 @@ void loop() {
   if (Serial.available())
    {
       str = Serial.readStringUntil('\n');
-      //Serial.print(str);
+     // #IFDEBUG Serial.print(str);
    }  
   delay(1000);
 }
