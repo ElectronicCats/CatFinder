@@ -5,7 +5,7 @@ The Electronic Cats along with The Inventor's House have developed a new develop
 
 "The CatFinder" is an exploration vehicle that collects data from the environment in which it travels.
 
-![Rover Render](https://github.com/ElectronicCats/Cat_Finder/blob/master/assets/rover_render.jpeg?raw=true)
+![Rover Render](https://github.com/ElectronicCats/Cat_Finder/raw/master/rover_render.jpeg?raw=true)
 
 The CatFinder Rover is cappable of transmit:
 
