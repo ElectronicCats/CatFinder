@@ -41,7 +41,7 @@
   This example demonstrates how to use program Bast read I2C sensors
 
   Development environment specifics:
-  IDE: Arduino 1.8.4
+  IDE: Arduino 1.8.9
   Hardware Platform:
   Kit Can Finder
   - Bast Pro Mini M0
@@ -60,9 +60,9 @@
 #include <Wire.h>
 #include "SparkFunBME280.h"
 #include "Adafruit_CCS811.h"
-#include <MPU6050.h>//acelerometro y gyroscopio
+#include <MPU6050.h>  //acelerometro y gyroscopio
 #include <Adafruit_Sensor.h>
-#include <Adafruit_HMC5883_U.h>//Magnetometro
+#include <Adafruit_HMC5883_U.h>  //Magnetometro
 
 
 #define Serial SerialUSB
@@ -129,6 +129,8 @@ void setup()
 
 void loop()
 {
+  sensors_event_t event;
+  
   //Variables BME280
   humidity=mySensorB.readFloatHumidity();
   pressure=mySensorB.readFloatPressure();
@@ -146,10 +148,39 @@ void loop()
       while(1);
     }
   }
-
-  //get value gy-87
-  sensors_event_t event;
+  
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+
+  mag.getEvent(&event);
+ 
+  // Display the results (magnetic vector values are in micro-Tesla (uT))
+  Serial.print("X: "); Serial.print(event.magnetic.x); Serial.print("  ");
+  Serial.print("Y: "); Serial.print(event.magnetic.y); Serial.print("  ");
+  Serial.print("Z: "); Serial.print(event.magnetic.z); Serial.print("  ");Serial.println("uT");
+
+  // Hold the module so that Z is pointing 'up' and you can measure the heading with x&y
+  // Calculate heading when the magnetometer is level, then correct for signs of axis.
+  float heading = atan2(event.magnetic.y, event.magnetic.x);
+  
+  // Once you have your heading, you must then add your 'Declination Angle', which is the 'Error' of the magnetic field in your location.
+  // Find yours here: http://www.magnetic-declination.com/
+  // Mine is: -13* 2' W, which is ~13 Degrees, or (which we need) 0.22 radians
+  // If you cannot find your Declination, comment out these two lines, your compass will be slightly off.
+  float declinationAngle = 0.22;
+  heading += declinationAngle;
+  
+  // Correct for when signs are reversed.
+  if(heading < 0)
+    heading += 2*PI;
+    
+  // Check for wrap due to addition of declination.
+  if(heading > 2*PI)
+    heading -= 2*PI;
+   
+  // Convert radians to degrees for readability.
+  float headingDegrees = heading * 180/M_PI; 
+  
+  //Serial.print("Heading (degrees): "); Serial.println(headingDegrees);
 
   //send all data
     Todo+=humidity;
