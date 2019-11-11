@@ -204,6 +204,12 @@ void loop()
     Todo+=gy;
     Todo+=",";
     Todo+=gz;
+    Todo+=",";
+    Todo+=mx;
+    Todo+=",";
+    Todo+=my;
+    Todo+=",";
+    Todo+=mz;
     Serial.println(Todo);
     Serial1.println(Todo);
     Todo = "";
