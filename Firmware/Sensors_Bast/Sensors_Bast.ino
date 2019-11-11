@@ -1,6 +1,6 @@
 /************************************************************
   SPANISH
-  Cat Finder
+  Cat Finder 1.0.1
   Cat Finder - Rover Educativo
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -12,7 +12,7 @@
   http://electroniccats.com
 
   Especificaciones del entorno de Desarrollo:
-  IDE: Arduino 1.8.4
+  IDE: Arduino 1.8.9
   Plataforma de Hardware:
   Kit Cat Finder
   - Bast Pro Mini M0
@@ -31,7 +31,7 @@
 
 /************************************************************
   ENGLISH
-  Cat Finder
+  Cat Finder 1.0.1
   Cat Finer - Rover
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -76,7 +76,7 @@ float temp=0;
 float co2=0;
 float tvoc=0;
 
-//Variables CCS811
+//Variables HMC5883L
 float magX=0;
 float magY=0;
 float magZ=0;
@@ -103,11 +103,11 @@ void setup()
 
   //BME280 CONFIG
    mySensorB.setI2CAddress(0x76); //Connect to a second sensor
-   if(mySensorB.beginI2C() == false) Serial.println("Sensor B connect failed");
+   if(mySensorB.beginI2C() == false) Serial.println("Sensor BME280 connect failed");
 
   //CCS811 config
   if(!ccs.begin()){
-    Serial.println("Failed to start sensor! Please check your wiring.");
+    Serial.println("Failed to start sensor CCS811! Please check your wiring.");
     while(1);
      }
 
@@ -135,8 +135,8 @@ void loop()
   temp=mySensorB.readTempC();
 
 
- //data CCS811
-   if(ccs.available()){
+  //data CCS811
+  if(ccs.available()){
     if(!ccs.readData()){
       co2=ccs.geteCO2();
       tvoc=ccs.getTVOC();
