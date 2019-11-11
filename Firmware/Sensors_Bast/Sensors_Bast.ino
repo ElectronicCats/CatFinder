@@ -1,6 +1,6 @@
 /************************************************************
   SPANISH
-  Cat Finder 1.0.1
+  Sensor Bast 1.0.1
   Cat Finder - Rover Educativo
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -31,7 +31,7 @@
 
 /************************************************************
   ENGLISH
-  Cat Finder 1.0.1
+  Sensor Bast 1.0.1
   Cat Finer - Rover
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
