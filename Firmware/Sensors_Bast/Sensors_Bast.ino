@@ -48,7 +48,7 @@
   - BMP280
   - CCS811
   - MPU6050
-  - HMC5883
+  - QMC5883L
 
   This code is beerware; if you see me (or any other Electronic Cats
   member) at the local, and you've found our code helpful,
@@ -90,6 +90,7 @@ int16_t gx, gy, gz;
 
 
 QMC5883LCompass compass; //Magnetometro
+int mx, my, mz;
 
 String Todo;
 
@@ -144,18 +145,14 @@ void loop()
   }
   
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
- 
+  
+  // Read compass values
   compass.read();
-  
-  byte a = compass.getAzimuth();
 
-  char myArray[3];
-  compass.getDirection(myArray, a);
-  
-  Serial.print(myArray[0]);
-  Serial.print(myArray[1]);
-  Serial.print(myArray[2]);
-  Serial.println();
+  // Return XYZ readings
+  mx = compass.getX();
+  my = compass.getY();
+  mz = compass.getZ();
 
   //send all data
     Todo+=humidity;
