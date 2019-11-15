@@ -29,20 +29,7 @@ int go_right=0;
 int go_left=0;
 int datain=0;
 
-//extern String Humidity;
-//extern String Pressure;
-//extern String temp;
-//extern String co2;
-//extern String tvoc;
-//extern String acex;
-//extern String acey;
-//extern String acez;
-//extern String gx;
-//extern String gy;
-//extern String gz;
 extern String str;
-
-
 
 typedef struct {
         size_t size; //number of values used for filtering

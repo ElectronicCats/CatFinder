@@ -1,6 +1,6 @@
 /************************************************************
   SPANISH
-  Cat Finder
+  Cat Finder 1.0.1
   Cat Finder - Rover Educativo
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -31,7 +31,7 @@
 
 /************************************************************
   ENGLISH
-  Cat Finder
+  Cat Finder 1.0.1
   Cat Finer - Rover
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -73,21 +73,6 @@ extern int go_right;
 extern int go_left;
 extern int datain;
 String str = "";
-//const char separator = ',';
-//const int dataLength = 11;
-//int data[dataLength];
-
-//String Humidity="";
-//String Pressure="";
-//String temp="";
-//String co2="";
-//String tvoc="";
-//String acex="";
-//String acey="";
-//String acez="";
-//String gx="";
-//String gy="";
-//String gz="";
 
 void startCameraServer();
 
@@ -239,25 +224,4 @@ void activationoutput()
    digitalWrite(ledPin2, LOW);
    digitalWrite(ledPin3, LOW);}
  }
-/*
-void  datastring()  
-{
-   for (int i = 0; i < dataLength ; i++)
-      {
-         //int index = str.indexOf(separator);
-         //data[i] = str.substring(0, index).toInt();
-         //str = str.substring(index + 1);
-         //Humidity= data[0];
-         //Pressure= data[1];
-         //temp= data[2];
-         //co2= data[3];
-         //tvoc= data[4];
-         //acex= data[5];
-         //acey= data[6];
-         //acez= data[7];
-         //gx= data[8];
-         //gy= data[9];
-         //gz= data[10];
-      }
- }*/
   

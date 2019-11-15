@@ -1,6 +1,6 @@
 /************************************************************
   SPANISH
-  Cat Finder 1.0.1
+  Sensor Bast 1.0.1
   Cat Finder - Rover Educativo
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -31,7 +31,7 @@
 
 /************************************************************
   ENGLISH
-  Cat Finder 1.0.1
+  Sensor Bast 1.0.1
   Cat Finer - Rover
   Rocio Rosales @ Electronic Cats
   Eduardo Contreras @ Electronic Cats
@@ -41,14 +41,14 @@
   This example demonstrates how to use program Bast read I2C sensors
 
   Development environment specifics:
-  IDE: Arduino 1.8.4
+  IDE: Arduino 1.8.9
   Hardware Platform:
   Kit Can Finder
   - Bast Pro Mini M0
   - BMP280
   - CCS811
   - MPU6050
-  - HMC5883
+  - QMC5883L
 
   This code is beerware; if you see me (or any other Electronic Cats
   member) at the local, and you've found our code helpful,
@@ -60,10 +60,8 @@
 #include <Wire.h>
 #include "SparkFunBME280.h"
 #include "Adafruit_CCS811.h"
-#include <MPU6050.h>//acelerometro y gyroscopio
-#include <Adafruit_Sensor.h>
-#include <Adafruit_HMC5883_U.h>//Magnetometro
-
+#include <MPU6050.h>  //acelerometro y gyroscopio
+#include <QMC5883LCompass.h>  //Magnetometro
 
 #define Serial SerialUSB
 
@@ -90,12 +88,16 @@ MPU6050 accelgyro;
 int16_t ax, ay, az;
 int16_t gx, gy, gz;
 
-Adafruit_HMC5883_Unified mag = Adafruit_HMC5883_Unified(1);//Magnetometro
+
+QMC5883LCompass compass; //Magnetometro
+int mx, my, mz;
 
 String Todo;
 
 void setup()
 {
+  Wire.begin();
+
   Serial.begin(115200);
   Serial1.begin(115200);
   
@@ -118,17 +120,12 @@ void setup()
   accelgyro.setI2CBypassEnabled(true) ;
   accelgyro.setSleepEnabled(false);
 
-  // Initialise the sensor
-  if (!mag.begin())
-  {
-    // There was a problem detecting the HMC5883 ... check your connections
-    Serial.println(F("Ooops, no HMC5883 detected ... Check your wiring!"));
-    while (1);
-  }
+  // Initialise mag
+  compass.init();
 }
 
 void loop()
-{
+{ 
   //Variables BME280
   humidity=mySensorB.readFloatHumidity();
   pressure=mySensorB.readFloatPressure();
@@ -146,10 +143,16 @@ void loop()
       while(1);
     }
   }
-
-  //get value gy-87
-  sensors_event_t event;
+  
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  
+  // Read compass values
+  compass.read();
+
+  // Return XYZ readings
+  mx = compass.getX();
+  my = compass.getY();
+  mz = compass.getZ();
 
   //send all data
     Todo+=humidity;
@@ -173,6 +176,12 @@ void loop()
     Todo+=gy;
     Todo+=",";
     Todo+=gz;
+    Todo+=",";
+    Todo+=mx;
+    Todo+=",";
+    Todo+=my;
+    Todo+=",";
+    Todo+=mz;
     Serial.println(Todo);
     Serial1.println(Todo);
     Todo = "";
