@@ -1,4 +1,62 @@
-//Electronic Cats "Cat Finder"
+/************************************************************
+  SPANISH
+  Cat Finder 1.0.1
+  Cat Finder - Rover Educativo
+  Rocio Rosales @ Electronic Cats
+  Eduardo Contreras @ Electronic Cats
+  Original Creation Date: Sep 23, 2019
+  https://github.com/ElectronicCats/Cat_Finder
+
+  Este ejemplos demuestra el funcionamiento basico de los sensores y funcionalidad
+  basica del Cat Finder Kit de Rover Educativo
+  http://electroniccats.com
+
+  Especificaciones del entorno de Desarrollo:
+  IDE: Arduino 1.8.9
+  ESP32 Core: 1.0.2
+  Plataforma de Hardware:
+  Kit Cat Finder
+  - ESP32 CAM
+
+
+  Este código es beerware si tu me ves ( o cualquier otro miembro de Electronic Cats)
+  a nivel local, y tu has encontrado nuestro código útil ,
+  por favor comprar una ronda de cervezas!
+
+  Distribuido como; no se da ninguna garantía.
+************************************************************/
+
+/************************************************************
+  ENGLISH
+  Cat Finder 1.0.1
+  Cat Finer - Rover
+  Rocio Rosales @ Electronic Cats
+  Eduardo Contreras @ Electronic Cats
+  Original Creation Date: Sep 23, 2019
+  https://github.com/ElectronicCats/Cat_Finder
+
+  This example demonstrates how to use ESP32 Cam
+
+  Development environment specifics:
+  IDE: Arduino 1.8.4
+  Hardware Platform:
+  Kit Can Finder
+  - ESP32 CAM
+  - BMP280
+  - CCS811
+  - MPU6050
+  - QMC5883
+
+  This code is beerware; if you see me (or any other Electronic Cats
+  member) at the local, and you've found our code helpful,
+  please buy us a round!
+
+  Distributed as-is; no warranty is given.
+*/
+
+// WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
+//            or another board which has PSRAM enabled
+
 
 #include "esp_http_server.h"
 #include "esp_timer.h"
@@ -9,6 +67,7 @@
 
 #include "fb_gfx.h"
 #include "fd_forward.h"
+#include "dl_lib.h"
 #include "fr_forward.h"
 
 #define ENROLL_CONFIRM_TIMES 5

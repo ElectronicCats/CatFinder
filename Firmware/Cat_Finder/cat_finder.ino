@@ -12,14 +12,11 @@
   http://electroniccats.com
 
   Especificaciones del entorno de Desarrollo:
-  IDE: Arduino 1.8.4
+  IDE: Arduino 1.8.9
+  ESP32 Core: 1.0.2
   Plataforma de Hardware:
   Kit Cat Finder
   - ESP32 CAM
-  - BMP280
-  - CCS811
-  - MPU6050
-  - HMC5883
 
 
   Este código es beerware si tu me ves ( o cualquier otro miembro de Electronic Cats)
@@ -45,10 +42,6 @@
   Hardware Platform:
   Kit Can Finder
   - ESP32 CAM
-  - BMP280
-  - CCS811
-  - MPU6050
-  - HMC5883
 
   This code is beerware; if you see me (or any other Electronic Cats
   member) at the local, and you've found our code helpful,
@@ -59,7 +52,9 @@
 
 #include "esp_camera.h"
 #include <WiFi.h>
-#include <DNSServer.h>
+
+// WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
+//            or another board which has PSRAM enabled
 
 
 const int ledPin = 15; // Pin controlado por PWM 
@@ -75,9 +70,6 @@ extern int datain;
 String str = "";
 
 void startCameraServer();
-
-// WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
-//            or another board which has PSRAM enabled
 
 #define CAMERA_MODEL_AI_THINKER
 
@@ -107,7 +99,6 @@ void startCameraServer();
 char ssid[15]; //Create a Unique AP from MAC address
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 4, 1);
-DNSServer dnsServer;
 
 void setup() {
   Serial.begin(115200);
