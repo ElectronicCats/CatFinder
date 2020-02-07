@@ -57,10 +57,10 @@
 //            or another board which has PSRAM enabled
 
 
-const int ledPin = 15; // Pin controlado por PWM 
-const int ledPin1 = 14; // Pin controlado por PWM 
-const int ledPin2 = 12; // Pin controlado por PWM 
-const int ledPin3 = 13; // Pin controlado por PWM 
+const int motorUnoA = 15; // Pin controlado por PWM 
+const int motorUnoB = 14; // Pin controlado por PWM 
+const int motorDosA = 12; // Pin controlado por PWM 
+const int motorDosB = 13; // Pin controlado por PWM 
 
 extern int go_front;
 extern int go_back;
@@ -71,9 +71,6 @@ String str = "";
 
 void startCameraServer();
 
-#define CAMERA_MODEL_AI_THINKER
-
-#if defined(CAMERA_MODEL_AI_THINKER)
 #define PWDN_GPIO_NUM     32
 #define RESET_GPIO_NUM    -1
 #define XCLK_GPIO_NUM      0
@@ -92,10 +89,6 @@ void startCameraServer();
 #define HREF_GPIO_NUM     23
 #define PCLK_GPIO_NUM     22
 
-#else
-#error "Camera model not selected"
-#endif
-
 char ssid[15]; //Create a Unique AP from MAC address
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 4, 1);
@@ -103,10 +96,10 @@ IPAddress apIP(192, 168, 4, 1);
 void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
-  pinMode(ledPin1, OUTPUT);
-  pinMode(ledPin2, OUTPUT);
-  pinMode(ledPin3, OUTPUT);
-  pinMode(ledPin, OUTPUT);
+  pinMode(motorUnoB, OUTPUT);
+  pinMode(motorDosA, OUTPUT);
+  pinMode(motorDosB, OUTPUT);
+  pinMode(motorUnoA, OUTPUT);
   pinMode(4, OUTPUT);
 
    //WiFi Access point
@@ -181,38 +174,38 @@ void loop() {
 void activationoutput()  
 {
   if (go_front)
-  {digitalWrite(ledPin, HIGH);
-   digitalWrite(ledPin1, LOW);
-   digitalWrite(ledPin2, HIGH);
-   digitalWrite(ledPin3, LOW);
+  {digitalWrite(motorUnoA, HIGH);
+   digitalWrite(motorUnoB, LOW);
+   digitalWrite(motorDosA, HIGH);
+   digitalWrite(motorDosB, LOW);
   }
   
   if (go_back)
   {
-   digitalWrite(ledPin, LOW);
-   digitalWrite(ledPin1, HIGH);
-   digitalWrite(ledPin2, LOW);
-   digitalWrite(ledPin3, HIGH);}
+   digitalWrite(motorUnoA, LOW);
+   digitalWrite(motorUnoB, HIGH);
+   digitalWrite(motorDosA, LOW);
+   digitalWrite(motorDosB, HIGH);}
   
   if (go_left)
   {
-   digitalWrite(ledPin, HIGH);
-   digitalWrite(ledPin1, LOW);
-   digitalWrite(ledPin2, LOW);
-   digitalWrite(ledPin3, HIGH);}
+   digitalWrite(motorUnoA, HIGH);
+   digitalWrite(motorUnoB, LOW);
+   digitalWrite(motorDosA, LOW);
+   digitalWrite(motorDosB, HIGH);}
      
   if (go_right)
   {
-   digitalWrite(ledPin, LOW);
-   digitalWrite(ledPin1, HIGH);
-   digitalWrite(ledPin2, HIGH);
-   digitalWrite(ledPin3, LOW);}
+   digitalWrite(motorUnoA, LOW);
+   digitalWrite(motorUnoB, HIGH);
+   digitalWrite(motorDosA, HIGH);
+   digitalWrite(motorDosB, LOW);}
 
   if (!go_right&!go_left&!go_back&!go_front)
-  {;
-   digitalWrite(ledPin, LOW);
-   digitalWrite(ledPin1, LOW);
-   digitalWrite(ledPin2, LOW);
-   digitalWrite(ledPin3, LOW);}
+  {
+   digitalWrite(motorUnoA, LOW);
+   digitalWrite(motorUnoB, LOW);
+   digitalWrite(motorDosA, LOW);
+   digitalWrite(motorDosB, LOW);}
  }
   
