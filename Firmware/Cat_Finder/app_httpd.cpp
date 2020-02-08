@@ -309,10 +309,10 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     int val = atoi(value);
     int res = 0;
 
-    if(!strcmp(variable, "btnFront")){go_front=val;}
-    else if(!strcmp(variable, "btnLeft")){go_left=val;}
-    else if(!strcmp(variable, "btnRight")){go_right=val;}
-    else if(!strcmp(variable, "btnBack")){go_back=val;}
+    if(!strcmp(variable, "btnFront")){go_front=val;go_left=0;go_right=0;go_back=0;}
+    else if(!strcmp(variable, "btnLeft")){go_left=val;go_front=0;go_right=0;go_back=0;}
+    else if(!strcmp(variable, "btnRight")){go_right=val;go_front=0;go_left=0;go_back=0;}
+    else if(!strcmp(variable, "btnBack")){go_back=val;go_front=0;go_right=0;go_left=0;}
     else {
         res = -1;
     }
