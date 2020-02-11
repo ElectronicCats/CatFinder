@@ -327,7 +327,7 @@ static esp_err_t get_handler(httpd_req_t *req)
 }
 
 static esp_err_t post_handler(httpd_req_t *req){
-//Actualiza datos cada 3 seegundos
+//Actualiza datos cada 3 segundos
   String SendData = "<head><meta http-equiv='refresh' content='3'/></head>";
 
   // str => lectura de el serial data lo que manda la bast
