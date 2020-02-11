@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <span style="color: #fff; float: left;">@Electronic Cats</span>
+    <h1>
+      Explorador Rover <a href="#" id="btnRotate" class="button">Girar</a>
+    </h1>
+    <img id="stream" src="http://192.168.4.1:81/stream" />
+    <style>
+      html {
+        font-family: Helvetica;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background-color: #000000;
+        text-align: center;
+        justify-content: center;
+      }
+      h1 {
+        background-color: rgb(0, 0, 0);
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+        padding: 15px;
+        text-decoration: none;
+        box-shadow: 3px 3px 3px rgba(149, 255, 10, 0.671);
+        border-radius: 5px;
+      }
+      .button {
+        background-color: rgb(151, 251, 19);
+        font-size: 15px;
+        color: rgb(7, 7, 7);
+        padding: 15px;
+        text-decoration: none;
+        box-shadow: 3px 3px 3px rgba(149, 255, 10, 0.671);
+        border-radius: 5px;
+        float: right;
+        margin-top: 0;
+      }
+      #stream {
+        width: 80%;
+        height: 550px;
+        background: url("https://pixelz.cc/wp-content/uploads/2017/12/star-wars-the-force-awakens-uhd-4k-wallpaper.jpg");
+        z-index: -1;
+        background-repeat: none;
+        background-size: cover;
+      }
+
+      iframe {
+        width: 100%;
+        height: auto;
+        border: none;
+      }
+    </style>
+    <script>
+      const btnRotate = document.getElementById("btnRotate");
+      let deg = 0;
+      btnRotate.addEventListener("click", function callback(e) {
+        deg += 90;
+        if (deg === 360) deg = 90;
+        else if (deg === 90 || deg === 270) {
+          document.getElementById("stream").style.width = "550px";
+          document.getElementById("stream").style.height = "800px";
+          document.getElementById("stream").style.marginTop = "-110px";
+        } else {
+          document.getElementById("stream").style.width = "80%";
+          document.getElementById("stream").style.height = "550px";
+          document.getElementById("stream").style.marginTop = "0px";
+        }
+        rotate(deg);
+      });
+
+      function rotate(value) {
+        document.getElementById("stream").style.webkitTransform =
+          "rotate(" + value + "deg)";
+        document.getElementById("stream").style.msTransform =
+          "rotate(" + value + "deg)";
+        document.getElementById("stream").style.transform =
+          "rotate(" + value + "deg)";
+      }
+      window.addEventListener(
+        "keydown",
+        function(e) {
+          console.log(event);
+          updateConfigController(e);
+        },
+        false
+      );
+      window.addEventListener(
+        "keyup",
+        function(e) {
+          console.log(event);
+          updateConfigController(e);
+        },
+        false
+      );
+
+      let key;
+      function updateConfigController(el) {
+        let value;
+        switch (el.key) {
+          case "ArrowLeft":
+            console.log(value);
+            key = "btnLeft";
+            value = el.type === "keydown" ? 1 : 0;
+            break;
+          case "ArrowRight":
+            key = "btnRight";
+
+            console.log(value);
+            value = el.type === "keydown" ? 1 : 0;
+            break;
+          case "ArrowUp":
+            key = "btnFront";
+
+            console.log(value);
+            value = el.type === "keydown" ? 1 : 0;
+            break;
+          case "ArrowDown":
+            key = "btnBack";
+
+            console.log(value);
+            value = el.type === "keydown" ? 1 : 0;
+            break;
+          default:
+            return;
+        }
+        const query = `http://192.168.4.1/control?var=${key}&val=${value}`;
+        console.log("query =>" + query);
+        fetch(query).then(response => {
+          console.log(
+            `request to ${query} finished, status: ${response.status}`
+          );
+        });
+      }
+    </script>
+  </body>
+</html>
+
