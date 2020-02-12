@@ -6,23 +6,18 @@
   Eduardo Contreras @ Electronic Cats
   Original Creation Date: Sep 23, 2019
   https://github.com/ElectronicCats/Cat_Finder
-
   Este ejemplos demuestra el funcionamiento basico de los sensores y funcionalidad
   basica del Cat Finder Kit de Rover Educativo
   http://electroniccats.com
-
   Especificaciones del entorno de Desarrollo:
   IDE: Arduino 1.8.9
   ESP32 Core: 1.0.2
   Plataforma de Hardware:
   Kit Cat Finder
   - ESP32 CAM
-
-
   Este código es beerware si tu me ves ( o cualquier otro miembro de Electronic Cats)
   a nivel local, y tu has encontrado nuestro código útil ,
   por favor comprar una ronda de cervezas!
-
   Distribuido como; no se da ninguna garantía.
 ************************************************************/
 
@@ -34,9 +29,7 @@
   Eduardo Contreras @ Electronic Cats
   Original Creation Date: Sep 23, 2019
   https://github.com/ElectronicCats/Cat_Finder
-
   This example demonstrates how to use ESP32 Cam
-
   Development environment specifics:
   IDE: Arduino 1.8.4
   Hardware Platform:
@@ -46,11 +39,9 @@
   - CCS811
   - MPU6050
   - QMC5883
-
   This code is beerware; if you see me (or any other Electronic Cats
   member) at the local, and you've found our code helpful,
   please buy us a round!
-
   Distributed as-is; no warranty is given.
 */
 
@@ -326,13 +317,18 @@ static esp_err_t cmd_handler(httpd_req_t *req){
 
 static esp_err_t get_handler(httpd_req_t *req)
 {
-  String SendHTML = "<DOCTYPE html><html><head><meta charset=\"utf-8\" /></head><body><img src=\"\"><a href=\"#\" id=\"btnFront\">FRONT</a><a href=\"#\" id=\"btnBack\">BACK</a><br/><a href=\"#\" id=\"btnLeft\">LEFT</a><a href=\"#\" id=\"btnRight\">RIGHT</a><h1>Explorador Rover</h1><img id=\"stream\" src=\"http://192.168.4.1:81/stream\"><br/><iframe src=\"http://192.168.4.1:80/data\"></iframe>";
-  SendHTML +="<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{width: 75%;height: auto;border: none;}</style>";
-  SendHTML +="<script>const buttonLeft=document.getElementById(\"btnLeft\");const buttonRight=document.getElementById(\"btnRight\");const buttonFront = document.getElementById(\"btnFront\");const buttonBack = document.getElementById(\"btnBack\");buttonLeft.addEventListener(\"touchstart\", e=>{updateConfigController(e);});buttonLeft.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonRight.addEventListener(\"touchend\", e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonFront.addEventListener(\"touchend\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchstart\",e=>{updateConfigController(e);});buttonBack.addEventListener(\"touchend\",e=>{updateConfigController(e);});";
-  SendHTML +="buttonLeft.addEventListener(\"mousedown\",(e)=>{updateConfigController(e);});buttonLeft.addEventListener(\"mouseup\",(e)=>{updateConfigController(e);});buttonRight.addEventListener(\"mousedown\",(e)=>{updateConfigController(e); });buttonRight.addEventListener(\"mouseup\", (e) =>{ console.log(e); updateConfigController(e); });";
-  SendHTML += "buttonFront.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonFront.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mousedown\",(e)=>{console.log(e);updateConfigController(e);});buttonBack.addEventListener(\"mouseup\",(e)=>{console.log(e);updateConfigController(e);});function updateConfigController(el){let value;switch(el.srcElement.id) {case \"btnLeft\":value = el.buttons==1?1:0;break;case \"btnRight\":value = el.buttons == 1 ? 1 : 0;break; case \"btnFront\":value = el.buttons==1?1:0;break;case \"btnBack\":value   = el.buttons==1?1:0;break;default: return}const query=`http://192.168.4.1/control?var=${el.srcElement.id}&val=${value}`;console.log(\"query =>\"+query);fetch(query).then(response =>{console.log(`request to ${query} finished, status: ${response.status}`);});}</script>";
-  SendHTML +="</body></html>";
-    
+    String SendHTML = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /></head><body><span style=\"color: #fff;float: left;\">@Electronic Cats</span><h1>Explorador Rover<a href=\"#\" id=\"btnRotate\" class=\"button\">Girar</a></h1><img id=\"stream\" ";
+    SendHTML += "src=\"http://192.168.4.1:81/stream\" /><style>html {font-family: Helvetica;margin: 0px;padding: 0px;}body {background-color: #000000;text-align: center;justify-content: center;}h1 {background-color: rgb(0, 0, 0);font-size: 15px;color: rgb(255, 255, 255);";
+    SendHTML += "padding: 15px;text-decoration: none;box-shadow: 3px 3px 3px rgba(149, 255, 10, 0.671);border-radius: 5px;}.button {background-color: rgb(151, 251, 19);font-size: 15px;color: rgb(7, 7, 7);padding: 15px;text-decoration: none;box-shadow: 3px 3px 3px ";
+    SendHTML += "rgba(149, 255, 10, 0.671);border-radius: 5px;float: right;margin-top: 0;}#stream {width: 80%;height: 550px;z-index:-1;background-repeat: ";
+    SendHTML += "none;background-size: cover;}iframe {width: 100%;height: auto;border: none;}</style><script>const btnRotate=document.getElementById(\"btnRotate\");let deg=0;btnRotate.addEventListener(\"click\", function callback(e) {deg+=90;if (deg===360) deg=90;else ";
+    SendHTML += "if (deg===90 || deg===270) {document.getElementById(\"stream\").style.width=\"550px\";document.getElementById(\"stream\").style.height=\"800px\";document.getElementById(\"stream\").style.marginTop=\"-110px\";} else {document.getElementById(\"stream\")";
+    SendHTML += ".style.width=\"80%\";document.getElementById(\"stream\").style.height=\"550px\";document.getElementById(\"stream\").style.marginTop=\"0px\";}rotate(deg);});function rotate(value) {document.getElementById(\"stream\").style.webkitTransform=\"rotate(\"+value+\"deg)\";";
+    SendHTML += "document.getElementById(\"stream\").style.msTransform=\"rotate(\"+value+\"deg)\";document.getElementById(\"stream\").style.transform=\"rotate(\"+value+\"deg)\";}window.addEventListener(\"keydown\",function(e) {console.log(event);updateConfigController(e);},false);";
+    SendHTML += "window.addEventListener(\"keyup\",function(e) {console.log(event);updateConfigController(e);},false);let key;function updateConfigController(el) {let value;switch (el.key) {case \"ArrowLeft\":console.log(value);key=\"btnLeft\";value=el.type===\"keydown\" ? 1 : 0;break;";
+    SendHTML += "case \"ArrowRight\":key=\"btnRight\";console.log(value);value=el.type===\"keydown\" ? 1 : 0;break;case \"ArrowUp\":key=\"btnFront\";console.log(value);value=el.type===\"keydown\" ? 1 : 0;break;case \"ArrowDown\":key=\"btnBack\";console.log(value);value=el.type===\"keydown\" ?";
+    SendHTML += "1 : 0;break;default:return;}const query=`http://192.168.4.1/control?var=${key}&val=${value}`;console.log(\"query=>\"+query);fetch(query).then(response=>{console.log(`request to ${query} finished, status: ${response.status}`);});}</script></body></html>";
+
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Content-Encoding", "UTF-8");
     char HTMLCh[SendHTML.length()+1];
@@ -342,14 +338,14 @@ static esp_err_t get_handler(httpd_req_t *req)
 }
 
 static esp_err_t post_handler(httpd_req_t *req){
-
-  //Actualiza datos cada 3 seegundos
+//Actualiza datos cada 3 segundos
   String SendData = "<head><meta http-equiv='refresh' content='3'/></head>";
 
   // str => lectura de el serial data lo que manda la bast
   SendData +="<div>";
   SendData += str;
   SendData +="</div>";
+  //Actualiza datos cada 3 seegundos
  
   //(data) SendData += "<table><tr class=\"head-table\"><th colspan=\"2\">Datos</th><th>Acelerometro</th><th>Giroscopio</th></tr><tr><th scope=\"row\">Humidity: "+Humidity+"</th><th>CO2: "+co2+"</th><th>ACX: "+acex+"</th><th>GX: "+gx+"</th></tr><tr><th scope=\"row\">Temp: "+temp+"</th><th>TVOC: "+tvoc+"</th><th>ACY: "+acey+"</th><th>GY: "+gy+"</th></tr><tr><th scope=\"row\">Pressure: "+Pressure+"</th><th></th><th>ACZ: "+acez+"</th><th>GZ: "+gz+"</th></tr></table>";
   //SendData += "<style>html {font-family: Helvetica;display: inline-block;margin: 0px auto;text-align: center;}body{margin-top: 50px;background-color: #f5f5f5;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}a{width:119px;background-color:#000;border:none;color:white;padding:35px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin: 5px 5px;}#stream{width: 75%;height: auto;}iframe{height: auto;border: none;}table{width: 100%;}th, td{border-bottom: 1px solid #ddd;padding: 5x;}.head-table{padding: 5x;background-color: #000;color: #fff;}</style>";
@@ -421,4 +417,3 @@ void startCameraServer(){
     httpd_register_uri_handler(stream_httpd, &stream_uri);
     }
 }
-  
